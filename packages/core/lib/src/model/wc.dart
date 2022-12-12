@@ -98,45 +98,42 @@ class RelayProtocolOptions with _$RelayProtocolOptions {
   }
 }
 
-abstract class WCRequest<T extends ClientParams> {
-  @TopicConverter()
-  final String topic;
-  final int id;
-  final String method;
-  final T params;
+@Freezed(genericArgumentFactories: true)
+class WCRequest<T extends ClientParams> with _$WCRequest<T> {
+  const WCRequest._();
 
-  WCRequest._(this.topic, this.id, this.method, this.params);
+  const factory WCRequest({
+    @TopicConverter() required String topic,
+    required int id,
+    required String method,
+    required T params,
+  }) = _WCRequest;
 
   factory WCRequest.fromJson(
     Map<String, dynamic> json,
     ObjectFactory<T> factory,
-  ) {
-    return _WCRequestImpl(
-      topic: json['topic'],
-      id: json['id'],
-      method: json['method'],
-      params: factory.call((json['params'] as Map).cast()),
-    );
-  }
-
-  Map<String, dynamic> toJson() {
-    return {
-      'topic': const TopicConverter().toJson(topic),
-      'id': id,
-      'method': method,
-      'params': params
-    };
-  }
+  ) =>
+      _$WCRequestFromJson(json, factory);
 }
-
-class _WCRequestImpl<T extends ClientParams> extends WCRequest<T> {
-  _WCRequestImpl({
-    required String topic,
-    required int id,
-    required String method,
-    required T params,
-  }) : super._(topic, id, method, params);
-}
+//
+// @Freezed(genericArgumentFactories: true)
+// class WCResponse<T extends ClientParams, R> with _$WCResponse<T, R> {
+//   const WCResponse._();
+//
+//   const factory WCResponse({
+//     @TopicConverter() required String topic,
+//     required JsonRpcResponse<R> response,
+//     required String method,
+//     required T params,
+//   }) = _WCResponse;
+//
+//   factory WCResponse.fromJson(
+//       Map<String, dynamic> json,
+//       ObjectFactory<T> factoryT,
+//       ObjectFactory<R> factoryR,
+//       ) =>
+//       _$WCResponseFromJson(json, factoryT, factoryR);
+// }
 
 abstract class WCResponse<T extends ClientParams> {
   @TopicConverter()
@@ -157,7 +154,7 @@ abstract class WCResponse<T extends ClientParams> {
     return _WCResponseImpl(
       topic: json['topic'],
       response: isError
-          ? JsonRpcError.fromJson(response)
+          ? JsonRpcError.fromJson(response, neverObjectFactory)
           : responseFactory.call(response),
       method: json['method'],
       params: paramsFactory.call((json['params'] as Map).cast()),

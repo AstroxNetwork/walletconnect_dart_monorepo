@@ -1,54 +1,30 @@
 part of 'relay.dart';
 
-//region Subscription
+typedef RelaySubscriptionRequest = JsonRpcRequest<RelaySubscriptionRequestParams>;
+typedef RelaySubscriptionResult = JsonRpcResponse<bool>;
+typedef RelaySubscriptionAcknowledgement = JsonRpcResult<bool>;
+typedef RelaySubscriptionError = JsonRpcError;
 
-@freezed
-class RelaySubscription with _$RelaySubscription implements JsonRpc, Relay {
-  @Implements<JsonRpcRequest<RelaySubscriptionRequestParams>>()
-  const factory RelaySubscription.request({
-    required int id,
-    @Default(jsonRpcVersion) String jsonrpc,
-    @Default(irnSubscription) String method,
-    required RelaySubscriptionRequestParams params,
-  }) = RelaySubscriptionRequest;
 
-  @Implements<JsonRpcResult<bool>>()
-  const factory RelaySubscription.ack({
-    required int id,
-    @Default(jsonRpcVersion) String jsonrpc,
-    required bool result,
-  }) = RelaySubscriptionAcknowledgement;
-
-  @Implements<JsonRpcError>()
-  const factory RelaySubscription.error({
-    required int id,
-    @Default(jsonRpcVersion) String jsonrpc,
-    required JsonRpcOnError error,
-  }) = RelaySubscriptionError;
-
-  const factory RelaySubscription.result({
-    required int id,
-    @Default(jsonRpcVersion) String jsonrpc,
-    bool? result,
-    JsonRpcOnError? error,
-  }) = RelaySubscriptionResult;
-
-  factory RelaySubscription.fromJson(Map<String, Object?> json) =>
-      _$RelaySubscriptionFromJson(json);
+RelaySubscriptionRequest newRelaySubscriptionRequest({
+  required int id,
+  String jsonrpc = jsonRpcVersion,
+  String method = irnSubscription,
+  required RelaySubscriptionRequestParams params,
+}) {
+  return RelaySubscriptionRequest(
+    id: id,
+    jsonrpc: jsonrpc,
+    method: method,
+    params: params,
+  );
 }
+
 
 extension RelaySubscriptionRequestExtension on RelaySubscriptionRequest {
   String get subscriptionTopic => params.subscriptionData.topic;
 
   String get message => params.subscriptionData.message;
-}
-
-extension RelaySubscriptionResultExtension on RelaySubscriptionResult {
-  bool get isError => error != null;
-
-  RelaySubscription get inst => isError
-      ? RelaySubscription.error(id: id, jsonrpc: jsonrpc, error: error!)
-      : RelaySubscription.ack(id: id, jsonrpc: jsonrpc, result: result!);
 }
 
 @freezed
@@ -75,5 +51,3 @@ class RelaySubscriptionRequestParamsData
   ) =>
       _$RelaySubscriptionRequestParamsDataFromJson(json);
 }
-
-//endregion

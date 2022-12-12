@@ -14,6 +14,9 @@ typedef OnError = void Function(Object error, [StackTrace? stackTrace]);
 typedef OnData<T> = void Function(T value);
 
 
+Never neverObjectFactory(dynamic value) => throw UnimplementedError();
+
+
 int generateId() {
   return DateTime.now().millisecondsSinceEpoch;
 }

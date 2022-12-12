@@ -14,7 +14,7 @@ class SignParams with _$SignParams implements ClientParams {
   const factory SignParams.sessionPropose({
     required List<RelayProtocolOptions> relays,
     required SessionProposer proposer,
-    @JsonKey(name: "requiredNamespaces")
+    @JsonKey(name: 'requiredNamespaces')
         required Map<String, NamespaceProposal> namespaces,
   }) = SessionProposeParams;
 

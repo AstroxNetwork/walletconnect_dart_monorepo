@@ -1,4 +1,5 @@
 import 'dart:async';
+import 'dart:convert';
 
 import 'package:stack_trace/stack_trace.dart';
 import 'package:walletconnect_mono_foundation/src/model/client_event.dart';
@@ -57,7 +58,13 @@ class BaseRelayClient implements IRelay, IRelayConnection {
       retryTimes: 5,
       uri: relayUri,
       onData: (data) {
-        _bus.fire(ClientEvent.data(data));
+        if (data is String && data.isNotEmpty) {
+          final json = jsonDecode(data);
+          final id = json['id'].toString();
+          if (pendingRequest.containsKey(id)) {
+            _bus.fire(ClientEvent.data(json));
+          }
+        }
       },
       onError: (e, [s]) {
         e.error(stackTrace: s);
@@ -83,7 +90,7 @@ class BaseRelayClient implements IRelay, IRelayConnection {
       tag: params.tag,
       prompt: params.prompt,
     );
-    final request = RelayPublishRequest(id: generateId(), params: publish);
+    final request = newRelayPublishRequest(id: generateId(), params: publish);
     return _send(request, timeout);
   }
 
@@ -93,7 +100,7 @@ class BaseRelayClient implements IRelay, IRelayConnection {
     Duration? timeout,
   }) async {
     await checkAvailable();
-    final request = RelaySubscribeRequest(
+    final request = newRelaySubscribeRequest(
       id: generateId(),
       params: RelaySubscribeRequestParams(topic: topic),
     );
@@ -107,7 +114,7 @@ class BaseRelayClient implements IRelay, IRelayConnection {
     Duration? timeout,
   }) async {
     await checkAvailable();
-    final request = RelayUnsubscribeRequest(
+    final request = newRelayUnsubscribeRequest(
       id: generateId(),
       params: RelayUnsubscribeRequestParams(
         topic: topic,

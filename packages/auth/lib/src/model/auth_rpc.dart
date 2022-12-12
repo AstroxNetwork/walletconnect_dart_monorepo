@@ -8,15 +8,18 @@ part 'auth_rpc.freezed.dart';
 
 part 'auth_rpc.g.dart';
 
-@freezed
-class AuthRpc extends JsonRpcRequest<AuthParams> with _$AuthRpc {
-  const factory AuthRpc.request({
-    required int id,
-    @Default(jsonRpcVersion) String jsonrpc,
-    @Default(JsonRpcMethod.wcAuthRequest) String method,
-    required AuthRequestParams params,
-  }) = AuthRpcRequest;
+typedef AuthRpc = JsonRpcRequest<AuthParams>;
 
-  factory AuthRpc.fromJson(Map<String, dynamic> json) =>
-      _$AuthRpcFromJson(json);
+AuthRpc newRelaySubscribeRequest({
+  required int id,
+  String jsonrpc = jsonRpcVersion,
+  String method = JsonRpcMethod.wcAuthRequest,
+  required AuthRequestParams params,
+}) {
+  return AuthRpc(
+    id: id,
+    jsonrpc: jsonrpc,
+    method: method,
+    params: params,
+  );
 }

@@ -1,48 +1,22 @@
 part of 'relay.dart';
 
-//region Unsubscribe
+typedef RelayUnsubscribeRequest = JsonRpcRequest<RelayUnsubscribeRequestParams>;
+typedef RelayUnsubscribeResult = JsonRpcResponse<bool>;
+typedef RelayUnsubscribeResultAcknowledgement = JsonRpcResult<bool>;
+typedef RelayUnsubscribeResultError = JsonRpcError;
 
-@freezed
-class RelayUnsubscribe with _$RelayUnsubscribe implements JsonRpc, Relay {
-  @Implements<JsonRpcRequest<RelayUnsubscribeRequestParams>>()
-  const factory RelayUnsubscribe.request({
-    required int id,
-    @Default(jsonRpcVersion) String jsonrpc,
-    @Default(irnUnsubscribe) String method,
-    required RelayUnsubscribeRequestParams params,
-  }) = RelayUnsubscribeRequest;
-
-  @Implements<JsonRpcResult<bool>>()
-  const factory RelayUnsubscribe.ack({
-    required int id,
-    @Default(jsonRpcVersion) String jsonrpc,
-    required bool result,
-  }) = RelayUnsubscribeAcknowledgement;
-
-  @Implements<JsonRpcError>()
-  const factory RelayUnsubscribe.error({
-    required int id,
-    @Default(jsonRpcVersion) String jsonrpc,
-    required JsonRpcOnError error,
-  }) = RelayUnsubscribeError;
-
-  const factory RelayUnsubscribe.result({
-    required int id,
-    @Default(jsonRpcVersion) String jsonrpc,
-    bool? result,
-    JsonRpcOnError? error,
-  }) = RelayUnsubscribeResult;
-
-  factory RelayUnsubscribe.fromJson(Map<String, Object?> json) =>
-      _$RelayUnsubscribeFromJson(json);
-}
-
-extension RelayUnsubscribeResultExtension on RelayUnsubscribeResult {
-  bool get isError => error != null;
-
-  RelayUnsubscribe get data => isError
-      ? RelayUnsubscribe.error(id: id, jsonrpc: jsonrpc, error: error!)
-      : RelayUnsubscribe.ack(id: id, jsonrpc: jsonrpc, result: result!);
+RelayUnsubscribeRequest newRelayUnsubscribeRequest({
+  required int id,
+  String jsonrpc = jsonRpcVersion,
+  String method = irnSubscription,
+  required RelayUnsubscribeRequestParams params,
+}) {
+  return RelayUnsubscribeRequest(
+    id: id,
+    jsonrpc: jsonrpc,
+    method: method,
+    params: params,
+  );
 }
 
 @freezed
@@ -55,4 +29,3 @@ class RelayUnsubscribeRequestParams with _$RelayUnsubscribeRequestParams {
   factory RelayUnsubscribeRequestParams.fromJson(Map<String, Object?> json) =>
       _$RelayUnsubscribeRequestParamsFromJson(json);
 }
-//endregion

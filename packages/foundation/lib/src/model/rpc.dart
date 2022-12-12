@@ -8,7 +8,6 @@ part 'rpc.freezed.dart';
 
 part 'rpc.g.dart';
 
-
 abstract class JsonRpc {
   final int id;
   final String jsonrpc;
@@ -26,15 +25,14 @@ class JsonRpcRequest<T> with _$JsonRpcRequest<T> implements JsonRpc {
   }) = _JsonRpcRequest;
 
   factory JsonRpcRequest.fromJson(
-      Map<String, dynamic> json,
-      ObjectFactory<T> factory,
-      ) =>
+    Map<String, dynamic> json,
+    ObjectFactory<T> factory,
+  ) =>
       _$JsonRpcRequestFromJson(json, factory);
 }
 
 @Freezed(genericArgumentFactories: true)
-class JsonRpcResponse<T> with _$JsonRpcResponse<T> {
-
+class JsonRpcResponse<T> with _$JsonRpcResponse<T> implements JsonRpc {
   const factory JsonRpcResponse({
     required int id,
     @Default(jsonRpcVersion) String jsonrpc,
@@ -55,12 +53,11 @@ class JsonRpcResponse<T> with _$JsonRpcResponse<T> {
   }) = JsonRpcError<T>;
 
   factory JsonRpcResponse.fromJson(
-      Map<String, dynamic> json,
-      ObjectFactory<T> factory,
-      ) =>
+    Map<String, dynamic> json,
+    ObjectFactory<T> factory,
+  ) =>
       _$JsonRpcResponseFromJson(json, factory);
 }
-
 
 @freezed
 class JsonRpcOnError with _$JsonRpcOnError {

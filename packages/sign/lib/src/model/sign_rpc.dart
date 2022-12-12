@@ -8,64 +8,130 @@ part 'sign_rpc.freezed.dart';
 
 part 'sign_rpc.g.dart';
 
-@freezed
-class SignRpc extends JsonRpcRequest<SignParams> with _$SignRpc {
-  const factory SignRpc.sessionPropose({
-    required int id,
-    @Default(jsonRpcVersion) String jsonrpc,
-    @Default(JsonRpcMethod.wcSessionPropose) String method,
-    required SessionProposeParams params,
-  }) = SessionPropose;
+typedef SignRpc = JsonRpcRequest<SignParams>;
 
-  const factory SignRpc.sessionSettle({
-    required int id,
-    @Default(jsonRpcVersion) String jsonrpc,
-    @Default(JsonRpcMethod.wcSessionSettle) String method,
-    required SessionSettleParams params,
-  }) = SessionSettle;
+//region SessionPropose
+typedef SessionPropose = JsonRpcRequest<SessionProposeParams>;
 
-  const factory SignRpc.sessionRequest({
-    required int id,
-    @Default(jsonRpcVersion) String jsonrpc,
-    @Default(JsonRpcMethod.wcSessionRequest) String method,
-    required SessionRequestParams params,
-  }) = SessionRequest;
-
-  const factory SignRpc.sessionDelete({
-    required int id,
-    @Default(jsonRpcVersion) String jsonrpc,
-    @Default(JsonRpcMethod.wcSessionDelete) String method,
-    required DeleteParams params,
-  }) = SessionDelete;
-
-  const factory SignRpc.sessionPing({
-    required int id,
-    @Default(jsonRpcVersion) String jsonrpc,
-    @Default(JsonRpcMethod.wcSessionPing) String method,
-    required PingParams params,
-  }) = SessionPing;
-
-  const factory SignRpc.sessionEvent({
-    required int id,
-    @Default(jsonRpcVersion) String jsonrpc,
-    @Default(JsonRpcMethod.wcSessionEvent) String method,
-    required EventParams params,
-  }) = SessionEvent;
-
-  const factory SignRpc.sessionUpdate({
-    required int id,
-    @Default(jsonRpcVersion) String jsonrpc,
-    @Default(JsonRpcMethod.wcSessionUpdate) String method,
-    required UpdateNamespacesParams params,
-  }) = SessionUpdate;
-
-  const factory SignRpc.sessionExtend({
-    required int id,
-    @Default(jsonRpcVersion) String jsonrpc,
-    @Default(JsonRpcMethod.wcSessionExtend) String method,
-    required ExtendParams params,
-  }) = SessionExtend;
-
-  factory SignRpc.fromJson(Map<String, dynamic> json) =>
-      _$SignRpcFromJson(json);
+SessionPropose newSessionPropose({
+  required int id,
+  String jsonrpc = jsonRpcVersion,
+  String method = JsonRpcMethod.wcSessionPropose,
+  required SessionProposeParams params,
+}) {
+  return SessionPropose(
+    id: id,
+    jsonrpc: jsonrpc,
+    method: method,
+    params: params,
+  );
 }
+//endregion
+
+//region SessionSettle
+typedef SessionSettle = JsonRpcRequest<SessionSettleParams>;
+
+SessionSettle newRelaySubscribeRequest({
+  required int id,
+  String jsonrpc = jsonRpcVersion,
+  String method = JsonRpcMethod.wcSessionSettle,
+  required SessionSettleParams params,
+}) {
+  return SessionSettle(
+    id: id,
+    jsonrpc: jsonrpc,
+    method: method,
+    params: params,
+  );
+}
+//endregion
+
+//region SessionRequest
+typedef SessionRequest = JsonRpcRequest<SessionRequestParams>;
+
+SessionRequest newSessionRequest({
+  required int id,
+  String jsonrpc = jsonRpcVersion,
+  String method = JsonRpcMethod.wcSessionRequest,
+  required SessionRequestParams params,
+}) {
+  return SessionRequest(
+    id: id,
+    jsonrpc: jsonrpc,
+    method: method,
+    params: params,
+  );
+}
+//endregion
+
+//region SessionDelete
+typedef SessionDelete = JsonRpcRequest<DeleteParams>;
+
+SessionDelete newSessionDelete({
+  required int id,
+  String jsonrpc = jsonRpcVersion,
+  String method = JsonRpcMethod.wcSessionDelete,
+  required DeleteParams params,
+}) {
+  return SessionDelete(
+    id: id,
+    jsonrpc: jsonrpc,
+    method: method,
+    params: params,
+  );
+}
+//endregion
+
+//region SessionPing
+typedef SessionPing = JsonRpcRequest<PingParams>;
+
+SessionPing newSessionPing({
+  required int id,
+  String jsonrpc = jsonRpcVersion,
+  String method = JsonRpcMethod.wcSessionPing,
+  required PingParams params,
+}) {
+  return SessionPing(
+    id: id,
+    jsonrpc: jsonrpc,
+    method: method,
+    params: params,
+  );
+}
+//endregion
+
+//region SessionEvent
+typedef SessionEvent = JsonRpcRequest<EventParams>;
+
+SessionEvent newSessionEvent({
+  required int id,
+  String jsonrpc = jsonRpcVersion,
+  String method = JsonRpcMethod.wcSessionEvent,
+  required EventParams params,
+}) {
+  return SessionEvent(
+    id: id,
+    jsonrpc: jsonrpc,
+    method: method,
+    params: params,
+  );
+}
+//endregion
+
+//region SessionExtend
+typedef SessionExtend = JsonRpcRequest<ExtendParams>;
+
+SessionExtend newSessionExtend({
+  required int id,
+  String jsonrpc = jsonRpcVersion,
+  String method = JsonRpcMethod.wcSessionExtend,
+  required ExtendParams params,
+}) {
+  return SessionExtend(
+    id: id,
+    jsonrpc: jsonrpc,
+    method: method,
+    params: params,
+  );
+}
+//endregion

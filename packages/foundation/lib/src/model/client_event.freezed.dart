@@ -18,19 +18,19 @@ final _privateConstructorUsedError = UnsupportedError(
 mixin _$ClientEvent {
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
-    required TResult Function(Object? data) data,
+    required TResult Function(Map<String, dynamic> data) data,
     required TResult Function(Object error, StackTrace stackTrace) error,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
-    TResult? Function(Object? data)? data,
+    TResult? Function(Map<String, dynamic> data)? data,
     TResult? Function(Object error, StackTrace stackTrace)? error,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
-    TResult Function(Object? data)? data,
+    TResult Function(Map<String, dynamic> data)? data,
     TResult Function(Object error, StackTrace stackTrace)? error,
     required TResult orElse(),
   }) =>
@@ -80,7 +80,7 @@ abstract class _$$ClientDataEventCopyWith<$Res> {
           _$ClientDataEvent value, $Res Function(_$ClientDataEvent) then) =
       __$$ClientDataEventCopyWithImpl<$Res>;
   @useResult
-  $Res call({Object? data});
+  $Res call({Map<String, dynamic> data});
 }
 
 /// @nodoc
@@ -94,10 +94,13 @@ class __$$ClientDataEventCopyWithImpl<$Res>
   @pragma('vm:prefer-inline')
   @override
   $Res call({
-    Object? data = freezed,
+    Object? data = null,
   }) {
     return _then(_$ClientDataEvent(
-      freezed == data ? _value.data : data,
+      null == data
+          ? _value._data
+          : data // ignore: cast_nullable_to_non_nullable
+              as Map<String, dynamic>,
     ));
   }
 }
@@ -105,10 +108,14 @@ class __$$ClientDataEventCopyWithImpl<$Res>
 /// @nodoc
 
 class _$ClientDataEvent implements ClientDataEvent {
-  const _$ClientDataEvent(this.data);
+  const _$ClientDataEvent(final Map<String, dynamic> data) : _data = data;
 
+  final Map<String, dynamic> _data;
   @override
-  final Object? data;
+  Map<String, dynamic> get data {
+    // ignore: implicit_dynamic_type
+    return EqualUnmodifiableMapView(_data);
+  }
 
   @override
   String toString() {
@@ -120,12 +127,12 @@ class _$ClientDataEvent implements ClientDataEvent {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
             other is _$ClientDataEvent &&
-            const DeepCollectionEquality().equals(other.data, data));
+            const DeepCollectionEquality().equals(other._data, _data));
   }
 
   @override
   int get hashCode =>
-      Object.hash(runtimeType, const DeepCollectionEquality().hash(data));
+      Object.hash(runtimeType, const DeepCollectionEquality().hash(_data));
 
   @JsonKey(ignore: true)
   @override
@@ -136,7 +143,7 @@ class _$ClientDataEvent implements ClientDataEvent {
   @override
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
-    required TResult Function(Object? data) data,
+    required TResult Function(Map<String, dynamic> data) data,
     required TResult Function(Object error, StackTrace stackTrace) error,
   }) {
     return data(this.data);
@@ -145,7 +152,7 @@ class _$ClientDataEvent implements ClientDataEvent {
   @override
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
-    TResult? Function(Object? data)? data,
+    TResult? Function(Map<String, dynamic> data)? data,
     TResult? Function(Object error, StackTrace stackTrace)? error,
   }) {
     return data?.call(this.data);
@@ -154,7 +161,7 @@ class _$ClientDataEvent implements ClientDataEvent {
   @override
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
-    TResult Function(Object? data)? data,
+    TResult Function(Map<String, dynamic> data)? data,
     TResult Function(Object error, StackTrace stackTrace)? error,
     required TResult orElse(),
   }) {
@@ -197,9 +204,10 @@ class _$ClientDataEvent implements ClientDataEvent {
 }
 
 abstract class ClientDataEvent implements ClientEvent {
-  const factory ClientDataEvent(final Object? data) = _$ClientDataEvent;
+  const factory ClientDataEvent(final Map<String, dynamic> data) =
+      _$ClientDataEvent;
 
-  Object? get data;
+  Map<String, dynamic> get data;
   @JsonKey(ignore: true)
   _$$ClientDataEventCopyWith<_$ClientDataEvent> get copyWith =>
       throw _privateConstructorUsedError;
@@ -276,7 +284,7 @@ class _$ClientErrorEvent implements ClientErrorEvent {
   @override
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
-    required TResult Function(Object? data) data,
+    required TResult Function(Map<String, dynamic> data) data,
     required TResult Function(Object error, StackTrace stackTrace) error,
   }) {
     return error(this.error, stackTrace);
@@ -285,7 +293,7 @@ class _$ClientErrorEvent implements ClientErrorEvent {
   @override
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
-    TResult? Function(Object? data)? data,
+    TResult? Function(Map<String, dynamic> data)? data,
     TResult? Function(Object error, StackTrace stackTrace)? error,
   }) {
     return error?.call(this.error, stackTrace);
@@ -294,7 +302,7 @@ class _$ClientErrorEvent implements ClientErrorEvent {
   @override
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
-    TResult Function(Object? data)? data,
+    TResult Function(Map<String, dynamic> data)? data,
     TResult Function(Object error, StackTrace stackTrace)? error,
     required TResult orElse(),
   }) {
