@@ -1,0 +1,1 @@
+library walletconnect_mono_sign;

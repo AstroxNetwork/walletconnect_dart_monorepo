@@ -1,0 +1,36 @@
+name: walletconnect_mono
+
+packages:
+  - packages/**
+
+command:
+  bootstrap:
+    usePubspecOverrides: true
+    runPubGetInParallel: true
+    runPubGetOffline: false
+
+  version:
+    branch: main
+    linkToCommits: false
+    includeCommitId: true
+    includeScopes: true
+    workspaceChangelog: true
+    updateGitTagRefs: true
+    releaseUrl: false
+
+scripts:
+  upgrade: melos exec -- dart pub upgrade --null-safety
+  gen: melos exec -- dart run build_runner build --delete-conflicting-outputs
+  gen_core: melos exec --scope="*core*" -- dart run build_runner build --delete-conflicting-outputs
+  gen_auth: melos exec --scope="*auth*" -- dart run build_runner build --delete-conflicting-outputs
+  gen_foundation: melos exec --scope="*foundation*" -- dart run build_runner build --delete-conflicting-outputs
+  gen_app: melos exec --scope="*app*" -- dart run build_runner build --delete-conflicting-outputs
+  gen_sign: melos exec --scope="*sign*" -- dart run build_runner build --delete-conflicting-outputs
+  prepare: melos bootstrap && melos run build
+  analyze:
+    exec: dart analyze .
+
+ide:
+  intellij:
+    enabled: true
+    moduleNamePrefix: ''
