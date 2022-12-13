@@ -40,7 +40,16 @@ class ProjectIdDoesNotExistError extends WalletConnectError {
   ProjectIdDoesNotExistError([super.message]);
 }
 
-
 class CannotFindKeyPairError extends WalletConnectError {
   CannotFindKeyPairError([super.message]);
+}
+
+class Uncategorized extends RemoteJsonRpcError {
+  Uncategorized._(super.code, super.message);
+
+  factory Uncategorized.noMatchingTopic(String sequence, String topic) =>
+      Uncategorized._(1301, 'No matching $sequence with topic: $topic');
+
+  factory Uncategorized.generic(String error) =>
+      Uncategorized._(1302, 'Generic error: $error');
 }

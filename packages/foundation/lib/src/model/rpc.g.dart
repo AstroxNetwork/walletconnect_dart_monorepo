@@ -28,44 +28,6 @@ Map<String, dynamic> _$$_JsonRpcRequestToJson<T>(
       'params': toJsonT(instance.params),
     };
 
-_$_JsonRpcResponse<T> _$$_JsonRpcResponseFromJson<T>(
-  Map<String, dynamic> json,
-  T Function(Object? json) fromJsonT,
-) =>
-    _$_JsonRpcResponse<T>(
-      id: json['id'] as int,
-      jsonrpc: json['jsonrpc'] as String? ?? jsonRpcVersion,
-      result: _$nullableGenericFromJson(json['result'], fromJsonT),
-      error: json['error'] == null
-          ? null
-          : JsonRpcOnError.fromJson(json['error'] as Map<String, dynamic>),
-      $type: json['runtimeType'] as String?,
-    );
-
-Map<String, dynamic> _$$_JsonRpcResponseToJson<T>(
-  _$_JsonRpcResponse<T> instance,
-  Object? Function(T value) toJsonT,
-) =>
-    <String, dynamic>{
-      'id': instance.id,
-      'jsonrpc': instance.jsonrpc,
-      'result': _$nullableGenericToJson(instance.result, toJsonT),
-      'error': instance.error,
-      'runtimeType': instance.$type,
-    };
-
-T? _$nullableGenericFromJson<T>(
-  Object? input,
-  T Function(Object? json) fromJson,
-) =>
-    input == null ? null : fromJson(input);
-
-Object? _$nullableGenericToJson<T>(
-  T? input,
-  Object? Function(T value) toJson,
-) =>
-    input == null ? null : toJson(input);
-
 _$JsonRpcResult<T> _$$JsonRpcResultFromJson<T>(
   Map<String, dynamic> json,
   T Function(Object? json) fromJsonT,

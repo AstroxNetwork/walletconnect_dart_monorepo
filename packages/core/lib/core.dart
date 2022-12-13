@@ -16,6 +16,7 @@ export 'src/model/participants.dart';
 export 'src/model/redirect.dart';
 export 'src/model/sequence.dart';
 export 'src/model/wc.dart';
+export 'src/model/wc_event.dart';
 export 'src/pairing_store.dart';
 export 'src/record_store.dart';
 export 'src/snippets.dart';

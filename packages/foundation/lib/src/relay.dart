@@ -2,12 +2,13 @@ import 'dart:async';
 import 'dart:convert';
 
 import 'package:stack_trace/stack_trace.dart';
-import 'package:walletconnect_mono_foundation/src/model/client_event.dart';
 
 import 'connection.dart';
 import 'errors.dart';
 import 'event_bus.dart';
+import 'irn.dart';
 import 'log.dart';
+import 'model/client_event.dart';
 import 'model/irn.dart';
 import 'model/pending_request.dart';
 import 'model/relay.dart';
@@ -60,9 +61,24 @@ class BaseRelayClient implements IRelay, IRelayConnection {
       onData: (data) {
         if (data is String && data.isNotEmpty) {
           final json = jsonDecode(data);
-          final id = json['id'].toString();
+          _bus.fire(ClientEvent.data(json));
+          final id = json['id'] as int;
+          final method = json['method'];
+          if (method is String && method == irnSubscription) {
+            _client
+                .send(RelaySubscriptionAcknowledgement(id: id, result: true));
+          }
           if (pendingRequest.containsKey(id)) {
-            _bus.fire(ClientEvent.data(json));
+            final request = pendingRequest[id]!;
+            final method = request.request.method;
+            if (method == irnPublish ||
+                method == irnSubscription ||
+                method == irnSubscribe ||
+                method == irnUnsubscribe) {
+              request.completer
+                  .complete(JsonRpcResponse.fromJson(json, rawConvert));
+            }
+            pendingRequest.remove(id);
           }
         }
       },

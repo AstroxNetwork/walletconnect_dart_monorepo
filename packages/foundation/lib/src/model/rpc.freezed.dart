@@ -214,8 +214,6 @@ abstract class _JsonRpcRequest<T> implements JsonRpcRequest<T> {
 JsonRpcResponse<T> _$JsonRpcResponseFromJson<T>(
     Map<String, dynamic> json, T Function(Object?) fromJsonT) {
   switch (json['runtimeType']) {
-    case 'default':
-      return _JsonRpcResponse<T>.fromJson(json, fromJsonT);
     case 'result':
       return JsonRpcResult<T>.fromJson(json, fromJsonT);
     case 'error':
@@ -232,48 +230,39 @@ mixin _$JsonRpcResponse<T> {
   int get id => throw _privateConstructorUsedError;
   String get jsonrpc => throw _privateConstructorUsedError;
   @optionalTypeArgs
-  TResult when<TResult extends Object?>(
-    TResult Function(int id, String jsonrpc, T? result, JsonRpcOnError? error)
-        $default, {
+  TResult when<TResult extends Object?>({
     required TResult Function(int id, String jsonrpc, T result) result,
     required TResult Function(int id, String jsonrpc, JsonRpcOnError error)
         error,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
-  TResult? whenOrNull<TResult extends Object?>(
-    TResult? Function(int id, String jsonrpc, T? result, JsonRpcOnError? error)?
-        $default, {
+  TResult? whenOrNull<TResult extends Object?>({
     TResult? Function(int id, String jsonrpc, T result)? result,
     TResult? Function(int id, String jsonrpc, JsonRpcOnError error)? error,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
-  TResult maybeWhen<TResult extends Object?>(
-    TResult Function(int id, String jsonrpc, T? result, JsonRpcOnError? error)?
-        $default, {
+  TResult maybeWhen<TResult extends Object?>({
     TResult Function(int id, String jsonrpc, T result)? result,
     TResult Function(int id, String jsonrpc, JsonRpcOnError error)? error,
     required TResult orElse(),
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
-  TResult map<TResult extends Object?>(
-    TResult Function(_JsonRpcResponse<T> value) $default, {
+  TResult map<TResult extends Object?>({
     required TResult Function(JsonRpcResult<T> value) result,
     required TResult Function(JsonRpcError<T> value) error,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
-  TResult? mapOrNull<TResult extends Object?>(
-    TResult? Function(_JsonRpcResponse<T> value)? $default, {
+  TResult? mapOrNull<TResult extends Object?>({
     TResult? Function(JsonRpcResult<T> value)? result,
     TResult? Function(JsonRpcError<T> value)? error,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
-  TResult maybeMap<TResult extends Object?>(
-    TResult Function(_JsonRpcResponse<T> value)? $default, {
+  TResult maybeMap<TResult extends Object?>({
     TResult Function(JsonRpcResult<T> value)? result,
     TResult Function(JsonRpcError<T> value)? error,
     required TResult orElse(),
@@ -322,225 +311,6 @@ class _$JsonRpcResponseCopyWithImpl<T, $Res, $Val extends JsonRpcResponse<T>>
               as String,
     ) as $Val);
   }
-}
-
-/// @nodoc
-abstract class _$$_JsonRpcResponseCopyWith<T, $Res>
-    implements $JsonRpcResponseCopyWith<T, $Res> {
-  factory _$$_JsonRpcResponseCopyWith(_$_JsonRpcResponse<T> value,
-          $Res Function(_$_JsonRpcResponse<T>) then) =
-      __$$_JsonRpcResponseCopyWithImpl<T, $Res>;
-  @override
-  @useResult
-  $Res call({int id, String jsonrpc, T? result, JsonRpcOnError? error});
-
-  $JsonRpcOnErrorCopyWith<$Res>? get error;
-}
-
-/// @nodoc
-class __$$_JsonRpcResponseCopyWithImpl<T, $Res>
-    extends _$JsonRpcResponseCopyWithImpl<T, $Res, _$_JsonRpcResponse<T>>
-    implements _$$_JsonRpcResponseCopyWith<T, $Res> {
-  __$$_JsonRpcResponseCopyWithImpl(
-      _$_JsonRpcResponse<T> _value, $Res Function(_$_JsonRpcResponse<T>) _then)
-      : super(_value, _then);
-
-  @pragma('vm:prefer-inline')
-  @override
-  $Res call({
-    Object? id = null,
-    Object? jsonrpc = null,
-    Object? result = freezed,
-    Object? error = freezed,
-  }) {
-    return _then(_$_JsonRpcResponse<T>(
-      id: null == id
-          ? _value.id
-          : id // ignore: cast_nullable_to_non_nullable
-              as int,
-      jsonrpc: null == jsonrpc
-          ? _value.jsonrpc
-          : jsonrpc // ignore: cast_nullable_to_non_nullable
-              as String,
-      result: freezed == result
-          ? _value.result
-          : result // ignore: cast_nullable_to_non_nullable
-              as T?,
-      error: freezed == error
-          ? _value.error
-          : error // ignore: cast_nullable_to_non_nullable
-              as JsonRpcOnError?,
-    ));
-  }
-
-  @override
-  @pragma('vm:prefer-inline')
-  $JsonRpcOnErrorCopyWith<$Res>? get error {
-    if (_value.error == null) {
-      return null;
-    }
-
-    return $JsonRpcOnErrorCopyWith<$Res>(_value.error!, (value) {
-      return _then(_value.copyWith(error: value));
-    });
-  }
-}
-
-/// @nodoc
-@JsonSerializable(genericArgumentFactories: true)
-class _$_JsonRpcResponse<T> implements _JsonRpcResponse<T> {
-  const _$_JsonRpcResponse(
-      {required this.id,
-      this.jsonrpc = jsonRpcVersion,
-      this.result,
-      this.error,
-      final String? $type})
-      : $type = $type ?? 'default';
-
-  factory _$_JsonRpcResponse.fromJson(
-          Map<String, dynamic> json, T Function(Object?) fromJsonT) =>
-      _$$_JsonRpcResponseFromJson(json, fromJsonT);
-
-  @override
-  final int id;
-  @override
-  @JsonKey()
-  final String jsonrpc;
-  @override
-  final T? result;
-  @override
-  final JsonRpcOnError? error;
-
-  @JsonKey(name: 'runtimeType')
-  final String $type;
-
-  @override
-  String toString() {
-    return 'JsonRpcResponse<$T>(id: $id, jsonrpc: $jsonrpc, result: $result, error: $error)';
-  }
-
-  @override
-  bool operator ==(dynamic other) {
-    return identical(this, other) ||
-        (other.runtimeType == runtimeType &&
-            other is _$_JsonRpcResponse<T> &&
-            (identical(other.id, id) || other.id == id) &&
-            (identical(other.jsonrpc, jsonrpc) || other.jsonrpc == jsonrpc) &&
-            const DeepCollectionEquality().equals(other.result, result) &&
-            (identical(other.error, error) || other.error == error));
-  }
-
-  @JsonKey(ignore: true)
-  @override
-  int get hashCode => Object.hash(runtimeType, id, jsonrpc,
-      const DeepCollectionEquality().hash(result), error);
-
-  @JsonKey(ignore: true)
-  @override
-  @pragma('vm:prefer-inline')
-  _$$_JsonRpcResponseCopyWith<T, _$_JsonRpcResponse<T>> get copyWith =>
-      __$$_JsonRpcResponseCopyWithImpl<T, _$_JsonRpcResponse<T>>(
-          this, _$identity);
-
-  @override
-  @optionalTypeArgs
-  TResult when<TResult extends Object?>(
-    TResult Function(int id, String jsonrpc, T? result, JsonRpcOnError? error)
-        $default, {
-    required TResult Function(int id, String jsonrpc, T result) result,
-    required TResult Function(int id, String jsonrpc, JsonRpcOnError error)
-        error,
-  }) {
-    return $default(id, jsonrpc, this.result, this.error);
-  }
-
-  @override
-  @optionalTypeArgs
-  TResult? whenOrNull<TResult extends Object?>(
-    TResult? Function(int id, String jsonrpc, T? result, JsonRpcOnError? error)?
-        $default, {
-    TResult? Function(int id, String jsonrpc, T result)? result,
-    TResult? Function(int id, String jsonrpc, JsonRpcOnError error)? error,
-  }) {
-    return $default?.call(id, jsonrpc, this.result, this.error);
-  }
-
-  @override
-  @optionalTypeArgs
-  TResult maybeWhen<TResult extends Object?>(
-    TResult Function(int id, String jsonrpc, T? result, JsonRpcOnError? error)?
-        $default, {
-    TResult Function(int id, String jsonrpc, T result)? result,
-    TResult Function(int id, String jsonrpc, JsonRpcOnError error)? error,
-    required TResult orElse(),
-  }) {
-    if ($default != null) {
-      return $default(id, jsonrpc, this.result, this.error);
-    }
-    return orElse();
-  }
-
-  @override
-  @optionalTypeArgs
-  TResult map<TResult extends Object?>(
-    TResult Function(_JsonRpcResponse<T> value) $default, {
-    required TResult Function(JsonRpcResult<T> value) result,
-    required TResult Function(JsonRpcError<T> value) error,
-  }) {
-    return $default(this);
-  }
-
-  @override
-  @optionalTypeArgs
-  TResult? mapOrNull<TResult extends Object?>(
-    TResult? Function(_JsonRpcResponse<T> value)? $default, {
-    TResult? Function(JsonRpcResult<T> value)? result,
-    TResult? Function(JsonRpcError<T> value)? error,
-  }) {
-    return $default?.call(this);
-  }
-
-  @override
-  @optionalTypeArgs
-  TResult maybeMap<TResult extends Object?>(
-    TResult Function(_JsonRpcResponse<T> value)? $default, {
-    TResult Function(JsonRpcResult<T> value)? result,
-    TResult Function(JsonRpcError<T> value)? error,
-    required TResult orElse(),
-  }) {
-    if ($default != null) {
-      return $default(this);
-    }
-    return orElse();
-  }
-
-  @override
-  Map<String, dynamic> toJson(Object? Function(T) toJsonT) {
-    return _$$_JsonRpcResponseToJson<T>(this, toJsonT);
-  }
-}
-
-abstract class _JsonRpcResponse<T> implements JsonRpcResponse<T> {
-  const factory _JsonRpcResponse(
-      {required final int id,
-      final String jsonrpc,
-      final T? result,
-      final JsonRpcOnError? error}) = _$_JsonRpcResponse<T>;
-
-  factory _JsonRpcResponse.fromJson(
-          Map<String, dynamic> json, T Function(Object?) fromJsonT) =
-      _$_JsonRpcResponse<T>.fromJson;
-
-  @override
-  int get id;
-  @override
-  String get jsonrpc;
-  T? get result;
-  JsonRpcOnError? get error;
-  @override
-  @JsonKey(ignore: true)
-  _$$_JsonRpcResponseCopyWith<T, _$_JsonRpcResponse<T>> get copyWith =>
-      throw _privateConstructorUsedError;
 }
 
 /// @nodoc
@@ -639,9 +409,7 @@ class _$JsonRpcResult<T> implements JsonRpcResult<T> {
 
   @override
   @optionalTypeArgs
-  TResult when<TResult extends Object?>(
-    TResult Function(int id, String jsonrpc, T? result, JsonRpcOnError? error)
-        $default, {
+  TResult when<TResult extends Object?>({
     required TResult Function(int id, String jsonrpc, T result) result,
     required TResult Function(int id, String jsonrpc, JsonRpcOnError error)
         error,
@@ -651,9 +419,7 @@ class _$JsonRpcResult<T> implements JsonRpcResult<T> {
 
   @override
   @optionalTypeArgs
-  TResult? whenOrNull<TResult extends Object?>(
-    TResult? Function(int id, String jsonrpc, T? result, JsonRpcOnError? error)?
-        $default, {
+  TResult? whenOrNull<TResult extends Object?>({
     TResult? Function(int id, String jsonrpc, T result)? result,
     TResult? Function(int id, String jsonrpc, JsonRpcOnError error)? error,
   }) {
@@ -662,9 +428,7 @@ class _$JsonRpcResult<T> implements JsonRpcResult<T> {
 
   @override
   @optionalTypeArgs
-  TResult maybeWhen<TResult extends Object?>(
-    TResult Function(int id, String jsonrpc, T? result, JsonRpcOnError? error)?
-        $default, {
+  TResult maybeWhen<TResult extends Object?>({
     TResult Function(int id, String jsonrpc, T result)? result,
     TResult Function(int id, String jsonrpc, JsonRpcOnError error)? error,
     required TResult orElse(),
@@ -677,8 +441,7 @@ class _$JsonRpcResult<T> implements JsonRpcResult<T> {
 
   @override
   @optionalTypeArgs
-  TResult map<TResult extends Object?>(
-    TResult Function(_JsonRpcResponse<T> value) $default, {
+  TResult map<TResult extends Object?>({
     required TResult Function(JsonRpcResult<T> value) result,
     required TResult Function(JsonRpcError<T> value) error,
   }) {
@@ -687,8 +450,7 @@ class _$JsonRpcResult<T> implements JsonRpcResult<T> {
 
   @override
   @optionalTypeArgs
-  TResult? mapOrNull<TResult extends Object?>(
-    TResult? Function(_JsonRpcResponse<T> value)? $default, {
+  TResult? mapOrNull<TResult extends Object?>({
     TResult? Function(JsonRpcResult<T> value)? result,
     TResult? Function(JsonRpcError<T> value)? error,
   }) {
@@ -697,8 +459,7 @@ class _$JsonRpcResult<T> implements JsonRpcResult<T> {
 
   @override
   @optionalTypeArgs
-  TResult maybeMap<TResult extends Object?>(
-    TResult Function(_JsonRpcResponse<T> value)? $default, {
+  TResult maybeMap<TResult extends Object?>({
     TResult Function(JsonRpcResult<T> value)? result,
     TResult Function(JsonRpcError<T> value)? error,
     required TResult orElse(),
@@ -841,9 +602,7 @@ class _$JsonRpcError<T> implements JsonRpcError<T> {
 
   @override
   @optionalTypeArgs
-  TResult when<TResult extends Object?>(
-    TResult Function(int id, String jsonrpc, T? result, JsonRpcOnError? error)
-        $default, {
+  TResult when<TResult extends Object?>({
     required TResult Function(int id, String jsonrpc, T result) result,
     required TResult Function(int id, String jsonrpc, JsonRpcOnError error)
         error,
@@ -853,9 +612,7 @@ class _$JsonRpcError<T> implements JsonRpcError<T> {
 
   @override
   @optionalTypeArgs
-  TResult? whenOrNull<TResult extends Object?>(
-    TResult? Function(int id, String jsonrpc, T? result, JsonRpcOnError? error)?
-        $default, {
+  TResult? whenOrNull<TResult extends Object?>({
     TResult? Function(int id, String jsonrpc, T result)? result,
     TResult? Function(int id, String jsonrpc, JsonRpcOnError error)? error,
   }) {
@@ -864,9 +621,7 @@ class _$JsonRpcError<T> implements JsonRpcError<T> {
 
   @override
   @optionalTypeArgs
-  TResult maybeWhen<TResult extends Object?>(
-    TResult Function(int id, String jsonrpc, T? result, JsonRpcOnError? error)?
-        $default, {
+  TResult maybeWhen<TResult extends Object?>({
     TResult Function(int id, String jsonrpc, T result)? result,
     TResult Function(int id, String jsonrpc, JsonRpcOnError error)? error,
     required TResult orElse(),
@@ -879,8 +634,7 @@ class _$JsonRpcError<T> implements JsonRpcError<T> {
 
   @override
   @optionalTypeArgs
-  TResult map<TResult extends Object?>(
-    TResult Function(_JsonRpcResponse<T> value) $default, {
+  TResult map<TResult extends Object?>({
     required TResult Function(JsonRpcResult<T> value) result,
     required TResult Function(JsonRpcError<T> value) error,
   }) {
@@ -889,8 +643,7 @@ class _$JsonRpcError<T> implements JsonRpcError<T> {
 
   @override
   @optionalTypeArgs
-  TResult? mapOrNull<TResult extends Object?>(
-    TResult? Function(_JsonRpcResponse<T> value)? $default, {
+  TResult? mapOrNull<TResult extends Object?>({
     TResult? Function(JsonRpcResult<T> value)? result,
     TResult? Function(JsonRpcError<T> value)? error,
   }) {
@@ -899,8 +652,7 @@ class _$JsonRpcError<T> implements JsonRpcError<T> {
 
   @override
   @optionalTypeArgs
-  TResult maybeMap<TResult extends Object?>(
-    TResult Function(_JsonRpcResponse<T> value)? $default, {
+  TResult maybeMap<TResult extends Object?>({
     TResult Function(JsonRpcResult<T> value)? result,
     TResult Function(JsonRpcError<T> value)? error,
     required TResult orElse(),

@@ -33,13 +33,6 @@ class JsonRpcRequest<T> with _$JsonRpcRequest<T> implements JsonRpc {
 
 @Freezed(genericArgumentFactories: true)
 class JsonRpcResponse<T> with _$JsonRpcResponse<T> implements JsonRpc {
-  const factory JsonRpcResponse({
-    required int id,
-    @Default(jsonRpcVersion) String jsonrpc,
-    T? result,
-    JsonRpcOnError? error,
-  }) = _JsonRpcResponse;
-
   const factory JsonRpcResponse.result({
     required int id,
     @Default(jsonRpcVersion) String jsonrpc,
@@ -56,7 +49,10 @@ class JsonRpcResponse<T> with _$JsonRpcResponse<T> implements JsonRpc {
     Map<String, dynamic> json,
     ObjectFactory<T> factory,
   ) =>
-      _$JsonRpcResponseFromJson(json, factory);
+      _$JsonRpcResponseFromJson(
+        json..['runtimeType'] = json.containsKey('result') ? 'result' : 'error',
+        factory,
+      );
 }
 
 @freezed
@@ -68,4 +64,12 @@ class JsonRpcOnError with _$JsonRpcOnError {
 
   factory JsonRpcOnError.fromJson(Map<String, Object?> json) =>
       _$JsonRpcOnErrorFromJson(json);
+
+  RemoteJsonRpcError toError() {
+    return RemoteJsonRpcError(code, message);
+  }
+
+  Never throwError() {
+    throw RemoteJsonRpcError(code, message);
+  }
 }

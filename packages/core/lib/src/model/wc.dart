@@ -99,21 +99,18 @@ class RelayProtocolOptions with _$RelayProtocolOptions {
 }
 
 @Freezed(genericArgumentFactories: true)
-class WCRequest<T extends ClientParams> with _$WCRequest<T> {
+class WCRequest with _$WCRequest {
   const WCRequest._();
 
   const factory WCRequest({
     @TopicConverter() required String topic,
     required int id,
     required String method,
-    required T params,
+    required dynamic params,
   }) = _WCRequest;
 
-  factory WCRequest.fromJson(
-    Map<String, dynamic> json,
-    ObjectFactory<T> factory,
-  ) =>
-      _$WCRequestFromJson(json, factory);
+  factory WCRequest.fromJson(Map<String, dynamic> json) =>
+      _$WCRequestFromJson(json);
 }
 //
 // @Freezed(genericArgumentFactories: true)
@@ -147,15 +144,15 @@ abstract class WCResponse<T extends ClientParams> {
   factory WCResponse.fromJson(
     Map<String, dynamic> json,
     ObjectFactory<T> paramsFactory,
-    ObjectFactory<JsonRpcResult> responseFactory,
+    ObjectFactory resultFactory,
   ) {
     final response = (json['response'] as Map).cast<String, dynamic>();
     final isError = response['error'] != null;
     return _WCResponseImpl(
       topic: json['topic'],
       response: isError
-          ? JsonRpcError.fromJson(response, neverObjectFactory)
-          : responseFactory.call(response),
+          ? JsonRpcError.fromJson(response, neverCallObjectFactory)
+          : JsonRpcResult.fromJson(response, resultFactory),
       method: json['method'],
       params: paramsFactory.call((json['params'] as Map).cast()),
     );

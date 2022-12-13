@@ -5,17 +5,17 @@ import 'dart:typed_data';
 
 import 'package:convert/convert.dart';
 
-
 typedef ObjectConvert<T, R> = R Function(T value);
 typedef ObjectFactory<T> = T Function(dynamic value);
 typedef Supplier<T> = T Function();
 typedef AsyncSupplier<T> = FutureOr<T> Function();
 typedef OnError = void Function(Object error, [StackTrace? stackTrace]);
 typedef OnData<T> = void Function(T value);
+typedef OnEvent<T> = OnData<T>;
 
+Never neverCallObjectFactory(dynamic value) => throw UnimplementedError();
 
-Never neverObjectFactory(dynamic value) => throw UnimplementedError();
-
+dynamic rawConvert(dynamic value) => value;
 
 int generateId() {
   return DateTime.now().millisecondsSinceEpoch;
@@ -179,7 +179,7 @@ extension BigIntExtensions on BigInt {
     final size = rawSize + needsPaddingByte;
     var result = Uint8List(size);
     for (var i = 0; i < rawSize; i++) {
-      result[size - i - 1] = (number! & _byteMask).toInt();
+      result[size - i - 1] = (number & _byteMask).toInt();
       number = number >> 8;
     }
     return result;

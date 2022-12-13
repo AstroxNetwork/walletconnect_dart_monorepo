@@ -38,25 +38,18 @@ Map<String, dynamic> _$$_RelayProtocolOptionsToJson(
       'data': instance.data,
     };
 
-_$_WCRequest<T> _$$_WCRequestFromJson<T extends ClientParams>(
-  Map<String, dynamic> json,
-  T Function(Object? json) fromJsonT,
-) =>
-    _$_WCRequest<T>(
+_$_WCRequest _$$_WCRequestFromJson(Map<String, dynamic> json) => _$_WCRequest(
       topic:
           const TopicConverter().fromJson(json['topic'] as Map<String, String>),
       id: json['id'] as int,
       method: json['method'] as String,
-      params: fromJsonT(json['params']),
+      params: json['params'],
     );
 
-Map<String, dynamic> _$$_WCRequestToJson<T extends ClientParams>(
-  _$_WCRequest<T> instance,
-  Object? Function(T value) toJsonT,
-) =>
+Map<String, dynamic> _$$_WCRequestToJson(_$_WCRequest instance) =>
     <String, dynamic>{
       'topic': const TopicConverter().toJson(instance.topic),
       'id': instance.id,
       'method': instance.method,
-      'params': toJsonT(instance.params),
+      'params': instance.params,
     };

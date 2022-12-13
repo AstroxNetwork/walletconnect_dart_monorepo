@@ -1,13 +1,16 @@
 import 'dart:async';
+import 'dart:convert';
 
 import 'package:walletconnect_mono_foundation/foundation.dart';
 
 import 'codec.dart';
 import 'envelope_type.dart';
+import 'errors.dart';
 import 'model/client_params.dart';
 import 'model/json_rpc_record.dart';
 import 'model/participants.dart';
 import 'model/wc.dart';
+import 'model/wc_event.dart';
 import 'record_store.dart';
 
 abstract class IJsonRpcInteractor {
@@ -82,14 +85,53 @@ class JsonRpcInteractor extends IJsonRpcInteractor {
   final IJsonRpcRecordStore jsonRpcRecordStore;
 
   late final _subscriptions = <String, String>{};
+  late final _bus = EventBus();
 
   JsonRpcInteractor(this.relay, this.codec, this.jsonRpcRecordStore) {
     relay.on((value) {
       value.when(
-        data: (data) {},
+        data: (data) async {
+          if (data['method'] == irnSubscription) {
+            final request = JsonRpcRequest.fromJson(
+              data,
+              (value) => RelaySubscriptionRequestParams.fromJson(
+                (value as Map).cast(),
+              ),
+            );
+            final topic = request.subscriptionTopic;
+            final payload = await codec.decrypt(topic, request.message);
+            final json = jsonDecode(payload) as Map;
+            if (json.containsKey('method')) {
+              final id = json['id'];
+              final method = json['method'];
+              await jsonRpcRecordStore.add(
+                JsonRpcRecord(
+                  id: id,
+                  topic: topic,
+                  method: method,
+                  body: payload,
+                ),
+              );
+              final wcRequest = WCRequest(
+                topic: topic,
+                id: id,
+                method: method,
+                params: json['params'],
+              );
+              _bus.fire(WCEvent(method, wcRequest));
+            }
+          }
+        },
         error: (e, s) {},
       );
     });
+  }
+
+  void on<T>(String name, OnEvent<T> onEvent) {
+    _bus
+        .on<WCEvent<T>>()
+        .where((event) => event.name == name)
+        .listen((event) => onEvent.call(event.payload));
   }
 
   @override
@@ -144,7 +186,7 @@ class JsonRpcInteractor extends IJsonRpcInteractor {
 
   @override
   FutureOr<RelayPublishResult> respondWithParams({
-    required WCRequest<ClientParams> request,
+    required WCRequest request,
     required ClientParams clientParams,
     required IrnParams irnParams,
     EnvelopeType envelopeType = EnvelopeType.zero,
@@ -163,7 +205,7 @@ class JsonRpcInteractor extends IJsonRpcInteractor {
 
   @override
   FutureOr<RelayPublishResult> respondWithSuccess({
-    required WCRequest<ClientParams> request,
+    required WCRequest request,
     required IrnParams irnParams,
     EnvelopeType envelopeType = EnvelopeType.zero,
     Participants? participants,
@@ -181,7 +223,7 @@ class JsonRpcInteractor extends IJsonRpcInteractor {
 
   @override
   FutureOr<RelayPublishResult> respondWithError({
-    required WCRequest<ClientParams> request,
+    required WCRequest request,
     required IrnParams irnParams,
     required JsonRpcOnError error,
     EnvelopeType envelopeType = EnvelopeType.zero,
@@ -199,22 +241,37 @@ class JsonRpcInteractor extends IJsonRpcInteractor {
   }
 
   @override
-  Future<RelaySubscribeResult> subscribe(
+  Future<void> subscribe(
     String topic, {
     Duration? timeout,
   }) async {
     await checkAvailable();
     final result = await relay.subscribe(topic, timeout: timeout);
-    // _subscriptions[topic] = result.
-    return result;
+    _subscriptions[topic] = result.when(
+      result: (int id, String jsonrpc, String result) {
+        return result;
+      },
+      error: (int id, String jsonrpc, JsonRpcOnError error) {
+        error.throwError();
+      },
+    );
   }
 
   @override
-  Future<RelayUnsubscribeResult> unsubscribe(
+  Future<void> unsubscribe(
     String topic, {
     Duration? timeout,
   }) async {
     await checkAvailable();
-    return relay.unsubscribe(topic,"", timeout: timeout);
+    if (!_subscriptions.containsKey(topic)) {
+      throw Uncategorized.noMatchingTopic('Session', topic);
+    }
+    await relay.unsubscribe(
+      topic,
+      _subscriptions[topic]!,
+      timeout: timeout,
+    );
+    await jsonRpcRecordStore.deleteByTopic(topic);
+    _subscriptions.remove(topic);
   }
 }
