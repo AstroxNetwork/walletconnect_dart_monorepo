@@ -34,5 +34,9 @@ abstract class IPairingStore {
 
   FutureOr<List<Pairing>> all();
 
+  FutureOr<List<Pairing>> validList();
+
+  FutureOr<void> activate(String topic);
+
   FutureOr<void> clear();
 }

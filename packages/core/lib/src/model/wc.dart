@@ -37,11 +37,7 @@ class WalletConnectUri with _$WalletConnectUri {
     );
   }
 
-  static WalletConnectUri? fromUri(String uriString) {
-    final uri = Uri.tryParse(uriString);
-    if (uri == null) {
-      return null;
-    }
+  static WalletConnectUri? fromUri(Uri uri) {
     if (!uri.isScheme('wc')) {
       return null;
     }

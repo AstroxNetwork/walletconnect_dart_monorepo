@@ -1,5 +1,17 @@
 import 'package:walletconnect_mono_foundation/foundation.dart';
 
+class ErrorMessages {
+  const ErrorMessages._();
+
+  static const MALFORMED_PAIRING_URI_MESSAGE = 'Pairing URI string is invalid.';
+
+  static const PAIRING_NOW_ALLOWED_MESSAGE =
+      'Pair with existing pairing is not allowed';
+
+  static const NO_SEQUENCE_FOR_TOPIC_MESSAGE =
+      'Cannot find sequence for given topic: ';
+}
+
 class UnknownEnvelopeTypeError extends WalletConnectError {
   UnknownEnvelopeTypeError([super.message]);
 }

@@ -44,7 +44,7 @@ class Pairing extends Sequence with _$Pairing {
     );
   }
 
-  factory Pairing.active(WalletConnectUri uri, String registeredMethods) {
+  factory Pairing.active(WalletConnectUri uri, Set<String> registeredMethods) {
     return Pairing(
       topic: uri.topic,
       expiry: activePairingAt.toDuration(),
@@ -52,7 +52,7 @@ class Pairing extends Sequence with _$Pairing {
       relayData: uri.relay.data,
       uri: uri.toUri(),
       isActive: true,
-      registeredMethods: registeredMethods,
+      registeredMethods: registeredMethods.join(','),
     );
   }
 }

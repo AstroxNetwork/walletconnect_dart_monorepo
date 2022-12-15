@@ -30,7 +30,7 @@ abstract class IMetadataStore {
     }
   }
 
-  FutureOr<void> delete(String topic, AppMetaDataType type);
+  FutureOr<void> delete(String topic, [AppMetaDataType? type]);
 
   FutureOr<bool> has(String topic, AppMetaDataType type);
 

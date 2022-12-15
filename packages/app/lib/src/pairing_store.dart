@@ -2,11 +2,12 @@ import 'dart:async';
 
 import 'package:hive/hive.dart';
 import 'package:walletconnect_mono_core/core.dart';
+import 'package:walletconnect_mono_foundation/foundation.dart';
 
 class HivePairingStore extends IPairingStore {
   final Box<Map> box;
 
- const HivePairingStore(this.box);
+  const HivePairingStore(this.box);
 
   @override
   FutureOr<void> add(Pairing pairing) {
@@ -49,5 +50,24 @@ class HivePairingStore extends IPairingStore {
   @override
   FutureOr<void> clear() async {
     await box.clear();
+  }
+
+  @override
+  FutureOr<List<Pairing>> validList() {
+    return box.values
+        .where(
+          (e) =>
+              e['isActive'] == true &&
+              const ExpiryConverter().fromJson((e['expiry'] as Map).cast()) <
+                  currentAtDuration,
+        )
+        .map((e) => Pairing.fromJson(e.cast()))
+        .toList(growable: false);
+  }
+
+  @override
+  FutureOr<void> activate(String topic) async {
+    final value = await get(topic);
+    return update(value.copyWith(isActive: true));
   }
 }

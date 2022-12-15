@@ -1,6 +1,5 @@
 import 'dart:typed_data';
 
-import 'package:walletconnect_mono_auth/src/snippets.dart';
 import 'package:walletconnect_mono_core/core.dart';
 import 'package:walletconnect_mono_foundation/foundation.dart';
 
@@ -16,16 +15,17 @@ class Keys {
   static const int PUBLIC_KEY_LENGTH_IN_HEX = PUBLIC_KEY_SIZE << 1;
   static const int PRIVATE_KEY_LENGTH_IN_HEX = PRIVATE_KEY_SIZE << 1;
 
-   static String getAddress(String publicKey) {
+  static String getAddress(String publicKey) {
     String publicKeyNoPrefix = publicKey.removePrefixIfExist();
 
     if (publicKeyNoPrefix.length < PUBLIC_KEY_LENGTH_IN_HEX) {
       publicKeyNoPrefix =
-          '0'.repeat(PUBLIC_KEY_LENGTH_IN_HEX - publicKeyNoPrefix.length)
-              + publicKeyNoPrefix;
+          '0'.repeat(PUBLIC_KEY_LENGTH_IN_HEX - publicKeyNoPrefix.length) +
+              publicKeyNoPrefix;
     }
     final hash = publicKeyNoPrefix.toSha3HexString(withPrefix: true);
-    return hash.substring(hash.length - ADDRESS_LENGTH_IN_HEX); // right most 160 bits
+    return hash
+        .substring(hash.length - ADDRESS_LENGTH_IN_HEX); // right most 160 bits
   }
 
   static Uint8List getAddressFromBytes(Uint8List publicKey) {

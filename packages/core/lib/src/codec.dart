@@ -59,7 +59,11 @@ class ChaChaPolyCodec implements IWCCodec {
         return _encryptEnvelopeType0(topic, input, nonceBytes, envelopeType);
       case EnvelopeType.one:
         return _encryptEnvelopeType1(
-            input, participants, nonceBytes, envelopeType);
+          input,
+          participants,
+          nonceBytes,
+          envelopeType,
+        );
     }
   }
 

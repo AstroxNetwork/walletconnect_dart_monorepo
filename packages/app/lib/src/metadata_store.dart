@@ -1,5 +1,6 @@
 import 'dart:async';
 
+import 'package:collection/collection.dart';
 import 'package:hive/hive.dart';
 import 'package:tuple/tuple.dart';
 import 'package:walletconnect_mono_core/core.dart';
@@ -39,11 +40,6 @@ class HiveMetadataStore extends IMetadataStore {
   }
 
   @override
-  FutureOr<void> delete(String topic, AppMetaDataType type) {
-    return box.delete('${type.name}:$topic');
-  }
-
-  @override
   FutureOr<void> update(
     String topic,
     AppMetaDataType type,
@@ -59,5 +55,16 @@ class HiveMetadataStore extends IMetadataStore {
     AppMetaData AppMetaData,
   ) {
     return add(topic, type, AppMetaData);
+  }
+
+  @override
+  FutureOr<void> delete(String topic, [AppMetaDataType? type]) {
+    if (type != null) {
+      return box.delete('${type.name}:$topic');
+    }
+    final key = box.keys.firstOrNull((e) => e.toString().split(':').last);
+    if (key != null) {
+      return box.delete(key);
+    }
   }
 }

@@ -7,6 +7,11 @@ import 'package:walletconnect_mono_foundation/foundation.dart';
 
 DateTime get currentAt => DateTime.now();
 
+Duration get currentAtDuration => Duration(microseconds: currentAt.microsecondsSinceEpoch);
+
+Duration get day1 => const Duration(days: 1);
+Duration get second30 => const Duration(days: 1);
+
 DateTime get inactivePairingAt => currentAt.add(const Duration(minutes: 5));
 
 DateTime get activePairingAt => currentAt.add(const Duration(days: 30));
