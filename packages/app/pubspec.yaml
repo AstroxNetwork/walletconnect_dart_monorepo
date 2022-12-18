@@ -16,6 +16,7 @@ dependencies:
   tuple: ^2.0.1
   walletconnect_mono_foundation: ^1.0.0
   walletconnect_mono_core: ^1.0.0
+  walletconnect_mono_sign: ^1.0.0
   hive: ^2.2.3
 
 dev_dependencies:

@@ -1,7 +1,7 @@
 import 'package:walletconnect_mono_foundation/foundation.dart';
 
-class ErrorMessages {
-  const ErrorMessages._();
+class CoreErrorMessages {
+  const CoreErrorMessages._();
 
   static const MALFORMED_PAIRING_URI_MESSAGE = 'Pairing URI string is invalid.';
 
@@ -64,4 +64,10 @@ class Uncategorized extends RemoteJsonRpcError {
 
   factory Uncategorized.generic(String error) =>
       Uncategorized._(1302, 'Generic error: $error');
+}
+
+class Reason extends RemoteJsonRpcError {
+  Reason._(super.code, super.message);
+
+  factory Reason.userDisconnected() => Reason._(6000, 'User disconnected');
 }

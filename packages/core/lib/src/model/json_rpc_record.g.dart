@@ -6,8 +6,7 @@ part of 'json_rpc_record.dart';
 // JsonSerializableGenerator
 // **************************************************************************
 
-_$_JsonRpcRecord _$$_JsonRpcRecordFromJson(Map<String, dynamic> json) =>
-    _$_JsonRpcRecord(
+_$_JsonRpcRecord _$$_JsonRpcRecordFromJson(Map json) => _$_JsonRpcRecord(
       id: json['id'] as int,
       topic: json['topic'] as String,
       method: json['method'] as String,

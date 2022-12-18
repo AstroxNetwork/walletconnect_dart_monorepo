@@ -1,13 +1,35 @@
 import 'package:freezed_annotation/freezed_annotation.dart';
 import 'package:walletconnect_mono_core/core.dart';
+import 'package:walletconnect_mono_foundation/foundation.dart';
 
 import 'namespace.dart';
 import 'session_proposer.dart';
-import 'session_request.dart';
 
 part 'sign_params.freezed.dart';
 
 part 'sign_params.g.dart';
+
+@freezed
+class SessionRequestPayload with _$SessionRequestPayload {
+  const factory SessionRequestPayload({
+    required String method,
+    required String params,
+  }) = _SessionRequestPayload;
+
+  factory SessionRequestPayload.fromJson(Map<String, dynamic> json) =>
+      _$SessionRequestPayloadFromJson(json);
+}
+
+@freezed
+class SessionEventPayload with _$SessionEventPayload {
+  const factory SessionEventPayload({
+    required String name,
+    @ObjectConverter() required Object data,
+  }) = _SessionEventPayload;
+
+  factory SessionEventPayload.fromJson(Map<String, dynamic> json) =>
+      _$SessionEventPayloadFromJson(json);
+}
 
 @freezed
 class SignParams with _$SignParams implements ClientParams {
@@ -20,7 +42,7 @@ class SignParams with _$SignParams implements ClientParams {
 
   const factory SignParams.approval({
     required RelayProtocolOptions relay,
-    required String responderPublicKey,
+    @Uint8ListToHexConverter() required PublicKey responderPublicKey,
   }) = ApprovalParams;
 
   const factory SignParams.sessionSettle({
@@ -31,12 +53,12 @@ class SignParams with _$SignParams implements ClientParams {
   }) = SessionSettleParams;
 
   const factory SignParams.sessionRequest({
-    required SessionRequest request,
+    required SessionRequestPayload request,
     required String chainId,
   }) = SessionRequestParams;
 
   const factory SignParams.event({
-    required SessionRequest request,
+    required SessionEventPayload event,
     required String chainId,
   }) = EventParams;
 

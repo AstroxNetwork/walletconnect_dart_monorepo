@@ -33,12 +33,12 @@ class Uint8ListToHexConverter implements JsonConverter<Uint8List, String> {
   }
 }
 
-class TopicConverter implements JsonConverter<String, Map<String, String>> {
+class TopicConverter implements JsonConverter<String, Map> {
   const TopicConverter();
 
   @override
-  String fromJson(Map<String, String> json) {
-    return json['value'] as String;
+  String fromJson(Map json) {
+    return json['value'];
   }
 
   @override
@@ -47,12 +47,12 @@ class TopicConverter implements JsonConverter<String, Map<String, String>> {
   }
 }
 
-class ExpiryConverter implements JsonConverter<Duration, Map<String, int>> {
+class ExpiryConverter implements JsonConverter<Duration, Map> {
   const ExpiryConverter();
 
   @override
-  Duration fromJson(Map<String, int> json) {
-    return Duration(seconds: json['seconds'] as int);
+  Duration fromJson(Map json) {
+    return Duration(seconds: json['seconds']);
   }
 
   @override
@@ -78,12 +78,12 @@ class UriStringConverter implements JsonConverter<Uri, String> {
 }
 
 class SubscriptionIdConverter
-    implements JsonConverter<String, Map<String, String>> {
+    implements JsonConverter<String, Map> {
   const SubscriptionIdConverter();
 
   @override
-  String fromJson(Map<String, String> json) {
-    return json['id'] as String;
+  String fromJson(Map json) {
+    return json['id'];
   }
 
   @override

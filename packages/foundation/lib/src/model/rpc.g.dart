@@ -7,7 +7,7 @@ part of 'rpc.dart';
 // **************************************************************************
 
 _$_JsonRpcRequest<T> _$$_JsonRpcRequestFromJson<T>(
-  Map<String, dynamic> json,
+  Map json,
   T Function(Object? json) fromJsonT,
 ) =>
     _$_JsonRpcRequest<T>(
@@ -29,7 +29,7 @@ Map<String, dynamic> _$$_JsonRpcRequestToJson<T>(
     };
 
 _$JsonRpcResult<T> _$$JsonRpcResultFromJson<T>(
-  Map<String, dynamic> json,
+  Map json,
   T Function(Object? json) fromJsonT,
 ) =>
     _$JsonRpcResult<T>(
@@ -51,13 +51,14 @@ Map<String, dynamic> _$$JsonRpcResultToJson<T>(
     };
 
 _$JsonRpcError<T> _$$JsonRpcErrorFromJson<T>(
-  Map<String, dynamic> json,
+  Map json,
   T Function(Object? json) fromJsonT,
 ) =>
     _$JsonRpcError<T>(
       id: json['id'] as int,
       jsonrpc: json['jsonrpc'] as String? ?? jsonRpcVersion,
-      error: JsonRpcOnError.fromJson(json['error'] as Map<String, dynamic>),
+      error: JsonRpcOnError.fromJson(
+          Map<String, Object?>.from(json['error'] as Map)),
       $type: json['runtimeType'] as String?,
     );
 
@@ -68,12 +69,11 @@ Map<String, dynamic> _$$JsonRpcErrorToJson<T>(
     <String, dynamic>{
       'id': instance.id,
       'jsonrpc': instance.jsonrpc,
-      'error': instance.error,
+      'error': instance.error.toJson(),
       'runtimeType': instance.$type,
     };
 
-_$_JsonRpcOnError _$$_JsonRpcOnErrorFromJson(Map<String, dynamic> json) =>
-    _$_JsonRpcOnError(
+_$_JsonRpcOnError _$$_JsonRpcOnErrorFromJson(Map json) => _$_JsonRpcOnError(
       code: json['code'] as int,
       message: json['message'] as String,
     );

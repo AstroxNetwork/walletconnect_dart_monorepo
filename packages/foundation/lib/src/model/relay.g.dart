@@ -6,13 +6,11 @@ part of 'relay.dart';
 // JsonSerializableGenerator
 // **************************************************************************
 
-_$_RelayPublishRequestParams _$$_RelayPublishRequestParamsFromJson(
-        Map<String, dynamic> json) =>
+_$_RelayPublishRequestParams _$$_RelayPublishRequestParamsFromJson(Map json) =>
     _$_RelayPublishRequestParams(
-      topic:
-          const TopicConverter().fromJson(json['topic'] as Map<String, String>),
+      topic: const TopicConverter().fromJson(json['topic'] as Map),
       message: json['message'] as String,
-      ttl: const ExpiryConverter().fromJson(json['ttl'] as Map<String, int>),
+      ttl: const ExpiryConverter().fromJson(json['ttl'] as Map),
       tag: json['tag'] as int,
       prompt: json['prompt'] as bool?,
     );
@@ -27,8 +25,7 @@ Map<String, dynamic> _$$_RelayPublishRequestParamsToJson(
       'prompt': instance.prompt,
     };
 
-_$_RelayShutdownReason _$$_RelayShutdownReasonFromJson(
-        Map<String, dynamic> json) =>
+_$_RelayShutdownReason _$$_RelayShutdownReasonFromJson(Map json) =>
     _$_RelayShutdownReason(
       code: json['code'] as int,
       reason: json['reason'] as String,
@@ -42,10 +39,9 @@ Map<String, dynamic> _$$_RelayShutdownReasonToJson(
     };
 
 _$_RelaySubscribeRequestParams _$$_RelaySubscribeRequestParamsFromJson(
-        Map<String, dynamic> json) =>
+        Map json) =>
     _$_RelaySubscribeRequestParams(
-      topic:
-          const TopicConverter().fromJson(json['topic'] as Map<String, String>),
+      topic: const TopicConverter().fromJson(json['topic'] as Map),
     );
 
 Map<String, dynamic> _$$_RelaySubscribeRequestParamsToJson(
@@ -55,12 +51,12 @@ Map<String, dynamic> _$$_RelaySubscribeRequestParamsToJson(
     };
 
 _$_RelaySubscriptionRequestParams _$$_RelaySubscriptionRequestParamsFromJson(
-        Map<String, dynamic> json) =>
+        Map json) =>
     _$_RelaySubscriptionRequestParams(
       subscriptionId: const SubscriptionIdConverter()
-          .fromJson(json['subscriptionId'] as Map<String, String>),
+          .fromJson(json['subscriptionId'] as Map),
       subscriptionData: RelaySubscriptionRequestParamsData.fromJson(
-          json['subscriptionData'] as Map<String, dynamic>),
+          Map<String, Object?>.from(json['subscriptionData'] as Map)),
     );
 
 Map<String, dynamic> _$$_RelaySubscriptionRequestParamsToJson(
@@ -68,14 +64,13 @@ Map<String, dynamic> _$$_RelaySubscriptionRequestParamsToJson(
     <String, dynamic>{
       'subscriptionId':
           const SubscriptionIdConverter().toJson(instance.subscriptionId),
-      'subscriptionData': instance.subscriptionData,
+      'subscriptionData': instance.subscriptionData.toJson(),
     };
 
 _$_RelaySubscriptionRequestParamsData
-    _$$_RelaySubscriptionRequestParamsDataFromJson(Map<String, dynamic> json) =>
+    _$$_RelaySubscriptionRequestParamsDataFromJson(Map json) =>
         _$_RelaySubscriptionRequestParamsData(
-          topic: const TopicConverter()
-              .fromJson(json['topic'] as Map<String, String>),
+          topic: const TopicConverter().fromJson(json['topic'] as Map),
           message: json['message'] as String,
         );
 
@@ -87,12 +82,11 @@ Map<String, dynamic> _$$_RelaySubscriptionRequestParamsDataToJson(
     };
 
 _$_RelayUnsubscribeRequestParams _$$_RelayUnsubscribeRequestParamsFromJson(
-        Map<String, dynamic> json) =>
+        Map json) =>
     _$_RelayUnsubscribeRequestParams(
-      topic:
-          const TopicConverter().fromJson(json['topic'] as Map<String, String>),
+      topic: const TopicConverter().fromJson(json['topic'] as Map),
       subscriptionId: const SubscriptionIdConverter()
-          .fromJson(json['subscriptionId'] as Map<String, String>),
+          .fromJson(json['subscriptionId'] as Map),
     );
 
 Map<String, dynamic> _$$_RelayUnsubscribeRequestParamsToJson(

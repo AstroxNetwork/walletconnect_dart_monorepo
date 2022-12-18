@@ -6,27 +6,27 @@ import 'package:walletconnect_mono_core/src/model/app_meta_data.dart';
 abstract class IMetadataStore {
   const IMetadataStore();
 
-  FutureOr<void> add(
+  FutureOr<void> insertOrAbort(
     String topic,
     AppMetaDataType type,
-    AppMetaData AppMetaData,
+    AppMetaData appMetaData,
   );
 
   FutureOr<void> update(
     String topic,
     AppMetaDataType type,
-    AppMetaData AppMetaData,
+    AppMetaData appMetaData,
   );
 
   FutureOr<void> addOrUpdate(
     String topic,
     AppMetaDataType type,
-    AppMetaData AppMetaData,
+    AppMetaData appMetaData,
   ) async {
     if (await has(topic, type)) {
-      await update(topic, type, AppMetaData);
+      await update(topic, type, appMetaData);
     } else {
-      await add(topic, type, AppMetaData);
+      await insertOrAbort(topic, type, appMetaData);
     }
   }
 
@@ -35,6 +35,8 @@ abstract class IMetadataStore {
   FutureOr<bool> has(String topic, AppMetaDataType type);
 
   FutureOr<List<MetadataData>> all();
+
+  FutureOr<AppMetaData> get(String topic, AppMetaDataType type);
 }
 
 typedef MetadataData = Tuple3<String, AppMetaDataType, AppMetaData>;

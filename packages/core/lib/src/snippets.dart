@@ -10,11 +10,13 @@ DateTime get currentAt => DateTime.now();
 Duration get currentAtDuration => Duration(microseconds: currentAt.microsecondsSinceEpoch);
 
 Duration get day1 => const Duration(days: 1);
+Duration get day7 => const Duration(days: 7);
 Duration get second30 => const Duration(days: 1);
+Duration get minute5 => const Duration(minutes: 5);
 
 DateTime get inactivePairingAt => currentAt.add(const Duration(minutes: 5));
-
 DateTime get activePairingAt => currentAt.add(const Duration(days: 30));
+DateTime get activeSessionAt => currentAt.add(const Duration(days: 7));
 
 
 extension StringExtension on String {

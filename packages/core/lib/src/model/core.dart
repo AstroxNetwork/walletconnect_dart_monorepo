@@ -17,8 +17,10 @@ class CoreParams with _$CoreParams {
       CoreParamsUpdateExpiry;
 
   const factory CoreParams.updateMetadata(
-          String topic, AppMetaDataType type, AppMetaData metadata) =
-      CoreParamsUpdateMetadata;
+    String topic,
+    AppMetaDataType type,
+    AppMetaData metadata,
+  ) = CoreParamsUpdateMetadata;
 
   const factory CoreParams.pair(String uri) = CoreParamsPair;
 

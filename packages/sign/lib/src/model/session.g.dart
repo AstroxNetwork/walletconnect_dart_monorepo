@@ -6,11 +6,9 @@ part of 'session.dart';
 // JsonSerializableGenerator
 // **************************************************************************
 
-_$_Session _$$_SessionFromJson(Map<String, dynamic> json) => _$_Session(
-      topic:
-          const TopicConverter().fromJson(json['topic'] as Map<String, String>),
-      expiry:
-          const ExpiryConverter().fromJson(json['expiry'] as Map<String, int>),
+_$_Session _$$_SessionFromJson(Map json) => _$_Session(
+      topic: const TopicConverter().fromJson(json['topic'] as Map),
+      expiry: const ExpiryConverter().fromJson(json['expiry'] as Map),
       relayProtocol: json['relayProtocol'] as String,
       relayData: json['relayData'] as String?,
       controllerKey: _$JsonConverterFromJson<String, Uint8List>(
@@ -20,21 +18,20 @@ _$_Session _$$_SessionFromJson(Map<String, dynamic> json) => _$_Session(
       selfAppMetaData: json['selfAppMetaData'] == null
           ? null
           : AppMetaData.fromJson(
-              json['selfAppMetaData'] as Map<String, dynamic>),
+              Map<String, Object?>.from(json['selfAppMetaData'] as Map)),
       peerPublicKey: _$JsonConverterFromJson<String, Uint8List>(
           json['peerPublicKey'], const Uint8ListToHexConverter().fromJson),
       peerAppMetaData: json['peerAppMetaData'] == null
           ? null
           : AppMetaData.fromJson(
-              json['peerAppMetaData'] as Map<String, dynamic>),
-      namespaces: (json['namespaces'] as Map<String, dynamic>).map(
-        (k, e) =>
-            MapEntry(k, NamespaceSession.fromJson(e as Map<String, dynamic>)),
+              Map<String, Object?>.from(json['peerAppMetaData'] as Map)),
+      namespaces: (json['namespaces'] as Map).map(
+        (k, e) => MapEntry(k as String,
+            NamespaceSession.fromJson(Map<String, dynamic>.from(e as Map))),
       ),
-      proposalNamespaces:
-          (json['proposalNamespaces'] as Map<String, dynamic>).map(
-        (k, e) =>
-            MapEntry(k, NamespaceProposal.fromJson(e as Map<String, dynamic>)),
+      proposalNamespaces: (json['proposalNamespaces'] as Map).map(
+        (k, e) => MapEntry(k as String,
+            NamespaceProposal.fromJson(Map<String, dynamic>.from(e as Map))),
       ),
       isAcknowledged: json['isAcknowledged'] as bool,
     );
@@ -49,12 +46,13 @@ Map<String, dynamic> _$$_SessionToJson(_$_Session instance) =>
           instance.controllerKey, const Uint8ListToHexConverter().toJson),
       'selfPublicKey':
           const Uint8ListToHexConverter().toJson(instance.selfPublicKey),
-      'selfAppMetaData': instance.selfAppMetaData,
+      'selfAppMetaData': instance.selfAppMetaData?.toJson(),
       'peerPublicKey': _$JsonConverterToJson<String, Uint8List>(
           instance.peerPublicKey, const Uint8ListToHexConverter().toJson),
-      'peerAppMetaData': instance.peerAppMetaData,
-      'namespaces': instance.namespaces,
-      'proposalNamespaces': instance.proposalNamespaces,
+      'peerAppMetaData': instance.peerAppMetaData?.toJson(),
+      'namespaces': instance.namespaces.map((k, e) => MapEntry(k, e.toJson())),
+      'proposalNamespaces':
+          instance.proposalNamespaces.map((k, e) => MapEntry(k, e.toJson())),
       'isAcknowledged': instance.isAcknowledged,
     };
 

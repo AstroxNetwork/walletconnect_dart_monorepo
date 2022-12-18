@@ -11,12 +11,15 @@ class HiveMetadataStore extends IMetadataStore {
   const HiveMetadataStore(this.box);
 
   @override
-  FutureOr<void> add(
+  FutureOr<void> insertOrAbort(
     String topic,
     AppMetaDataType type,
-    AppMetaData AppMetaData,
-  ) {
-    final map = AppMetaData.toJson();
+    AppMetaData appMetaData,
+  ) async {
+    if (await has(topic, type)) {
+      return;
+    }
+    final map = appMetaData.toJson();
     map['topic'] = topic;
     map['type'] = type.name;
     return box.put('${type.name}:$topic', map);
@@ -43,18 +46,18 @@ class HiveMetadataStore extends IMetadataStore {
   FutureOr<void> update(
     String topic,
     AppMetaDataType type,
-    AppMetaData AppMetaData,
+    AppMetaData appMetaData,
   ) {
-    return add(topic, type, AppMetaData);
+    return insertOrAbort(topic, type, appMetaData);
   }
 
   @override
   FutureOr<void> addOrUpdate(
     String topic,
     AppMetaDataType type,
-    AppMetaData AppMetaData,
+    AppMetaData appMetaData,
   ) {
-    return add(topic, type, AppMetaData);
+    return insertOrAbort(topic, type, appMetaData);
   }
 
   @override
@@ -66,5 +69,11 @@ class HiveMetadataStore extends IMetadataStore {
     if (key != null) {
       return box.delete(key);
     }
+  }
+
+  @override
+  FutureOr<AppMetaData> get(String topic, AppMetaDataType type) {
+    final map = box.get('${type.name}:$topic')!;
+    return AppMetaData.fromJson(map.cast());
   }
 }

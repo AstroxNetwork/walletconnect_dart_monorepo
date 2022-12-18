@@ -1,5 +1,6 @@
 import 'package:freezed_annotation/freezed_annotation.dart';
 import 'package:walletconnect_mono_foundation/foundation.dart';
+import 'dart:typed_data';
 
 part 'participants.freezed.dart';
 

@@ -14,6 +14,317 @@ T _$identity<T>(T value) => value;
 final _privateConstructorUsedError = UnsupportedError(
     'It seems like you constructed your class using `MyClass._()`. This constructor is only meant to be used by freezed and you are not supposed to need it nor use it.\nPlease check the documentation here for more information: https://github.com/rrousselGit/freezed#custom-getters-and-methods');
 
+SessionRequestPayload _$SessionRequestPayloadFromJson(
+    Map<String, dynamic> json) {
+  return _SessionRequestPayload.fromJson(json);
+}
+
+/// @nodoc
+mixin _$SessionRequestPayload {
+  String get method => throw _privateConstructorUsedError;
+  String get params => throw _privateConstructorUsedError;
+
+  Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
+  @JsonKey(ignore: true)
+  $SessionRequestPayloadCopyWith<SessionRequestPayload> get copyWith =>
+      throw _privateConstructorUsedError;
+}
+
+/// @nodoc
+abstract class $SessionRequestPayloadCopyWith<$Res> {
+  factory $SessionRequestPayloadCopyWith(SessionRequestPayload value,
+          $Res Function(SessionRequestPayload) then) =
+      _$SessionRequestPayloadCopyWithImpl<$Res, SessionRequestPayload>;
+  @useResult
+  $Res call({String method, String params});
+}
+
+/// @nodoc
+class _$SessionRequestPayloadCopyWithImpl<$Res,
+        $Val extends SessionRequestPayload>
+    implements $SessionRequestPayloadCopyWith<$Res> {
+  _$SessionRequestPayloadCopyWithImpl(this._value, this._then);
+
+  // ignore: unused_field
+  final $Val _value;
+  // ignore: unused_field
+  final $Res Function($Val) _then;
+
+  @pragma('vm:prefer-inline')
+  @override
+  $Res call({
+    Object? method = null,
+    Object? params = null,
+  }) {
+    return _then(_value.copyWith(
+      method: null == method
+          ? _value.method
+          : method // ignore: cast_nullable_to_non_nullable
+              as String,
+      params: null == params
+          ? _value.params
+          : params // ignore: cast_nullable_to_non_nullable
+              as String,
+    ) as $Val);
+  }
+}
+
+/// @nodoc
+abstract class _$$_SessionRequestPayloadCopyWith<$Res>
+    implements $SessionRequestPayloadCopyWith<$Res> {
+  factory _$$_SessionRequestPayloadCopyWith(_$_SessionRequestPayload value,
+          $Res Function(_$_SessionRequestPayload) then) =
+      __$$_SessionRequestPayloadCopyWithImpl<$Res>;
+  @override
+  @useResult
+  $Res call({String method, String params});
+}
+
+/// @nodoc
+class __$$_SessionRequestPayloadCopyWithImpl<$Res>
+    extends _$SessionRequestPayloadCopyWithImpl<$Res, _$_SessionRequestPayload>
+    implements _$$_SessionRequestPayloadCopyWith<$Res> {
+  __$$_SessionRequestPayloadCopyWithImpl(_$_SessionRequestPayload _value,
+      $Res Function(_$_SessionRequestPayload) _then)
+      : super(_value, _then);
+
+  @pragma('vm:prefer-inline')
+  @override
+  $Res call({
+    Object? method = null,
+    Object? params = null,
+  }) {
+    return _then(_$_SessionRequestPayload(
+      method: null == method
+          ? _value.method
+          : method // ignore: cast_nullable_to_non_nullable
+              as String,
+      params: null == params
+          ? _value.params
+          : params // ignore: cast_nullable_to_non_nullable
+              as String,
+    ));
+  }
+}
+
+/// @nodoc
+@JsonSerializable()
+class _$_SessionRequestPayload implements _SessionRequestPayload {
+  const _$_SessionRequestPayload({required this.method, required this.params});
+
+  factory _$_SessionRequestPayload.fromJson(Map<String, dynamic> json) =>
+      _$$_SessionRequestPayloadFromJson(json);
+
+  @override
+  final String method;
+  @override
+  final String params;
+
+  @override
+  String toString() {
+    return 'SessionRequestPayload(method: $method, params: $params)';
+  }
+
+  @override
+  bool operator ==(dynamic other) {
+    return identical(this, other) ||
+        (other.runtimeType == runtimeType &&
+            other is _$_SessionRequestPayload &&
+            (identical(other.method, method) || other.method == method) &&
+            (identical(other.params, params) || other.params == params));
+  }
+
+  @JsonKey(ignore: true)
+  @override
+  int get hashCode => Object.hash(runtimeType, method, params);
+
+  @JsonKey(ignore: true)
+  @override
+  @pragma('vm:prefer-inline')
+  _$$_SessionRequestPayloadCopyWith<_$_SessionRequestPayload> get copyWith =>
+      __$$_SessionRequestPayloadCopyWithImpl<_$_SessionRequestPayload>(
+          this, _$identity);
+
+  @override
+  Map<String, dynamic> toJson() {
+    return _$$_SessionRequestPayloadToJson(
+      this,
+    );
+  }
+}
+
+abstract class _SessionRequestPayload implements SessionRequestPayload {
+  const factory _SessionRequestPayload(
+      {required final String method,
+      required final String params}) = _$_SessionRequestPayload;
+
+  factory _SessionRequestPayload.fromJson(Map<String, dynamic> json) =
+      _$_SessionRequestPayload.fromJson;
+
+  @override
+  String get method;
+  @override
+  String get params;
+  @override
+  @JsonKey(ignore: true)
+  _$$_SessionRequestPayloadCopyWith<_$_SessionRequestPayload> get copyWith =>
+      throw _privateConstructorUsedError;
+}
+
+SessionEventPayload _$SessionEventPayloadFromJson(Map<String, dynamic> json) {
+  return _SessionEventPayload.fromJson(json);
+}
+
+/// @nodoc
+mixin _$SessionEventPayload {
+  String get name => throw _privateConstructorUsedError;
+  @ObjectConverter()
+  Object get data => throw _privateConstructorUsedError;
+
+  Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
+  @JsonKey(ignore: true)
+  $SessionEventPayloadCopyWith<SessionEventPayload> get copyWith =>
+      throw _privateConstructorUsedError;
+}
+
+/// @nodoc
+abstract class $SessionEventPayloadCopyWith<$Res> {
+  factory $SessionEventPayloadCopyWith(
+          SessionEventPayload value, $Res Function(SessionEventPayload) then) =
+      _$SessionEventPayloadCopyWithImpl<$Res, SessionEventPayload>;
+  @useResult
+  $Res call({String name, @ObjectConverter() Object data});
+}
+
+/// @nodoc
+class _$SessionEventPayloadCopyWithImpl<$Res, $Val extends SessionEventPayload>
+    implements $SessionEventPayloadCopyWith<$Res> {
+  _$SessionEventPayloadCopyWithImpl(this._value, this._then);
+
+  // ignore: unused_field
+  final $Val _value;
+  // ignore: unused_field
+  final $Res Function($Val) _then;
+
+  @pragma('vm:prefer-inline')
+  @override
+  $Res call({
+    Object? name = null,
+    Object? data = null,
+  }) {
+    return _then(_value.copyWith(
+      name: null == name
+          ? _value.name
+          : name // ignore: cast_nullable_to_non_nullable
+              as String,
+      data: null == data ? _value.data : data,
+    ) as $Val);
+  }
+}
+
+/// @nodoc
+abstract class _$$_SessionEventPayloadCopyWith<$Res>
+    implements $SessionEventPayloadCopyWith<$Res> {
+  factory _$$_SessionEventPayloadCopyWith(_$_SessionEventPayload value,
+          $Res Function(_$_SessionEventPayload) then) =
+      __$$_SessionEventPayloadCopyWithImpl<$Res>;
+  @override
+  @useResult
+  $Res call({String name, @ObjectConverter() Object data});
+}
+
+/// @nodoc
+class __$$_SessionEventPayloadCopyWithImpl<$Res>
+    extends _$SessionEventPayloadCopyWithImpl<$Res, _$_SessionEventPayload>
+    implements _$$_SessionEventPayloadCopyWith<$Res> {
+  __$$_SessionEventPayloadCopyWithImpl(_$_SessionEventPayload _value,
+      $Res Function(_$_SessionEventPayload) _then)
+      : super(_value, _then);
+
+  @pragma('vm:prefer-inline')
+  @override
+  $Res call({
+    Object? name = null,
+    Object? data = null,
+  }) {
+    return _then(_$_SessionEventPayload(
+      name: null == name
+          ? _value.name
+          : name // ignore: cast_nullable_to_non_nullable
+              as String,
+      data: null == data ? _value.data : data,
+    ));
+  }
+}
+
+/// @nodoc
+@JsonSerializable()
+class _$_SessionEventPayload implements _SessionEventPayload {
+  const _$_SessionEventPayload(
+      {required this.name, @ObjectConverter() required this.data});
+
+  factory _$_SessionEventPayload.fromJson(Map<String, dynamic> json) =>
+      _$$_SessionEventPayloadFromJson(json);
+
+  @override
+  final String name;
+  @override
+  @ObjectConverter()
+  final Object data;
+
+  @override
+  String toString() {
+    return 'SessionEventPayload(name: $name, data: $data)';
+  }
+
+  @override
+  bool operator ==(dynamic other) {
+    return identical(this, other) ||
+        (other.runtimeType == runtimeType &&
+            other is _$_SessionEventPayload &&
+            (identical(other.name, name) || other.name == name) &&
+            const DeepCollectionEquality().equals(other.data, data));
+  }
+
+  @JsonKey(ignore: true)
+  @override
+  int get hashCode =>
+      Object.hash(runtimeType, name, const DeepCollectionEquality().hash(data));
+
+  @JsonKey(ignore: true)
+  @override
+  @pragma('vm:prefer-inline')
+  _$$_SessionEventPayloadCopyWith<_$_SessionEventPayload> get copyWith =>
+      __$$_SessionEventPayloadCopyWithImpl<_$_SessionEventPayload>(
+          this, _$identity);
+
+  @override
+  Map<String, dynamic> toJson() {
+    return _$$_SessionEventPayloadToJson(
+      this,
+    );
+  }
+}
+
+abstract class _SessionEventPayload implements SessionEventPayload {
+  const factory _SessionEventPayload(
+      {required final String name,
+      @ObjectConverter() required final Object data}) = _$_SessionEventPayload;
+
+  factory _SessionEventPayload.fromJson(Map<String, dynamic> json) =
+      _$_SessionEventPayload.fromJson;
+
+  @override
+  String get name;
+  @override
+  @ObjectConverter()
+  Object get data;
+  @override
+  @JsonKey(ignore: true)
+  _$$_SessionEventPayloadCopyWith<_$_SessionEventPayload> get copyWith =>
+      throw _privateConstructorUsedError;
+}
+
 SignParams _$SignParamsFromJson(Map<String, dynamic> json) {
   switch (json['runtimeType']) {
     case 'sessionPropose':
@@ -48,11 +359,11 @@ mixin _$SignParams {
     required TResult Function(
             List<RelayProtocolOptions> relays,
             SessionProposer proposer,
-            @JsonKey(name: "requiredNamespaces")
+            @JsonKey(name: 'requiredNamespaces')
                 Map<String, NamespaceProposal> namespaces)
         sessionPropose,
-    required TResult Function(
-            RelayProtocolOptions relay, String responderPublicKey)
+    required TResult Function(RelayProtocolOptions relay,
+            @Uint8ListToHexConverter() Uint8List responderPublicKey)
         approval,
     required TResult Function(
             RelayProtocolOptions relay,
@@ -60,9 +371,9 @@ mixin _$SignParams {
             Map<String, NamespaceSession> namespaces,
             int expiry)
         sessionSettle,
-    required TResult Function(SessionRequest request, String chainId)
+    required TResult Function(SessionRequestPayload request, String chainId)
         sessionRequest,
-    required TResult Function(SessionRequest request, String chainId) event,
+    required TResult Function(SessionEventPayload event, String chainId) event,
     required TResult Function(Map<String, NamespaceSession> namespaces)
         updateNamespaces,
     required TResult Function(int expiry) extend,
@@ -75,16 +386,18 @@ mixin _$SignParams {
     TResult? Function(
             List<RelayProtocolOptions> relays,
             SessionProposer proposer,
-            @JsonKey(name: "requiredNamespaces")
+            @JsonKey(name: 'requiredNamespaces')
                 Map<String, NamespaceProposal> namespaces)?
         sessionPropose,
-    TResult? Function(RelayProtocolOptions relay, String responderPublicKey)?
+    TResult? Function(RelayProtocolOptions relay,
+            @Uint8ListToHexConverter() Uint8List responderPublicKey)?
         approval,
     TResult? Function(RelayProtocolOptions relay, SessionProposer controller,
             Map<String, NamespaceSession> namespaces, int expiry)?
         sessionSettle,
-    TResult? Function(SessionRequest request, String chainId)? sessionRequest,
-    TResult? Function(SessionRequest request, String chainId)? event,
+    TResult? Function(SessionRequestPayload request, String chainId)?
+        sessionRequest,
+    TResult? Function(SessionEventPayload event, String chainId)? event,
     TResult? Function(Map<String, NamespaceSession> namespaces)?
         updateNamespaces,
     TResult? Function(int expiry)? extend,
@@ -97,16 +410,18 @@ mixin _$SignParams {
     TResult Function(
             List<RelayProtocolOptions> relays,
             SessionProposer proposer,
-            @JsonKey(name: "requiredNamespaces")
+            @JsonKey(name: 'requiredNamespaces')
                 Map<String, NamespaceProposal> namespaces)?
         sessionPropose,
-    TResult Function(RelayProtocolOptions relay, String responderPublicKey)?
+    TResult Function(RelayProtocolOptions relay,
+            @Uint8ListToHexConverter() Uint8List responderPublicKey)?
         approval,
     TResult Function(RelayProtocolOptions relay, SessionProposer controller,
             Map<String, NamespaceSession> namespaces, int expiry)?
         sessionSettle,
-    TResult Function(SessionRequest request, String chainId)? sessionRequest,
-    TResult Function(SessionRequest request, String chainId)? event,
+    TResult Function(SessionRequestPayload request, String chainId)?
+        sessionRequest,
+    TResult Function(SessionEventPayload event, String chainId)? event,
     TResult Function(Map<String, NamespaceSession> namespaces)?
         updateNamespaces,
     TResult Function(int expiry)? extend,
@@ -185,7 +500,7 @@ abstract class _$$SessionProposeParamsCopyWith<$Res> {
   $Res call(
       {List<RelayProtocolOptions> relays,
       SessionProposer proposer,
-      @JsonKey(name: "requiredNamespaces")
+      @JsonKey(name: 'requiredNamespaces')
           Map<String, NamespaceProposal> namespaces});
 
   $SessionProposerCopyWith<$Res> get proposer;
@@ -237,7 +552,7 @@ class _$SessionProposeParams implements SessionProposeParams {
   const _$SessionProposeParams(
       {required final List<RelayProtocolOptions> relays,
       required this.proposer,
-      @JsonKey(name: "requiredNamespaces")
+      @JsonKey(name: 'requiredNamespaces')
           required final Map<String, NamespaceProposal> namespaces,
       final String? $type})
       : _relays = relays,
@@ -258,7 +573,7 @@ class _$SessionProposeParams implements SessionProposeParams {
   final SessionProposer proposer;
   final Map<String, NamespaceProposal> _namespaces;
   @override
-  @JsonKey(name: "requiredNamespaces")
+  @JsonKey(name: 'requiredNamespaces')
   Map<String, NamespaceProposal> get namespaces {
     // ignore: implicit_dynamic_type
     return EqualUnmodifiableMapView(_namespaces);
@@ -305,11 +620,11 @@ class _$SessionProposeParams implements SessionProposeParams {
     required TResult Function(
             List<RelayProtocolOptions> relays,
             SessionProposer proposer,
-            @JsonKey(name: "requiredNamespaces")
+            @JsonKey(name: 'requiredNamespaces')
                 Map<String, NamespaceProposal> namespaces)
         sessionPropose,
-    required TResult Function(
-            RelayProtocolOptions relay, String responderPublicKey)
+    required TResult Function(RelayProtocolOptions relay,
+            @Uint8ListToHexConverter() Uint8List responderPublicKey)
         approval,
     required TResult Function(
             RelayProtocolOptions relay,
@@ -317,9 +632,9 @@ class _$SessionProposeParams implements SessionProposeParams {
             Map<String, NamespaceSession> namespaces,
             int expiry)
         sessionSettle,
-    required TResult Function(SessionRequest request, String chainId)
+    required TResult Function(SessionRequestPayload request, String chainId)
         sessionRequest,
-    required TResult Function(SessionRequest request, String chainId) event,
+    required TResult Function(SessionEventPayload event, String chainId) event,
     required TResult Function(Map<String, NamespaceSession> namespaces)
         updateNamespaces,
     required TResult Function(int expiry) extend,
@@ -335,16 +650,18 @@ class _$SessionProposeParams implements SessionProposeParams {
     TResult? Function(
             List<RelayProtocolOptions> relays,
             SessionProposer proposer,
-            @JsonKey(name: "requiredNamespaces")
+            @JsonKey(name: 'requiredNamespaces')
                 Map<String, NamespaceProposal> namespaces)?
         sessionPropose,
-    TResult? Function(RelayProtocolOptions relay, String responderPublicKey)?
+    TResult? Function(RelayProtocolOptions relay,
+            @Uint8ListToHexConverter() Uint8List responderPublicKey)?
         approval,
     TResult? Function(RelayProtocolOptions relay, SessionProposer controller,
             Map<String, NamespaceSession> namespaces, int expiry)?
         sessionSettle,
-    TResult? Function(SessionRequest request, String chainId)? sessionRequest,
-    TResult? Function(SessionRequest request, String chainId)? event,
+    TResult? Function(SessionRequestPayload request, String chainId)?
+        sessionRequest,
+    TResult? Function(SessionEventPayload event, String chainId)? event,
     TResult? Function(Map<String, NamespaceSession> namespaces)?
         updateNamespaces,
     TResult? Function(int expiry)? extend,
@@ -360,16 +677,18 @@ class _$SessionProposeParams implements SessionProposeParams {
     TResult Function(
             List<RelayProtocolOptions> relays,
             SessionProposer proposer,
-            @JsonKey(name: "requiredNamespaces")
+            @JsonKey(name: 'requiredNamespaces')
                 Map<String, NamespaceProposal> namespaces)?
         sessionPropose,
-    TResult Function(RelayProtocolOptions relay, String responderPublicKey)?
+    TResult Function(RelayProtocolOptions relay,
+            @Uint8ListToHexConverter() Uint8List responderPublicKey)?
         approval,
     TResult Function(RelayProtocolOptions relay, SessionProposer controller,
             Map<String, NamespaceSession> namespaces, int expiry)?
         sessionSettle,
-    TResult Function(SessionRequest request, String chainId)? sessionRequest,
-    TResult Function(SessionRequest request, String chainId)? event,
+    TResult Function(SessionRequestPayload request, String chainId)?
+        sessionRequest,
+    TResult Function(SessionEventPayload event, String chainId)? event,
     TResult Function(Map<String, NamespaceSession> namespaces)?
         updateNamespaces,
     TResult Function(int expiry)? extend,
@@ -447,7 +766,7 @@ abstract class SessionProposeParams implements SignParams {
   const factory SessionProposeParams(
           {required final List<RelayProtocolOptions> relays,
           required final SessionProposer proposer,
-          @JsonKey(name: "requiredNamespaces")
+          @JsonKey(name: 'requiredNamespaces')
               required final Map<String, NamespaceProposal> namespaces}) =
       _$SessionProposeParams;
 
@@ -456,7 +775,7 @@ abstract class SessionProposeParams implements SignParams {
 
   List<RelayProtocolOptions> get relays;
   SessionProposer get proposer;
-  @JsonKey(name: "requiredNamespaces")
+  @JsonKey(name: 'requiredNamespaces')
   Map<String, NamespaceProposal> get namespaces;
   @JsonKey(ignore: true)
   _$$SessionProposeParamsCopyWith<_$SessionProposeParams> get copyWith =>
@@ -469,7 +788,9 @@ abstract class _$$ApprovalParamsCopyWith<$Res> {
           _$ApprovalParams value, $Res Function(_$ApprovalParams) then) =
       __$$ApprovalParamsCopyWithImpl<$Res>;
   @useResult
-  $Res call({RelayProtocolOptions relay, String responderPublicKey});
+  $Res call(
+      {RelayProtocolOptions relay,
+      @Uint8ListToHexConverter() Uint8List responderPublicKey});
 
   $RelayProtocolOptionsCopyWith<$Res> get relay;
 }
@@ -496,7 +817,7 @@ class __$$ApprovalParamsCopyWithImpl<$Res>
       responderPublicKey: null == responderPublicKey
           ? _value.responderPublicKey
           : responderPublicKey // ignore: cast_nullable_to_non_nullable
-              as String,
+              as Uint8List,
     ));
   }
 
@@ -514,7 +835,7 @@ class __$$ApprovalParamsCopyWithImpl<$Res>
 class _$ApprovalParams implements ApprovalParams {
   const _$ApprovalParams(
       {required this.relay,
-      required this.responderPublicKey,
+      @Uint8ListToHexConverter() required this.responderPublicKey,
       final String? $type})
       : $type = $type ?? 'approval';
 
@@ -524,7 +845,8 @@ class _$ApprovalParams implements ApprovalParams {
   @override
   final RelayProtocolOptions relay;
   @override
-  final String responderPublicKey;
+  @Uint8ListToHexConverter()
+  final Uint8List responderPublicKey;
 
   @JsonKey(name: 'runtimeType')
   final String $type;
@@ -540,13 +862,14 @@ class _$ApprovalParams implements ApprovalParams {
         (other.runtimeType == runtimeType &&
             other is _$ApprovalParams &&
             (identical(other.relay, relay) || other.relay == relay) &&
-            (identical(other.responderPublicKey, responderPublicKey) ||
-                other.responderPublicKey == responderPublicKey));
+            const DeepCollectionEquality()
+                .equals(other.responderPublicKey, responderPublicKey));
   }
 
   @JsonKey(ignore: true)
   @override
-  int get hashCode => Object.hash(runtimeType, relay, responderPublicKey);
+  int get hashCode => Object.hash(runtimeType, relay,
+      const DeepCollectionEquality().hash(responderPublicKey));
 
   @JsonKey(ignore: true)
   @override
@@ -560,11 +883,11 @@ class _$ApprovalParams implements ApprovalParams {
     required TResult Function(
             List<RelayProtocolOptions> relays,
             SessionProposer proposer,
-            @JsonKey(name: "requiredNamespaces")
+            @JsonKey(name: 'requiredNamespaces')
                 Map<String, NamespaceProposal> namespaces)
         sessionPropose,
-    required TResult Function(
-            RelayProtocolOptions relay, String responderPublicKey)
+    required TResult Function(RelayProtocolOptions relay,
+            @Uint8ListToHexConverter() Uint8List responderPublicKey)
         approval,
     required TResult Function(
             RelayProtocolOptions relay,
@@ -572,9 +895,9 @@ class _$ApprovalParams implements ApprovalParams {
             Map<String, NamespaceSession> namespaces,
             int expiry)
         sessionSettle,
-    required TResult Function(SessionRequest request, String chainId)
+    required TResult Function(SessionRequestPayload request, String chainId)
         sessionRequest,
-    required TResult Function(SessionRequest request, String chainId) event,
+    required TResult Function(SessionEventPayload event, String chainId) event,
     required TResult Function(Map<String, NamespaceSession> namespaces)
         updateNamespaces,
     required TResult Function(int expiry) extend,
@@ -590,16 +913,18 @@ class _$ApprovalParams implements ApprovalParams {
     TResult? Function(
             List<RelayProtocolOptions> relays,
             SessionProposer proposer,
-            @JsonKey(name: "requiredNamespaces")
+            @JsonKey(name: 'requiredNamespaces')
                 Map<String, NamespaceProposal> namespaces)?
         sessionPropose,
-    TResult? Function(RelayProtocolOptions relay, String responderPublicKey)?
+    TResult? Function(RelayProtocolOptions relay,
+            @Uint8ListToHexConverter() Uint8List responderPublicKey)?
         approval,
     TResult? Function(RelayProtocolOptions relay, SessionProposer controller,
             Map<String, NamespaceSession> namespaces, int expiry)?
         sessionSettle,
-    TResult? Function(SessionRequest request, String chainId)? sessionRequest,
-    TResult? Function(SessionRequest request, String chainId)? event,
+    TResult? Function(SessionRequestPayload request, String chainId)?
+        sessionRequest,
+    TResult? Function(SessionEventPayload event, String chainId)? event,
     TResult? Function(Map<String, NamespaceSession> namespaces)?
         updateNamespaces,
     TResult? Function(int expiry)? extend,
@@ -615,16 +940,18 @@ class _$ApprovalParams implements ApprovalParams {
     TResult Function(
             List<RelayProtocolOptions> relays,
             SessionProposer proposer,
-            @JsonKey(name: "requiredNamespaces")
+            @JsonKey(name: 'requiredNamespaces')
                 Map<String, NamespaceProposal> namespaces)?
         sessionPropose,
-    TResult Function(RelayProtocolOptions relay, String responderPublicKey)?
+    TResult Function(RelayProtocolOptions relay,
+            @Uint8ListToHexConverter() Uint8List responderPublicKey)?
         approval,
     TResult Function(RelayProtocolOptions relay, SessionProposer controller,
             Map<String, NamespaceSession> namespaces, int expiry)?
         sessionSettle,
-    TResult Function(SessionRequest request, String chainId)? sessionRequest,
-    TResult Function(SessionRequest request, String chainId)? event,
+    TResult Function(SessionRequestPayload request, String chainId)?
+        sessionRequest,
+    TResult Function(SessionEventPayload event, String chainId)? event,
     TResult Function(Map<String, NamespaceSession> namespaces)?
         updateNamespaces,
     TResult Function(int expiry)? extend,
@@ -701,13 +1028,15 @@ class _$ApprovalParams implements ApprovalParams {
 abstract class ApprovalParams implements SignParams {
   const factory ApprovalParams(
       {required final RelayProtocolOptions relay,
-      required final String responderPublicKey}) = _$ApprovalParams;
+      @Uint8ListToHexConverter()
+          required final Uint8List responderPublicKey}) = _$ApprovalParams;
 
   factory ApprovalParams.fromJson(Map<String, dynamic> json) =
       _$ApprovalParams.fromJson;
 
   RelayProtocolOptions get relay;
-  String get responderPublicKey;
+  @Uint8ListToHexConverter()
+  Uint8List get responderPublicKey;
   @JsonKey(ignore: true)
   _$$ApprovalParamsCopyWith<_$ApprovalParams> get copyWith =>
       throw _privateConstructorUsedError;
@@ -850,11 +1179,11 @@ class _$SessionSettleParams implements SessionSettleParams {
     required TResult Function(
             List<RelayProtocolOptions> relays,
             SessionProposer proposer,
-            @JsonKey(name: "requiredNamespaces")
+            @JsonKey(name: 'requiredNamespaces')
                 Map<String, NamespaceProposal> namespaces)
         sessionPropose,
-    required TResult Function(
-            RelayProtocolOptions relay, String responderPublicKey)
+    required TResult Function(RelayProtocolOptions relay,
+            @Uint8ListToHexConverter() Uint8List responderPublicKey)
         approval,
     required TResult Function(
             RelayProtocolOptions relay,
@@ -862,9 +1191,9 @@ class _$SessionSettleParams implements SessionSettleParams {
             Map<String, NamespaceSession> namespaces,
             int expiry)
         sessionSettle,
-    required TResult Function(SessionRequest request, String chainId)
+    required TResult Function(SessionRequestPayload request, String chainId)
         sessionRequest,
-    required TResult Function(SessionRequest request, String chainId) event,
+    required TResult Function(SessionEventPayload event, String chainId) event,
     required TResult Function(Map<String, NamespaceSession> namespaces)
         updateNamespaces,
     required TResult Function(int expiry) extend,
@@ -880,16 +1209,18 @@ class _$SessionSettleParams implements SessionSettleParams {
     TResult? Function(
             List<RelayProtocolOptions> relays,
             SessionProposer proposer,
-            @JsonKey(name: "requiredNamespaces")
+            @JsonKey(name: 'requiredNamespaces')
                 Map<String, NamespaceProposal> namespaces)?
         sessionPropose,
-    TResult? Function(RelayProtocolOptions relay, String responderPublicKey)?
+    TResult? Function(RelayProtocolOptions relay,
+            @Uint8ListToHexConverter() Uint8List responderPublicKey)?
         approval,
     TResult? Function(RelayProtocolOptions relay, SessionProposer controller,
             Map<String, NamespaceSession> namespaces, int expiry)?
         sessionSettle,
-    TResult? Function(SessionRequest request, String chainId)? sessionRequest,
-    TResult? Function(SessionRequest request, String chainId)? event,
+    TResult? Function(SessionRequestPayload request, String chainId)?
+        sessionRequest,
+    TResult? Function(SessionEventPayload event, String chainId)? event,
     TResult? Function(Map<String, NamespaceSession> namespaces)?
         updateNamespaces,
     TResult? Function(int expiry)? extend,
@@ -905,16 +1236,18 @@ class _$SessionSettleParams implements SessionSettleParams {
     TResult Function(
             List<RelayProtocolOptions> relays,
             SessionProposer proposer,
-            @JsonKey(name: "requiredNamespaces")
+            @JsonKey(name: 'requiredNamespaces')
                 Map<String, NamespaceProposal> namespaces)?
         sessionPropose,
-    TResult Function(RelayProtocolOptions relay, String responderPublicKey)?
+    TResult Function(RelayProtocolOptions relay,
+            @Uint8ListToHexConverter() Uint8List responderPublicKey)?
         approval,
     TResult Function(RelayProtocolOptions relay, SessionProposer controller,
             Map<String, NamespaceSession> namespaces, int expiry)?
         sessionSettle,
-    TResult Function(SessionRequest request, String chainId)? sessionRequest,
-    TResult Function(SessionRequest request, String chainId)? event,
+    TResult Function(SessionRequestPayload request, String chainId)?
+        sessionRequest,
+    TResult Function(SessionEventPayload event, String chainId)? event,
     TResult Function(Map<String, NamespaceSession> namespaces)?
         updateNamespaces,
     TResult Function(int expiry)? extend,
@@ -1013,9 +1346,9 @@ abstract class _$$SessionRequestParamsCopyWith<$Res> {
           $Res Function(_$SessionRequestParams) then) =
       __$$SessionRequestParamsCopyWithImpl<$Res>;
   @useResult
-  $Res call({SessionRequest request, String chainId});
+  $Res call({SessionRequestPayload request, String chainId});
 
-  $SessionRequestCopyWith<$Res> get request;
+  $SessionRequestPayloadCopyWith<$Res> get request;
 }
 
 /// @nodoc
@@ -1036,7 +1369,7 @@ class __$$SessionRequestParamsCopyWithImpl<$Res>
       request: null == request
           ? _value.request
           : request // ignore: cast_nullable_to_non_nullable
-              as SessionRequest,
+              as SessionRequestPayload,
       chainId: null == chainId
           ? _value.chainId
           : chainId // ignore: cast_nullable_to_non_nullable
@@ -1046,8 +1379,8 @@ class __$$SessionRequestParamsCopyWithImpl<$Res>
 
   @override
   @pragma('vm:prefer-inline')
-  $SessionRequestCopyWith<$Res> get request {
-    return $SessionRequestCopyWith<$Res>(_value.request, (value) {
+  $SessionRequestPayloadCopyWith<$Res> get request {
+    return $SessionRequestPayloadCopyWith<$Res>(_value.request, (value) {
       return _then(_value.copyWith(request: value));
     });
   }
@@ -1064,7 +1397,7 @@ class _$SessionRequestParams implements SessionRequestParams {
       _$$SessionRequestParamsFromJson(json);
 
   @override
-  final SessionRequest request;
+  final SessionRequestPayload request;
   @override
   final String chainId;
 
@@ -1102,11 +1435,11 @@ class _$SessionRequestParams implements SessionRequestParams {
     required TResult Function(
             List<RelayProtocolOptions> relays,
             SessionProposer proposer,
-            @JsonKey(name: "requiredNamespaces")
+            @JsonKey(name: 'requiredNamespaces')
                 Map<String, NamespaceProposal> namespaces)
         sessionPropose,
-    required TResult Function(
-            RelayProtocolOptions relay, String responderPublicKey)
+    required TResult Function(RelayProtocolOptions relay,
+            @Uint8ListToHexConverter() Uint8List responderPublicKey)
         approval,
     required TResult Function(
             RelayProtocolOptions relay,
@@ -1114,9 +1447,9 @@ class _$SessionRequestParams implements SessionRequestParams {
             Map<String, NamespaceSession> namespaces,
             int expiry)
         sessionSettle,
-    required TResult Function(SessionRequest request, String chainId)
+    required TResult Function(SessionRequestPayload request, String chainId)
         sessionRequest,
-    required TResult Function(SessionRequest request, String chainId) event,
+    required TResult Function(SessionEventPayload event, String chainId) event,
     required TResult Function(Map<String, NamespaceSession> namespaces)
         updateNamespaces,
     required TResult Function(int expiry) extend,
@@ -1132,16 +1465,18 @@ class _$SessionRequestParams implements SessionRequestParams {
     TResult? Function(
             List<RelayProtocolOptions> relays,
             SessionProposer proposer,
-            @JsonKey(name: "requiredNamespaces")
+            @JsonKey(name: 'requiredNamespaces')
                 Map<String, NamespaceProposal> namespaces)?
         sessionPropose,
-    TResult? Function(RelayProtocolOptions relay, String responderPublicKey)?
+    TResult? Function(RelayProtocolOptions relay,
+            @Uint8ListToHexConverter() Uint8List responderPublicKey)?
         approval,
     TResult? Function(RelayProtocolOptions relay, SessionProposer controller,
             Map<String, NamespaceSession> namespaces, int expiry)?
         sessionSettle,
-    TResult? Function(SessionRequest request, String chainId)? sessionRequest,
-    TResult? Function(SessionRequest request, String chainId)? event,
+    TResult? Function(SessionRequestPayload request, String chainId)?
+        sessionRequest,
+    TResult? Function(SessionEventPayload event, String chainId)? event,
     TResult? Function(Map<String, NamespaceSession> namespaces)?
         updateNamespaces,
     TResult? Function(int expiry)? extend,
@@ -1157,16 +1492,18 @@ class _$SessionRequestParams implements SessionRequestParams {
     TResult Function(
             List<RelayProtocolOptions> relays,
             SessionProposer proposer,
-            @JsonKey(name: "requiredNamespaces")
+            @JsonKey(name: 'requiredNamespaces')
                 Map<String, NamespaceProposal> namespaces)?
         sessionPropose,
-    TResult Function(RelayProtocolOptions relay, String responderPublicKey)?
+    TResult Function(RelayProtocolOptions relay,
+            @Uint8ListToHexConverter() Uint8List responderPublicKey)?
         approval,
     TResult Function(RelayProtocolOptions relay, SessionProposer controller,
             Map<String, NamespaceSession> namespaces, int expiry)?
         sessionSettle,
-    TResult Function(SessionRequest request, String chainId)? sessionRequest,
-    TResult Function(SessionRequest request, String chainId)? event,
+    TResult Function(SessionRequestPayload request, String chainId)?
+        sessionRequest,
+    TResult Function(SessionEventPayload event, String chainId)? event,
     TResult Function(Map<String, NamespaceSession> namespaces)?
         updateNamespaces,
     TResult Function(int expiry)? extend,
@@ -1242,13 +1579,13 @@ class _$SessionRequestParams implements SessionRequestParams {
 
 abstract class SessionRequestParams implements SignParams {
   const factory SessionRequestParams(
-      {required final SessionRequest request,
+      {required final SessionRequestPayload request,
       required final String chainId}) = _$SessionRequestParams;
 
   factory SessionRequestParams.fromJson(Map<String, dynamic> json) =
       _$SessionRequestParams.fromJson;
 
-  SessionRequest get request;
+  SessionRequestPayload get request;
   String get chainId;
   @JsonKey(ignore: true)
   _$$SessionRequestParamsCopyWith<_$SessionRequestParams> get copyWith =>
@@ -1261,9 +1598,9 @@ abstract class _$$EventParamsCopyWith<$Res> {
           _$EventParams value, $Res Function(_$EventParams) then) =
       __$$EventParamsCopyWithImpl<$Res>;
   @useResult
-  $Res call({SessionRequest request, String chainId});
+  $Res call({SessionEventPayload event, String chainId});
 
-  $SessionRequestCopyWith<$Res> get request;
+  $SessionEventPayloadCopyWith<$Res> get event;
 }
 
 /// @nodoc
@@ -1277,14 +1614,14 @@ class __$$EventParamsCopyWithImpl<$Res>
   @pragma('vm:prefer-inline')
   @override
   $Res call({
-    Object? request = null,
+    Object? event = null,
     Object? chainId = null,
   }) {
     return _then(_$EventParams(
-      request: null == request
-          ? _value.request
-          : request // ignore: cast_nullable_to_non_nullable
-              as SessionRequest,
+      event: null == event
+          ? _value.event
+          : event // ignore: cast_nullable_to_non_nullable
+              as SessionEventPayload,
       chainId: null == chainId
           ? _value.chainId
           : chainId // ignore: cast_nullable_to_non_nullable
@@ -1294,9 +1631,9 @@ class __$$EventParamsCopyWithImpl<$Res>
 
   @override
   @pragma('vm:prefer-inline')
-  $SessionRequestCopyWith<$Res> get request {
-    return $SessionRequestCopyWith<$Res>(_value.request, (value) {
-      return _then(_value.copyWith(request: value));
+  $SessionEventPayloadCopyWith<$Res> get event {
+    return $SessionEventPayloadCopyWith<$Res>(_value.event, (value) {
+      return _then(_value.copyWith(event: value));
     });
   }
 }
@@ -1305,14 +1642,14 @@ class __$$EventParamsCopyWithImpl<$Res>
 @JsonSerializable()
 class _$EventParams implements EventParams {
   const _$EventParams(
-      {required this.request, required this.chainId, final String? $type})
+      {required this.event, required this.chainId, final String? $type})
       : $type = $type ?? 'event';
 
   factory _$EventParams.fromJson(Map<String, dynamic> json) =>
       _$$EventParamsFromJson(json);
 
   @override
-  final SessionRequest request;
+  final SessionEventPayload event;
   @override
   final String chainId;
 
@@ -1321,7 +1658,7 @@ class _$EventParams implements EventParams {
 
   @override
   String toString() {
-    return 'SignParams.event(request: $request, chainId: $chainId)';
+    return 'SignParams.event(event: $event, chainId: $chainId)';
   }
 
   @override
@@ -1329,13 +1666,13 @@ class _$EventParams implements EventParams {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
             other is _$EventParams &&
-            (identical(other.request, request) || other.request == request) &&
+            (identical(other.event, event) || other.event == event) &&
             (identical(other.chainId, chainId) || other.chainId == chainId));
   }
 
   @JsonKey(ignore: true)
   @override
-  int get hashCode => Object.hash(runtimeType, request, chainId);
+  int get hashCode => Object.hash(runtimeType, event, chainId);
 
   @JsonKey(ignore: true)
   @override
@@ -1349,11 +1686,11 @@ class _$EventParams implements EventParams {
     required TResult Function(
             List<RelayProtocolOptions> relays,
             SessionProposer proposer,
-            @JsonKey(name: "requiredNamespaces")
+            @JsonKey(name: 'requiredNamespaces')
                 Map<String, NamespaceProposal> namespaces)
         sessionPropose,
-    required TResult Function(
-            RelayProtocolOptions relay, String responderPublicKey)
+    required TResult Function(RelayProtocolOptions relay,
+            @Uint8ListToHexConverter() Uint8List responderPublicKey)
         approval,
     required TResult Function(
             RelayProtocolOptions relay,
@@ -1361,16 +1698,16 @@ class _$EventParams implements EventParams {
             Map<String, NamespaceSession> namespaces,
             int expiry)
         sessionSettle,
-    required TResult Function(SessionRequest request, String chainId)
+    required TResult Function(SessionRequestPayload request, String chainId)
         sessionRequest,
-    required TResult Function(SessionRequest request, String chainId) event,
+    required TResult Function(SessionEventPayload event, String chainId) event,
     required TResult Function(Map<String, NamespaceSession> namespaces)
         updateNamespaces,
     required TResult Function(int expiry) extend,
     required TResult Function(int code, String message) delete,
     required TResult Function() ping,
   }) {
-    return event(request, chainId);
+    return event(this.event, chainId);
   }
 
   @override
@@ -1379,23 +1716,25 @@ class _$EventParams implements EventParams {
     TResult? Function(
             List<RelayProtocolOptions> relays,
             SessionProposer proposer,
-            @JsonKey(name: "requiredNamespaces")
+            @JsonKey(name: 'requiredNamespaces')
                 Map<String, NamespaceProposal> namespaces)?
         sessionPropose,
-    TResult? Function(RelayProtocolOptions relay, String responderPublicKey)?
+    TResult? Function(RelayProtocolOptions relay,
+            @Uint8ListToHexConverter() Uint8List responderPublicKey)?
         approval,
     TResult? Function(RelayProtocolOptions relay, SessionProposer controller,
             Map<String, NamespaceSession> namespaces, int expiry)?
         sessionSettle,
-    TResult? Function(SessionRequest request, String chainId)? sessionRequest,
-    TResult? Function(SessionRequest request, String chainId)? event,
+    TResult? Function(SessionRequestPayload request, String chainId)?
+        sessionRequest,
+    TResult? Function(SessionEventPayload event, String chainId)? event,
     TResult? Function(Map<String, NamespaceSession> namespaces)?
         updateNamespaces,
     TResult? Function(int expiry)? extend,
     TResult? Function(int code, String message)? delete,
     TResult? Function()? ping,
   }) {
-    return event?.call(request, chainId);
+    return event?.call(this.event, chainId);
   }
 
   @override
@@ -1404,16 +1743,18 @@ class _$EventParams implements EventParams {
     TResult Function(
             List<RelayProtocolOptions> relays,
             SessionProposer proposer,
-            @JsonKey(name: "requiredNamespaces")
+            @JsonKey(name: 'requiredNamespaces')
                 Map<String, NamespaceProposal> namespaces)?
         sessionPropose,
-    TResult Function(RelayProtocolOptions relay, String responderPublicKey)?
+    TResult Function(RelayProtocolOptions relay,
+            @Uint8ListToHexConverter() Uint8List responderPublicKey)?
         approval,
     TResult Function(RelayProtocolOptions relay, SessionProposer controller,
             Map<String, NamespaceSession> namespaces, int expiry)?
         sessionSettle,
-    TResult Function(SessionRequest request, String chainId)? sessionRequest,
-    TResult Function(SessionRequest request, String chainId)? event,
+    TResult Function(SessionRequestPayload request, String chainId)?
+        sessionRequest,
+    TResult Function(SessionEventPayload event, String chainId)? event,
     TResult Function(Map<String, NamespaceSession> namespaces)?
         updateNamespaces,
     TResult Function(int expiry)? extend,
@@ -1422,7 +1763,7 @@ class _$EventParams implements EventParams {
     required TResult orElse(),
   }) {
     if (event != null) {
-      return event(request, chainId);
+      return event(this.event, chainId);
     }
     return orElse();
   }
@@ -1489,13 +1830,13 @@ class _$EventParams implements EventParams {
 
 abstract class EventParams implements SignParams {
   const factory EventParams(
-      {required final SessionRequest request,
+      {required final SessionEventPayload event,
       required final String chainId}) = _$EventParams;
 
   factory EventParams.fromJson(Map<String, dynamic> json) =
       _$EventParams.fromJson;
 
-  SessionRequest get request;
+  SessionEventPayload get event;
   String get chainId;
   @JsonKey(ignore: true)
   _$$EventParamsCopyWith<_$EventParams> get copyWith =>
@@ -1587,11 +1928,11 @@ class _$UpdateNamespacesParams implements UpdateNamespacesParams {
     required TResult Function(
             List<RelayProtocolOptions> relays,
             SessionProposer proposer,
-            @JsonKey(name: "requiredNamespaces")
+            @JsonKey(name: 'requiredNamespaces')
                 Map<String, NamespaceProposal> namespaces)
         sessionPropose,
-    required TResult Function(
-            RelayProtocolOptions relay, String responderPublicKey)
+    required TResult Function(RelayProtocolOptions relay,
+            @Uint8ListToHexConverter() Uint8List responderPublicKey)
         approval,
     required TResult Function(
             RelayProtocolOptions relay,
@@ -1599,9 +1940,9 @@ class _$UpdateNamespacesParams implements UpdateNamespacesParams {
             Map<String, NamespaceSession> namespaces,
             int expiry)
         sessionSettle,
-    required TResult Function(SessionRequest request, String chainId)
+    required TResult Function(SessionRequestPayload request, String chainId)
         sessionRequest,
-    required TResult Function(SessionRequest request, String chainId) event,
+    required TResult Function(SessionEventPayload event, String chainId) event,
     required TResult Function(Map<String, NamespaceSession> namespaces)
         updateNamespaces,
     required TResult Function(int expiry) extend,
@@ -1617,16 +1958,18 @@ class _$UpdateNamespacesParams implements UpdateNamespacesParams {
     TResult? Function(
             List<RelayProtocolOptions> relays,
             SessionProposer proposer,
-            @JsonKey(name: "requiredNamespaces")
+            @JsonKey(name: 'requiredNamespaces')
                 Map<String, NamespaceProposal> namespaces)?
         sessionPropose,
-    TResult? Function(RelayProtocolOptions relay, String responderPublicKey)?
+    TResult? Function(RelayProtocolOptions relay,
+            @Uint8ListToHexConverter() Uint8List responderPublicKey)?
         approval,
     TResult? Function(RelayProtocolOptions relay, SessionProposer controller,
             Map<String, NamespaceSession> namespaces, int expiry)?
         sessionSettle,
-    TResult? Function(SessionRequest request, String chainId)? sessionRequest,
-    TResult? Function(SessionRequest request, String chainId)? event,
+    TResult? Function(SessionRequestPayload request, String chainId)?
+        sessionRequest,
+    TResult? Function(SessionEventPayload event, String chainId)? event,
     TResult? Function(Map<String, NamespaceSession> namespaces)?
         updateNamespaces,
     TResult? Function(int expiry)? extend,
@@ -1642,16 +1985,18 @@ class _$UpdateNamespacesParams implements UpdateNamespacesParams {
     TResult Function(
             List<RelayProtocolOptions> relays,
             SessionProposer proposer,
-            @JsonKey(name: "requiredNamespaces")
+            @JsonKey(name: 'requiredNamespaces')
                 Map<String, NamespaceProposal> namespaces)?
         sessionPropose,
-    TResult Function(RelayProtocolOptions relay, String responderPublicKey)?
+    TResult Function(RelayProtocolOptions relay,
+            @Uint8ListToHexConverter() Uint8List responderPublicKey)?
         approval,
     TResult Function(RelayProtocolOptions relay, SessionProposer controller,
             Map<String, NamespaceSession> namespaces, int expiry)?
         sessionSettle,
-    TResult Function(SessionRequest request, String chainId)? sessionRequest,
-    TResult Function(SessionRequest request, String chainId)? event,
+    TResult Function(SessionRequestPayload request, String chainId)?
+        sessionRequest,
+    TResult Function(SessionEventPayload event, String chainId)? event,
     TResult Function(Map<String, NamespaceSession> namespaces)?
         updateNamespaces,
     TResult Function(int expiry)? extend,
@@ -1814,11 +2159,11 @@ class _$ExtendParams implements ExtendParams {
     required TResult Function(
             List<RelayProtocolOptions> relays,
             SessionProposer proposer,
-            @JsonKey(name: "requiredNamespaces")
+            @JsonKey(name: 'requiredNamespaces')
                 Map<String, NamespaceProposal> namespaces)
         sessionPropose,
-    required TResult Function(
-            RelayProtocolOptions relay, String responderPublicKey)
+    required TResult Function(RelayProtocolOptions relay,
+            @Uint8ListToHexConverter() Uint8List responderPublicKey)
         approval,
     required TResult Function(
             RelayProtocolOptions relay,
@@ -1826,9 +2171,9 @@ class _$ExtendParams implements ExtendParams {
             Map<String, NamespaceSession> namespaces,
             int expiry)
         sessionSettle,
-    required TResult Function(SessionRequest request, String chainId)
+    required TResult Function(SessionRequestPayload request, String chainId)
         sessionRequest,
-    required TResult Function(SessionRequest request, String chainId) event,
+    required TResult Function(SessionEventPayload event, String chainId) event,
     required TResult Function(Map<String, NamespaceSession> namespaces)
         updateNamespaces,
     required TResult Function(int expiry) extend,
@@ -1844,16 +2189,18 @@ class _$ExtendParams implements ExtendParams {
     TResult? Function(
             List<RelayProtocolOptions> relays,
             SessionProposer proposer,
-            @JsonKey(name: "requiredNamespaces")
+            @JsonKey(name: 'requiredNamespaces')
                 Map<String, NamespaceProposal> namespaces)?
         sessionPropose,
-    TResult? Function(RelayProtocolOptions relay, String responderPublicKey)?
+    TResult? Function(RelayProtocolOptions relay,
+            @Uint8ListToHexConverter() Uint8List responderPublicKey)?
         approval,
     TResult? Function(RelayProtocolOptions relay, SessionProposer controller,
             Map<String, NamespaceSession> namespaces, int expiry)?
         sessionSettle,
-    TResult? Function(SessionRequest request, String chainId)? sessionRequest,
-    TResult? Function(SessionRequest request, String chainId)? event,
+    TResult? Function(SessionRequestPayload request, String chainId)?
+        sessionRequest,
+    TResult? Function(SessionEventPayload event, String chainId)? event,
     TResult? Function(Map<String, NamespaceSession> namespaces)?
         updateNamespaces,
     TResult? Function(int expiry)? extend,
@@ -1869,16 +2216,18 @@ class _$ExtendParams implements ExtendParams {
     TResult Function(
             List<RelayProtocolOptions> relays,
             SessionProposer proposer,
-            @JsonKey(name: "requiredNamespaces")
+            @JsonKey(name: 'requiredNamespaces')
                 Map<String, NamespaceProposal> namespaces)?
         sessionPropose,
-    TResult Function(RelayProtocolOptions relay, String responderPublicKey)?
+    TResult Function(RelayProtocolOptions relay,
+            @Uint8ListToHexConverter() Uint8List responderPublicKey)?
         approval,
     TResult Function(RelayProtocolOptions relay, SessionProposer controller,
             Map<String, NamespaceSession> namespaces, int expiry)?
         sessionSettle,
-    TResult Function(SessionRequest request, String chainId)? sessionRequest,
-    TResult Function(SessionRequest request, String chainId)? event,
+    TResult Function(SessionRequestPayload request, String chainId)?
+        sessionRequest,
+    TResult Function(SessionEventPayload event, String chainId)? event,
     TResult Function(Map<String, NamespaceSession> namespaces)?
         updateNamespaces,
     TResult Function(int expiry)? extend,
@@ -2049,11 +2398,11 @@ class _$DeleteParams implements DeleteParams {
     required TResult Function(
             List<RelayProtocolOptions> relays,
             SessionProposer proposer,
-            @JsonKey(name: "requiredNamespaces")
+            @JsonKey(name: 'requiredNamespaces')
                 Map<String, NamespaceProposal> namespaces)
         sessionPropose,
-    required TResult Function(
-            RelayProtocolOptions relay, String responderPublicKey)
+    required TResult Function(RelayProtocolOptions relay,
+            @Uint8ListToHexConverter() Uint8List responderPublicKey)
         approval,
     required TResult Function(
             RelayProtocolOptions relay,
@@ -2061,9 +2410,9 @@ class _$DeleteParams implements DeleteParams {
             Map<String, NamespaceSession> namespaces,
             int expiry)
         sessionSettle,
-    required TResult Function(SessionRequest request, String chainId)
+    required TResult Function(SessionRequestPayload request, String chainId)
         sessionRequest,
-    required TResult Function(SessionRequest request, String chainId) event,
+    required TResult Function(SessionEventPayload event, String chainId) event,
     required TResult Function(Map<String, NamespaceSession> namespaces)
         updateNamespaces,
     required TResult Function(int expiry) extend,
@@ -2079,16 +2428,18 @@ class _$DeleteParams implements DeleteParams {
     TResult? Function(
             List<RelayProtocolOptions> relays,
             SessionProposer proposer,
-            @JsonKey(name: "requiredNamespaces")
+            @JsonKey(name: 'requiredNamespaces')
                 Map<String, NamespaceProposal> namespaces)?
         sessionPropose,
-    TResult? Function(RelayProtocolOptions relay, String responderPublicKey)?
+    TResult? Function(RelayProtocolOptions relay,
+            @Uint8ListToHexConverter() Uint8List responderPublicKey)?
         approval,
     TResult? Function(RelayProtocolOptions relay, SessionProposer controller,
             Map<String, NamespaceSession> namespaces, int expiry)?
         sessionSettle,
-    TResult? Function(SessionRequest request, String chainId)? sessionRequest,
-    TResult? Function(SessionRequest request, String chainId)? event,
+    TResult? Function(SessionRequestPayload request, String chainId)?
+        sessionRequest,
+    TResult? Function(SessionEventPayload event, String chainId)? event,
     TResult? Function(Map<String, NamespaceSession> namespaces)?
         updateNamespaces,
     TResult? Function(int expiry)? extend,
@@ -2104,16 +2455,18 @@ class _$DeleteParams implements DeleteParams {
     TResult Function(
             List<RelayProtocolOptions> relays,
             SessionProposer proposer,
-            @JsonKey(name: "requiredNamespaces")
+            @JsonKey(name: 'requiredNamespaces')
                 Map<String, NamespaceProposal> namespaces)?
         sessionPropose,
-    TResult Function(RelayProtocolOptions relay, String responderPublicKey)?
+    TResult Function(RelayProtocolOptions relay,
+            @Uint8ListToHexConverter() Uint8List responderPublicKey)?
         approval,
     TResult Function(RelayProtocolOptions relay, SessionProposer controller,
             Map<String, NamespaceSession> namespaces, int expiry)?
         sessionSettle,
-    TResult Function(SessionRequest request, String chainId)? sessionRequest,
-    TResult Function(SessionRequest request, String chainId)? event,
+    TResult Function(SessionRequestPayload request, String chainId)?
+        sessionRequest,
+    TResult Function(SessionEventPayload event, String chainId)? event,
     TResult Function(Map<String, NamespaceSession> namespaces)?
         updateNamespaces,
     TResult Function(int expiry)? extend,
@@ -2249,11 +2602,11 @@ class _$PingParams implements PingParams {
     required TResult Function(
             List<RelayProtocolOptions> relays,
             SessionProposer proposer,
-            @JsonKey(name: "requiredNamespaces")
+            @JsonKey(name: 'requiredNamespaces')
                 Map<String, NamespaceProposal> namespaces)
         sessionPropose,
-    required TResult Function(
-            RelayProtocolOptions relay, String responderPublicKey)
+    required TResult Function(RelayProtocolOptions relay,
+            @Uint8ListToHexConverter() Uint8List responderPublicKey)
         approval,
     required TResult Function(
             RelayProtocolOptions relay,
@@ -2261,9 +2614,9 @@ class _$PingParams implements PingParams {
             Map<String, NamespaceSession> namespaces,
             int expiry)
         sessionSettle,
-    required TResult Function(SessionRequest request, String chainId)
+    required TResult Function(SessionRequestPayload request, String chainId)
         sessionRequest,
-    required TResult Function(SessionRequest request, String chainId) event,
+    required TResult Function(SessionEventPayload event, String chainId) event,
     required TResult Function(Map<String, NamespaceSession> namespaces)
         updateNamespaces,
     required TResult Function(int expiry) extend,
@@ -2279,16 +2632,18 @@ class _$PingParams implements PingParams {
     TResult? Function(
             List<RelayProtocolOptions> relays,
             SessionProposer proposer,
-            @JsonKey(name: "requiredNamespaces")
+            @JsonKey(name: 'requiredNamespaces')
                 Map<String, NamespaceProposal> namespaces)?
         sessionPropose,
-    TResult? Function(RelayProtocolOptions relay, String responderPublicKey)?
+    TResult? Function(RelayProtocolOptions relay,
+            @Uint8ListToHexConverter() Uint8List responderPublicKey)?
         approval,
     TResult? Function(RelayProtocolOptions relay, SessionProposer controller,
             Map<String, NamespaceSession> namespaces, int expiry)?
         sessionSettle,
-    TResult? Function(SessionRequest request, String chainId)? sessionRequest,
-    TResult? Function(SessionRequest request, String chainId)? event,
+    TResult? Function(SessionRequestPayload request, String chainId)?
+        sessionRequest,
+    TResult? Function(SessionEventPayload event, String chainId)? event,
     TResult? Function(Map<String, NamespaceSession> namespaces)?
         updateNamespaces,
     TResult? Function(int expiry)? extend,
@@ -2304,16 +2659,18 @@ class _$PingParams implements PingParams {
     TResult Function(
             List<RelayProtocolOptions> relays,
             SessionProposer proposer,
-            @JsonKey(name: "requiredNamespaces")
+            @JsonKey(name: 'requiredNamespaces')
                 Map<String, NamespaceProposal> namespaces)?
         sessionPropose,
-    TResult Function(RelayProtocolOptions relay, String responderPublicKey)?
+    TResult Function(RelayProtocolOptions relay,
+            @Uint8ListToHexConverter() Uint8List responderPublicKey)?
         approval,
     TResult Function(RelayProtocolOptions relay, SessionProposer controller,
             Map<String, NamespaceSession> namespaces, int expiry)?
         sessionSettle,
-    TResult Function(SessionRequest request, String chainId)? sessionRequest,
-    TResult Function(SessionRequest request, String chainId)? event,
+    TResult Function(SessionRequestPayload request, String chainId)?
+        sessionRequest,
+    TResult Function(SessionEventPayload event, String chainId)? event,
     TResult Function(Map<String, NamespaceSession> namespaces)?
         updateNamespaces,
     TResult Function(int expiry)? extend,

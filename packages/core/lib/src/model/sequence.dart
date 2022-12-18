@@ -1,4 +1,3 @@
-import 'package:walletconnect_mono_core/core.dart';
 import 'package:walletconnect_mono_foundation/foundation.dart';
 
 abstract class Sequence {

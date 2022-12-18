@@ -6,7 +6,7 @@ part of 'namespace.dart';
 // JsonSerializableGenerator
 // **************************************************************************
 
-_$NamespaceProposal _$$NamespaceProposalFromJson(Map<String, dynamic> json) =>
+_$NamespaceProposal _$$NamespaceProposalFromJson(Map json) =>
     _$NamespaceProposal(
       chains:
           (json['chains'] as List<dynamic>).map((e) => e as String).toList(),
@@ -15,8 +15,8 @@ _$NamespaceProposal _$$NamespaceProposalFromJson(Map<String, dynamic> json) =>
       events:
           (json['events'] as List<dynamic>).map((e) => e as String).toList(),
       extensions: (json['extensions'] as List<dynamic>?)
-          ?.map((e) =>
-              NamespaceProposalExtension.fromJson(e as Map<String, dynamic>))
+          ?.map((e) => NamespaceProposalExtension.fromJson(
+              Map<String, dynamic>.from(e as Map)))
           .toList(),
       $type: json['runtimeType'] as String?,
     );
@@ -26,12 +26,11 @@ Map<String, dynamic> _$$NamespaceProposalToJson(_$NamespaceProposal instance) =>
       'chains': instance.chains,
       'methods': instance.methods,
       'events': instance.events,
-      'extensions': instance.extensions,
+      'extensions': instance.extensions?.map((e) => e.toJson()).toList(),
       'runtimeType': instance.$type,
     };
 
-_$NamespaceSession _$$NamespaceSessionFromJson(Map<String, dynamic> json) =>
-    _$NamespaceSession(
+_$NamespaceSession _$$NamespaceSessionFromJson(Map json) => _$NamespaceSession(
       accounts:
           (json['accounts'] as List<dynamic>).map((e) => e as String).toList(),
       methods:
@@ -39,8 +38,8 @@ _$NamespaceSession _$$NamespaceSessionFromJson(Map<String, dynamic> json) =>
       events:
           (json['events'] as List<dynamic>).map((e) => e as String).toList(),
       extensions: (json['extensions'] as List<dynamic>?)
-          ?.map((e) =>
-              NamespaceProposalExtension.fromJson(e as Map<String, dynamic>))
+          ?.map((e) => NamespaceProposalExtension.fromJson(
+              Map<String, dynamic>.from(e as Map)))
           .toList(),
       $type: json['runtimeType'] as String?,
     );
@@ -50,12 +49,12 @@ Map<String, dynamic> _$$NamespaceSessionToJson(_$NamespaceSession instance) =>
       'accounts': instance.accounts,
       'methods': instance.methods,
       'events': instance.events,
-      'extensions': instance.extensions,
+      'extensions': instance.extensions?.map((e) => e.toJson()).toList(),
       'runtimeType': instance.$type,
     };
 
 _$_NamespaceProposalExtension _$$_NamespaceProposalExtensionFromJson(
-        Map<String, dynamic> json) =>
+        Map json) =>
     _$_NamespaceProposalExtension(
       chains:
           (json['chains'] as List<dynamic>).map((e) => e as String).toList(),
@@ -73,8 +72,7 @@ Map<String, dynamic> _$$_NamespaceProposalExtensionToJson(
       'events': instance.events,
     };
 
-_$_NamespaceSessionExtension _$$_NamespaceSessionExtensionFromJson(
-        Map<String, dynamic> json) =>
+_$_NamespaceSessionExtension _$$_NamespaceSessionExtensionFromJson(Map json) =>
     _$_NamespaceSessionExtension(
       accounts:
           (json['accounts'] as List<dynamic>).map((e) => e as String).toList(),

@@ -1,12 +1,7 @@
-import 'package:freezed_annotation/freezed_annotation.dart';
 import 'package:walletconnect_mono_foundation/foundation.dart';
 
 import '../rpc_method.dart';
 import 'sign_params.dart';
-
-part 'sign_rpc.freezed.dart';
-
-part 'sign_rpc.g.dart';
 
 typedef SignRpc = JsonRpcRequest<SignParams>;
 
@@ -31,7 +26,7 @@ SessionPropose newSessionPropose({
 //region SessionSettle
 typedef SessionSettle = JsonRpcRequest<SessionSettleParams>;
 
-SessionSettle newRelaySubscribeRequest({
+SessionSettle newSessionSettle({
   required int id,
   String jsonrpc = jsonRpcVersion,
   String method = JsonRpcMethod.wcSessionSettle,
@@ -89,7 +84,7 @@ SessionPing newSessionPing({
   required int id,
   String jsonrpc = jsonRpcVersion,
   String method = JsonRpcMethod.wcSessionPing,
-  required PingParams params,
+  PingParams params = const PingParams(),
 }) {
   return SessionPing(
     id: id,
@@ -110,6 +105,24 @@ SessionEvent newSessionEvent({
   required EventParams params,
 }) {
   return SessionEvent(
+    id: id,
+    jsonrpc: jsonrpc,
+    method: method,
+    params: params,
+  );
+}
+//endregion
+
+//region SessionUpdate
+typedef SessionUpdate = JsonRpcRequest<UpdateNamespacesParams>;
+
+SessionUpdate newSessionUpdate({
+  required int id,
+  String jsonrpc = jsonRpcVersion,
+  String method = JsonRpcMethod.wcSessionUpdate,
+  required UpdateNamespacesParams params,
+}) {
+  return SessionUpdate(
     id: id,
     jsonrpc: jsonrpc,
     method: method,

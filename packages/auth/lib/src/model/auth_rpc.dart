@@ -1,12 +1,7 @@
-import 'package:freezed_annotation/freezed_annotation.dart';
 import 'package:walletconnect_mono_auth/src/rpc_method.dart';
 import 'package:walletconnect_mono_foundation/foundation.dart';
 
 import 'auth_params.dart';
-
-part 'auth_rpc.freezed.dart';
-
-part 'auth_rpc.g.dart';
 
 typedef AuthRpc = JsonRpcRequest<AuthParams>;
 

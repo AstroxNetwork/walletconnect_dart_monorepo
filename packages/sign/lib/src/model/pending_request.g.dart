@@ -6,12 +6,10 @@ part of 'pending_request.dart';
 // JsonSerializableGenerator
 // **************************************************************************
 
-_$_PendingRequest _$$_PendingRequestFromJson(Map<String, dynamic> json) =>
-    _$_PendingRequest(
+_$_PendingRequest _$$_PendingRequestFromJson(Map json) => _$_PendingRequest(
       id: json['id'] as int,
       method: json['method'] as String,
-      topic:
-          const TopicConverter().fromJson(json['topic'] as Map<String, String>),
+      topic: const TopicConverter().fromJson(json['topic'] as Map),
       params: json['params'] as String,
     );
 

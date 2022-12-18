@@ -1,9 +1,11 @@
+import 'dart:typed_data';
+
+import 'package:collection/collection.dart';
 import 'package:freezed_annotation/freezed_annotation.dart';
 import 'package:walletconnect_mono_core/core.dart';
 import 'package:walletconnect_mono_foundation/foundation.dart';
 import 'package:walletconnect_mono_sign/src/model/session_proposer.dart';
 import 'package:walletconnect_mono_sign/src/model/sign_params.dart';
-import 'dart:typed_data';
 
 import 'namespace.dart';
 
@@ -76,4 +78,12 @@ class Session with _$Session implements Sequence {
 
   factory Session.fromJson(Map<String, dynamic> json) =>
       _$SessionFromJson(json);
+}
+
+extension SessionExtension on Session {
+  bool get isPeerController =>
+      const ListEquality().equals(peerPublicKey, controllerKey);
+
+  bool get isSelfController =>
+      const ListEquality().equals(selfPublicKey, controllerKey);
 }

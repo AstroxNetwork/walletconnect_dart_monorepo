@@ -1,7 +1,7 @@
 import 'package:freezed_annotation/freezed_annotation.dart';
-import 'package:walletconnect_mono_foundation/foundation.dart';
 
 import '../constants.dart';
+import '../errors.dart';
 import '../snippets.dart';
 
 part 'rpc.freezed.dart';
@@ -56,7 +56,7 @@ class JsonRpcResponse<T> with _$JsonRpcResponse<T> implements JsonRpc {
 }
 
 @freezed
-class JsonRpcOnError with _$JsonRpcOnError {
+class JsonRpcOnError extends RemoteJsonRpcError with _$JsonRpcOnError {
   const factory JsonRpcOnError({
     required int code,
     required String message,

@@ -95,18 +95,19 @@ class RelayProtocolOptions with _$RelayProtocolOptions {
 }
 
 @Freezed(genericArgumentFactories: true)
-class WCRequest with _$WCRequest {
+class WCRequest<T> with _$WCRequest<T> {
   const WCRequest._();
 
   const factory WCRequest({
     @TopicConverter() required String topic,
     required int id,
     required String method,
-    required dynamic params,
+    required T params,
   }) = _WCRequest;
 
-  factory WCRequest.fromJson(Map<String, dynamic> json) =>
-      _$WCRequestFromJson(json);
+  factory WCRequest.fromJson(
+          Map<String, dynamic> json, ObjectFactory<T> factory) =>
+      _$WCRequestFromJson(json, factory);
 }
 //
 // @Freezed(genericArgumentFactories: true)

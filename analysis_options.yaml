@@ -21,6 +21,7 @@ analyzer:
 linter:
   rules:
 
+    no_runtimeType_toString: false
     one_member_abstracts: false
 
     ## currently enabled only for firebase_core

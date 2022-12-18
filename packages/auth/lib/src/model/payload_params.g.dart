@@ -6,8 +6,7 @@ part of 'payload_params.dart';
 // JsonSerializableGenerator
 // **************************************************************************
 
-_$_PayloadParams _$$_PayloadParamsFromJson(Map<String, dynamic> json) =>
-    _$_PayloadParams(
+_$_PayloadParams _$$_PayloadParamsFromJson(Map json) => _$_PayloadParams(
       type: json['type'] as String,
       chainId: json['chainId'] as String,
       domain: json['domain'] as String,

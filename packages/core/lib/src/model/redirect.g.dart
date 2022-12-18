@@ -6,7 +6,7 @@ part of 'redirect.dart';
 // JsonSerializableGenerator
 // **************************************************************************
 
-_$_Redirect _$$_RedirectFromJson(Map<String, dynamic> json) => _$_Redirect(
+_$_Redirect _$$_RedirectFromJson(Map json) => _$_Redirect(
       native: json['native'] as String?,
       universal: json['universal'] as String?,
     );

@@ -6,21 +6,22 @@ part of 'cacao.dart';
 // JsonSerializableGenerator
 // **************************************************************************
 
-_$_Cacao _$$_CacaoFromJson(Map<String, dynamic> json) => _$_Cacao(
-      header: CacaoHeader.fromJson(json['header'] as Map<String, dynamic>),
-      payload: CacaoPayload.fromJson(json['payload'] as Map<String, dynamic>),
-      signature:
-          CacaoSignature.fromJson(json['signature'] as Map<String, dynamic>),
+_$_Cacao _$$_CacaoFromJson(Map json) => _$_Cacao(
+      header: CacaoHeader.fromJson(
+          Map<String, dynamic>.from(json['header'] as Map)),
+      payload: CacaoPayload.fromJson(
+          Map<String, dynamic>.from(json['payload'] as Map)),
+      signature: CacaoSignature.fromJson(
+          Map<String, dynamic>.from(json['signature'] as Map)),
     );
 
 Map<String, dynamic> _$$_CacaoToJson(_$_Cacao instance) => <String, dynamic>{
-      'header': instance.header,
-      'payload': instance.payload,
-      'signature': instance.signature,
+      'header': instance.header.toJson(),
+      'payload': instance.payload.toJson(),
+      'signature': instance.signature.toJson(),
     };
 
-_$_CacaoSignature _$$_CacaoSignatureFromJson(Map<String, dynamic> json) =>
-    _$_CacaoSignature(
+_$_CacaoSignature _$$_CacaoSignatureFromJson(Map json) => _$_CacaoSignature(
       t: json['t'] as String,
       s: json['s'] as String,
       m: json['m'] as String?,
@@ -33,8 +34,7 @@ Map<String, dynamic> _$$_CacaoSignatureToJson(_$_CacaoSignature instance) =>
       'm': instance.m,
     };
 
-_$_CacaoHeader _$$_CacaoHeaderFromJson(Map<String, dynamic> json) =>
-    _$_CacaoHeader(
+_$_CacaoHeader _$$_CacaoHeaderFromJson(Map json) => _$_CacaoHeader(
       json['t'] as String,
     );
 
@@ -43,8 +43,7 @@ Map<String, dynamic> _$$_CacaoHeaderToJson(_$_CacaoHeader instance) =>
       't': instance.t,
     };
 
-_$_CacaoPayload _$$_CacaoPayloadFromJson(Map<String, dynamic> json) =>
-    _$_CacaoPayload(
+_$_CacaoPayload _$$_CacaoPayloadFromJson(Map json) => _$_CacaoPayload(
       iss: json['iss'] as String,
       domain: json['domain'] as String,
       aud: json['aud'] as String,

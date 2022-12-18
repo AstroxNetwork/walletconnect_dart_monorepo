@@ -1,6 +1,5 @@
 import 'dart:async';
 
-import '../errors.dart';
 import '../snippets.dart';
 
 class Result<T> {

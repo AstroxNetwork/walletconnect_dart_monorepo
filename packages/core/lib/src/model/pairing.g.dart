@@ -6,15 +6,13 @@ part of 'pairing.dart';
 // JsonSerializableGenerator
 // **************************************************************************
 
-_$_Pairing _$$_PairingFromJson(Map<String, dynamic> json) => _$_Pairing(
-      topic:
-          const TopicConverter().fromJson(json['topic'] as Map<String, String>),
-      expiry:
-          const ExpiryConverter().fromJson(json['expiry'] as Map<String, int>),
+_$_Pairing _$$_PairingFromJson(Map json) => _$_Pairing(
+      topic: const TopicConverter().fromJson(json['topic'] as Map),
+      expiry: const ExpiryConverter().fromJson(json['expiry'] as Map),
       peerAppMetaData: json['peerAppMetaData'] == null
           ? null
           : AppMetaData.fromJson(
-              json['peerAppMetaData'] as Map<String, dynamic>),
+              Map<String, Object?>.from(json['peerAppMetaData'] as Map)),
       relayProtocol: json['relayProtocol'] as String,
       relayData: json['relayData'] as String?,
       uri: const UriStringConverter().fromJson(json['uri'] as String),
@@ -26,7 +24,7 @@ Map<String, dynamic> _$$_PairingToJson(_$_Pairing instance) =>
     <String, dynamic>{
       'topic': const TopicConverter().toJson(instance.topic),
       'expiry': const ExpiryConverter().toJson(instance.expiry),
-      'peerAppMetaData': instance.peerAppMetaData,
+      'peerAppMetaData': instance.peerAppMetaData?.toJson(),
       'relayProtocol': instance.relayProtocol,
       'relayData': instance.relayData,
       'uri': const UriStringConverter().toJson(instance.uri),

@@ -6,14 +6,17 @@ part of 'participants.dart';
 // JsonSerializableGenerator
 // **************************************************************************
 
-_$_Participants _$$_ParticipantsFromJson(Map<String, dynamic> json) =>
-    _$_Participants(
-      senderPublicKey: json['senderPublicKey'],
-      receiverPublicKey: json['receiverPublicKey'],
+_$_Participants _$$_ParticipantsFromJson(Map json) => _$_Participants(
+      senderPublicKey: const Uint8ListToHexConverter()
+          .fromJson(json['senderPublicKey'] as String),
+      receiverPublicKey: const Uint8ListToHexConverter()
+          .fromJson(json['receiverPublicKey'] as String),
     );
 
 Map<String, dynamic> _$$_ParticipantsToJson(_$_Participants instance) =>
     <String, dynamic>{
-      'senderPublicKey': instance.senderPublicKey,
-      'receiverPublicKey': instance.receiverPublicKey,
+      'senderPublicKey':
+          const Uint8ListToHexConverter().toJson(instance.senderPublicKey),
+      'receiverPublicKey':
+          const Uint8ListToHexConverter().toJson(instance.receiverPublicKey),
     };

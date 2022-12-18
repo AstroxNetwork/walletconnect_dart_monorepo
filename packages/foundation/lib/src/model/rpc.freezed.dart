@@ -795,11 +795,6 @@ class _$_JsonRpcOnError implements _JsonRpcOnError {
   final String message;
 
   @override
-  String toString() {
-    return 'JsonRpcOnError(code: $code, message: $message)';
-  }
-
-  @override
   bool operator ==(dynamic other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&

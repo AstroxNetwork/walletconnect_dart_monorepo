@@ -6,15 +6,15 @@ part of 'app_meta_data.dart';
 // JsonSerializableGenerator
 // **************************************************************************
 
-_$_AppMetaData _$$_AppMetaDataFromJson(Map<String, dynamic> json) =>
-    _$_AppMetaData(
+_$_AppMetaData _$$_AppMetaDataFromJson(Map json) => _$_AppMetaData(
       name: json['name'] as String,
       description: json['description'] as String,
       url: json['url'] as String,
       icons: (json['icons'] as List<dynamic>).map((e) => e as String).toList(),
       redirect: json['redirect'] == null
           ? null
-          : Redirect.fromJson(json['redirect'] as Map<String, dynamic>),
+          : Redirect.fromJson(
+              Map<String, Object?>.from(json['redirect'] as Map)),
     );
 
 Map<String, dynamic> _$$_AppMetaDataToJson(_$_AppMetaData instance) =>
@@ -23,5 +23,5 @@ Map<String, dynamic> _$$_AppMetaDataToJson(_$_AppMetaData instance) =>
       'description': instance.description,
       'url': instance.url,
       'icons': instance.icons,
-      'redirect': instance.redirect,
+      'redirect': instance.redirect?.toJson(),
     };

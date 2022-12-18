@@ -6,9 +6,9 @@ part of 'irn.dart';
 // JsonSerializableGenerator
 // **************************************************************************
 
-_$_IrnParams _$$_IrnParamsFromJson(Map<String, dynamic> json) => _$_IrnParams(
+_$_IrnParams _$$_IrnParamsFromJson(Map json) => _$_IrnParams(
       tag: json['tag'] as int,
-      ttl: const ExpiryConverter().fromJson(json['ttl'] as Map<String, int>),
+      ttl: const ExpiryConverter().fromJson(json['ttl'] as Map),
       prompt: json['prompt'] as bool? ?? false,
     );
 
@@ -19,8 +19,7 @@ Map<String, dynamic> _$$_IrnParamsToJson(_$_IrnParams instance) =>
       'prompt': instance.prompt,
     };
 
-_$_IrnJWTHeader _$$_IrnJWTHeaderFromJson(Map<String, dynamic> json) =>
-    _$_IrnJWTHeader(
+_$_IrnJWTHeader _$$_IrnJWTHeaderFromJson(Map json) => _$_IrnJWTHeader(
       algorithm: json['alg'] as String,
       type: json['typ'] as String,
     );
@@ -31,8 +30,7 @@ Map<String, dynamic> _$$_IrnJWTHeaderToJson(_$_IrnJWTHeader instance) =>
       'typ': instance.type,
     };
 
-_$_IrnJWTPayload _$$_IrnJWTPayloadFromJson(Map<String, dynamic> json) =>
-    _$_IrnJWTPayload(
+_$_IrnJWTPayload _$$_IrnJWTPayloadFromJson(Map json) => _$_IrnJWTPayload(
       issuer: json['iss'] as String,
       subject: json['sub'] as String,
       audience: json['aud'] as String,

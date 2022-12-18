@@ -17,9 +17,9 @@ final _privateConstructorUsedError = UnsupportedError(
 PairingParams _$PairingParamsFromJson(Map<String, dynamic> json) {
   switch (json['runtimeType']) {
     case 'delete':
-      return DeleteParams.fromJson(json);
+      return PairingDeleteParams.fromJson(json);
     case 'ping':
-      return PingParams.fromJson(json);
+      return PairingPingParams.fromJson(json);
 
     default:
       throw CheckedFromJsonException(json, 'runtimeType', 'PairingParams',
@@ -50,20 +50,20 @@ mixin _$PairingParams {
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult map<TResult extends Object?>({
-    required TResult Function(DeleteParams value) delete,
-    required TResult Function(PingParams value) ping,
+    required TResult Function(PairingDeleteParams value) delete,
+    required TResult Function(PairingPingParams value) ping,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult? mapOrNull<TResult extends Object?>({
-    TResult? Function(DeleteParams value)? delete,
-    TResult? Function(PingParams value)? ping,
+    TResult? Function(PairingDeleteParams value)? delete,
+    TResult? Function(PairingPingParams value)? ping,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult maybeMap<TResult extends Object?>({
-    TResult Function(DeleteParams value)? delete,
-    TResult Function(PingParams value)? ping,
+    TResult Function(PairingDeleteParams value)? delete,
+    TResult Function(PairingPingParams value)? ping,
     required TResult orElse(),
   }) =>
       throw _privateConstructorUsedError;
@@ -89,20 +89,20 @@ class _$PairingParamsCopyWithImpl<$Res, $Val extends PairingParams>
 }
 
 /// @nodoc
-abstract class _$$DeleteParamsCopyWith<$Res> {
-  factory _$$DeleteParamsCopyWith(
-          _$DeleteParams value, $Res Function(_$DeleteParams) then) =
-      __$$DeleteParamsCopyWithImpl<$Res>;
+abstract class _$$PairingDeleteParamsCopyWith<$Res> {
+  factory _$$PairingDeleteParamsCopyWith(_$PairingDeleteParams value,
+          $Res Function(_$PairingDeleteParams) then) =
+      __$$PairingDeleteParamsCopyWithImpl<$Res>;
   @useResult
   $Res call({int code, String message});
 }
 
 /// @nodoc
-class __$$DeleteParamsCopyWithImpl<$Res>
-    extends _$PairingParamsCopyWithImpl<$Res, _$DeleteParams>
-    implements _$$DeleteParamsCopyWith<$Res> {
-  __$$DeleteParamsCopyWithImpl(
-      _$DeleteParams _value, $Res Function(_$DeleteParams) _then)
+class __$$PairingDeleteParamsCopyWithImpl<$Res>
+    extends _$PairingParamsCopyWithImpl<$Res, _$PairingDeleteParams>
+    implements _$$PairingDeleteParamsCopyWith<$Res> {
+  __$$PairingDeleteParamsCopyWithImpl(
+      _$PairingDeleteParams _value, $Res Function(_$PairingDeleteParams) _then)
       : super(_value, _then);
 
   @pragma('vm:prefer-inline')
@@ -111,7 +111,7 @@ class __$$DeleteParamsCopyWithImpl<$Res>
     Object? code = null,
     Object? message = null,
   }) {
-    return _then(_$DeleteParams(
+    return _then(_$PairingDeleteParams(
       code: null == code
           ? _value.code
           : code // ignore: cast_nullable_to_non_nullable
@@ -126,13 +126,13 @@ class __$$DeleteParamsCopyWithImpl<$Res>
 
 /// @nodoc
 @JsonSerializable()
-class _$DeleteParams implements DeleteParams {
-  const _$DeleteParams(
+class _$PairingDeleteParams implements PairingDeleteParams {
+  const _$PairingDeleteParams(
       {this.code = -1, required this.message, final String? $type})
       : $type = $type ?? 'delete';
 
-  factory _$DeleteParams.fromJson(Map<String, dynamic> json) =>
-      _$$DeleteParamsFromJson(json);
+  factory _$PairingDeleteParams.fromJson(Map<String, dynamic> json) =>
+      _$$PairingDeleteParamsFromJson(json);
 
   @override
   @JsonKey()
@@ -152,7 +152,7 @@ class _$DeleteParams implements DeleteParams {
   bool operator ==(dynamic other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
-            other is _$DeleteParams &&
+            other is _$PairingDeleteParams &&
             (identical(other.code, code) || other.code == code) &&
             (identical(other.message, message) || other.message == message));
   }
@@ -164,8 +164,9 @@ class _$DeleteParams implements DeleteParams {
   @JsonKey(ignore: true)
   @override
   @pragma('vm:prefer-inline')
-  _$$DeleteParamsCopyWith<_$DeleteParams> get copyWith =>
-      __$$DeleteParamsCopyWithImpl<_$DeleteParams>(this, _$identity);
+  _$$PairingDeleteParamsCopyWith<_$PairingDeleteParams> get copyWith =>
+      __$$PairingDeleteParamsCopyWithImpl<_$PairingDeleteParams>(
+          this, _$identity);
 
   @override
   @optionalTypeArgs
@@ -201,8 +202,8 @@ class _$DeleteParams implements DeleteParams {
   @override
   @optionalTypeArgs
   TResult map<TResult extends Object?>({
-    required TResult Function(DeleteParams value) delete,
-    required TResult Function(PingParams value) ping,
+    required TResult Function(PairingDeleteParams value) delete,
+    required TResult Function(PairingPingParams value) ping,
   }) {
     return delete(this);
   }
@@ -210,8 +211,8 @@ class _$DeleteParams implements DeleteParams {
   @override
   @optionalTypeArgs
   TResult? mapOrNull<TResult extends Object?>({
-    TResult? Function(DeleteParams value)? delete,
-    TResult? Function(PingParams value)? ping,
+    TResult? Function(PairingDeleteParams value)? delete,
+    TResult? Function(PairingPingParams value)? ping,
   }) {
     return delete?.call(this);
   }
@@ -219,8 +220,8 @@ class _$DeleteParams implements DeleteParams {
   @override
   @optionalTypeArgs
   TResult maybeMap<TResult extends Object?>({
-    TResult Function(DeleteParams value)? delete,
-    TResult Function(PingParams value)? ping,
+    TResult Function(PairingDeleteParams value)? delete,
+    TResult Function(PairingPingParams value)? ping,
     required TResult orElse(),
   }) {
     if (delete != null) {
@@ -231,49 +232,49 @@ class _$DeleteParams implements DeleteParams {
 
   @override
   Map<String, dynamic> toJson() {
-    return _$$DeleteParamsToJson(
+    return _$$PairingDeleteParamsToJson(
       this,
     );
   }
 }
 
-abstract class DeleteParams implements PairingParams {
-  const factory DeleteParams({final int code, required final String message}) =
-      _$DeleteParams;
+abstract class PairingDeleteParams implements PairingParams {
+  const factory PairingDeleteParams(
+      {final int code, required final String message}) = _$PairingDeleteParams;
 
-  factory DeleteParams.fromJson(Map<String, dynamic> json) =
-      _$DeleteParams.fromJson;
+  factory PairingDeleteParams.fromJson(Map<String, dynamic> json) =
+      _$PairingDeleteParams.fromJson;
 
   int get code;
   String get message;
   @JsonKey(ignore: true)
-  _$$DeleteParamsCopyWith<_$DeleteParams> get copyWith =>
+  _$$PairingDeleteParamsCopyWith<_$PairingDeleteParams> get copyWith =>
       throw _privateConstructorUsedError;
 }
 
 /// @nodoc
-abstract class _$$PingParamsCopyWith<$Res> {
-  factory _$$PingParamsCopyWith(
-          _$PingParams value, $Res Function(_$PingParams) then) =
-      __$$PingParamsCopyWithImpl<$Res>;
+abstract class _$$PairingPingParamsCopyWith<$Res> {
+  factory _$$PairingPingParamsCopyWith(
+          _$PairingPingParams value, $Res Function(_$PairingPingParams) then) =
+      __$$PairingPingParamsCopyWithImpl<$Res>;
 }
 
 /// @nodoc
-class __$$PingParamsCopyWithImpl<$Res>
-    extends _$PairingParamsCopyWithImpl<$Res, _$PingParams>
-    implements _$$PingParamsCopyWith<$Res> {
-  __$$PingParamsCopyWithImpl(
-      _$PingParams _value, $Res Function(_$PingParams) _then)
+class __$$PairingPingParamsCopyWithImpl<$Res>
+    extends _$PairingParamsCopyWithImpl<$Res, _$PairingPingParams>
+    implements _$$PairingPingParamsCopyWith<$Res> {
+  __$$PairingPingParamsCopyWithImpl(
+      _$PairingPingParams _value, $Res Function(_$PairingPingParams) _then)
       : super(_value, _then);
 }
 
 /// @nodoc
 @JsonSerializable()
-class _$PingParams implements PingParams {
-  const _$PingParams({final String? $type}) : $type = $type ?? 'ping';
+class _$PairingPingParams implements PairingPingParams {
+  const _$PairingPingParams({final String? $type}) : $type = $type ?? 'ping';
 
-  factory _$PingParams.fromJson(Map<String, dynamic> json) =>
-      _$$PingParamsFromJson(json);
+  factory _$PairingPingParams.fromJson(Map<String, dynamic> json) =>
+      _$$PairingPingParamsFromJson(json);
 
   @JsonKey(name: 'runtimeType')
   final String $type;
@@ -286,7 +287,7 @@ class _$PingParams implements PingParams {
   @override
   bool operator ==(dynamic other) {
     return identical(this, other) ||
-        (other.runtimeType == runtimeType && other is _$PingParams);
+        (other.runtimeType == runtimeType && other is _$PairingPingParams);
   }
 
   @JsonKey(ignore: true)
@@ -327,8 +328,8 @@ class _$PingParams implements PingParams {
   @override
   @optionalTypeArgs
   TResult map<TResult extends Object?>({
-    required TResult Function(DeleteParams value) delete,
-    required TResult Function(PingParams value) ping,
+    required TResult Function(PairingDeleteParams value) delete,
+    required TResult Function(PairingPingParams value) ping,
   }) {
     return ping(this);
   }
@@ -336,8 +337,8 @@ class _$PingParams implements PingParams {
   @override
   @optionalTypeArgs
   TResult? mapOrNull<TResult extends Object?>({
-    TResult? Function(DeleteParams value)? delete,
-    TResult? Function(PingParams value)? ping,
+    TResult? Function(PairingDeleteParams value)? delete,
+    TResult? Function(PairingPingParams value)? ping,
   }) {
     return ping?.call(this);
   }
@@ -345,8 +346,8 @@ class _$PingParams implements PingParams {
   @override
   @optionalTypeArgs
   TResult maybeMap<TResult extends Object?>({
-    TResult Function(DeleteParams value)? delete,
-    TResult Function(PingParams value)? ping,
+    TResult Function(PairingDeleteParams value)? delete,
+    TResult Function(PairingPingParams value)? ping,
     required TResult orElse(),
   }) {
     if (ping != null) {
@@ -357,15 +358,15 @@ class _$PingParams implements PingParams {
 
   @override
   Map<String, dynamic> toJson() {
-    return _$$PingParamsToJson(
+    return _$$PairingPingParamsToJson(
       this,
     );
   }
 }
 
-abstract class PingParams implements PairingParams {
-  const factory PingParams() = _$PingParams;
+abstract class PairingPingParams implements PairingParams {
+  const factory PairingPingParams() = _$PairingPingParams;
 
-  factory PingParams.fromJson(Map<String, dynamic> json) =
-      _$PingParams.fromJson;
+  factory PairingPingParams.fromJson(Map<String, dynamic> json) =
+      _$PairingPingParams.fromJson;
 }

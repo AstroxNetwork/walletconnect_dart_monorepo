@@ -392,40 +392,38 @@ abstract class _RelayProtocolOptions extends RelayProtocolOptions {
       throw _privateConstructorUsedError;
 }
 
-WCRequest _$WCRequestFromJson(
-  Map<String, dynamic> json,
-) {
-  return _WCRequest.fromJson(
-    json,
-  );
+WCRequest<T> _$WCRequestFromJson<T>(
+    Map<String, dynamic> json, T Function(Object?) fromJsonT) {
+  return _WCRequest<T>.fromJson(json, fromJsonT);
 }
 
 /// @nodoc
-mixin _$WCRequest {
+mixin _$WCRequest<T> {
   @TopicConverter()
   String get topic => throw _privateConstructorUsedError;
   int get id => throw _privateConstructorUsedError;
   String get method => throw _privateConstructorUsedError;
-  dynamic get params => throw _privateConstructorUsedError;
+  T get params => throw _privateConstructorUsedError;
 
-  Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
+  Map<String, dynamic> toJson(Object? Function(T) toJsonT) =>
+      throw _privateConstructorUsedError;
   @JsonKey(ignore: true)
-  $WCRequestCopyWith<WCRequest> get copyWith =>
+  $WCRequestCopyWith<T, WCRequest<T>> get copyWith =>
       throw _privateConstructorUsedError;
 }
 
 /// @nodoc
-abstract class $WCRequestCopyWith<$Res> {
-  factory $WCRequestCopyWith(WCRequest value, $Res Function(WCRequest) then) =
-      _$WCRequestCopyWithImpl<$Res, WCRequest>;
+abstract class $WCRequestCopyWith<T, $Res> {
+  factory $WCRequestCopyWith(
+          WCRequest<T> value, $Res Function(WCRequest<T>) then) =
+      _$WCRequestCopyWithImpl<T, $Res, WCRequest<T>>;
   @useResult
-  $Res call(
-      {@TopicConverter() String topic, int id, String method, dynamic params});
+  $Res call({@TopicConverter() String topic, int id, String method, T params});
 }
 
 /// @nodoc
-class _$WCRequestCopyWithImpl<$Res, $Val extends WCRequest>
-    implements $WCRequestCopyWith<$Res> {
+class _$WCRequestCopyWithImpl<T, $Res, $Val extends WCRequest<T>>
+    implements $WCRequestCopyWith<T, $Res> {
   _$WCRequestCopyWithImpl(this._value, this._then);
 
   // ignore: unused_field
@@ -457,28 +455,28 @@ class _$WCRequestCopyWithImpl<$Res, $Val extends WCRequest>
       params: null == params
           ? _value.params
           : params // ignore: cast_nullable_to_non_nullable
-              as dynamic,
+              as T,
     ) as $Val);
   }
 }
 
 /// @nodoc
-abstract class _$$_WCRequestCopyWith<$Res> implements $WCRequestCopyWith<$Res> {
+abstract class _$$_WCRequestCopyWith<T, $Res>
+    implements $WCRequestCopyWith<T, $Res> {
   factory _$$_WCRequestCopyWith(
-          _$_WCRequest value, $Res Function(_$_WCRequest) then) =
-      __$$_WCRequestCopyWithImpl<$Res>;
+          _$_WCRequest<T> value, $Res Function(_$_WCRequest<T>) then) =
+      __$$_WCRequestCopyWithImpl<T, $Res>;
   @override
   @useResult
-  $Res call(
-      {@TopicConverter() String topic, int id, String method, dynamic params});
+  $Res call({@TopicConverter() String topic, int id, String method, T params});
 }
 
 /// @nodoc
-class __$$_WCRequestCopyWithImpl<$Res>
-    extends _$WCRequestCopyWithImpl<$Res, _$_WCRequest>
-    implements _$$_WCRequestCopyWith<$Res> {
+class __$$_WCRequestCopyWithImpl<T, $Res>
+    extends _$WCRequestCopyWithImpl<T, $Res, _$_WCRequest<T>>
+    implements _$$_WCRequestCopyWith<T, $Res> {
   __$$_WCRequestCopyWithImpl(
-      _$_WCRequest _value, $Res Function(_$_WCRequest) _then)
+      _$_WCRequest<T> _value, $Res Function(_$_WCRequest<T>) _then)
       : super(_value, _then);
 
   @pragma('vm:prefer-inline')
@@ -489,7 +487,7 @@ class __$$_WCRequestCopyWithImpl<$Res>
     Object? method = null,
     Object? params = null,
   }) {
-    return _then(_$_WCRequest(
+    return _then(_$_WCRequest<T>(
       topic: null == topic
           ? _value.topic
           : topic // ignore: cast_nullable_to_non_nullable
@@ -505,14 +503,14 @@ class __$$_WCRequestCopyWithImpl<$Res>
       params: null == params
           ? _value.params
           : params // ignore: cast_nullable_to_non_nullable
-              as dynamic,
+              as T,
     ));
   }
 }
 
 /// @nodoc
-@JsonSerializable()
-class _$_WCRequest extends _WCRequest {
+@JsonSerializable(genericArgumentFactories: true)
+class _$_WCRequest<T> extends _WCRequest<T> {
   const _$_WCRequest(
       {@TopicConverter() required this.topic,
       required this.id,
@@ -521,11 +519,8 @@ class _$_WCRequest extends _WCRequest {
       : super._();
 
   factory _$_WCRequest.fromJson(
-    Map<String, dynamic> json,
-  ) =>
-      _$$_WCRequestFromJson(
-        json,
-      );
+          Map<String, dynamic> json, T Function(Object?) fromJsonT) =>
+      _$$_WCRequestFromJson(json, fromJsonT);
 
   @override
   @TopicConverter()
@@ -535,18 +530,18 @@ class _$_WCRequest extends _WCRequest {
   @override
   final String method;
   @override
-  final dynamic params;
+  final T params;
 
   @override
   String toString() {
-    return 'WCRequest(topic: $topic, id: $id, method: $method, params: $params)';
+    return 'WCRequest<$T>(topic: $topic, id: $id, method: $method, params: $params)';
   }
 
   @override
   bool operator ==(dynamic other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
-            other is _$_WCRequest &&
+            other is _$_WCRequest<T> &&
             (identical(other.topic, topic) || other.topic == topic) &&
             (identical(other.id, id) || other.id == id) &&
             (identical(other.method, method) || other.method == method) &&
@@ -561,28 +556,26 @@ class _$_WCRequest extends _WCRequest {
   @JsonKey(ignore: true)
   @override
   @pragma('vm:prefer-inline')
-  _$$_WCRequestCopyWith<_$_WCRequest> get copyWith =>
-      __$$_WCRequestCopyWithImpl<_$_WCRequest>(this, _$identity);
+  _$$_WCRequestCopyWith<T, _$_WCRequest<T>> get copyWith =>
+      __$$_WCRequestCopyWithImpl<T, _$_WCRequest<T>>(this, _$identity);
 
   @override
-  Map<String, dynamic> toJson() {
-    return _$$_WCRequestToJson(
-      this,
-    );
+  Map<String, dynamic> toJson(Object? Function(T) toJsonT) {
+    return _$$_WCRequestToJson<T>(this, toJsonT);
   }
 }
 
-abstract class _WCRequest extends WCRequest {
+abstract class _WCRequest<T> extends WCRequest<T> {
   const factory _WCRequest(
       {@TopicConverter() required final String topic,
       required final int id,
       required final String method,
-      required final dynamic params}) = _$_WCRequest;
+      required final T params}) = _$_WCRequest<T>;
   const _WCRequest._() : super._();
 
   factory _WCRequest.fromJson(
-    Map<String, dynamic> json,
-  ) = _$_WCRequest.fromJson;
+          Map<String, dynamic> json, T Function(Object?) fromJsonT) =
+      _$_WCRequest<T>.fromJson;
 
   @override
   @TopicConverter()
@@ -592,9 +585,9 @@ abstract class _WCRequest extends WCRequest {
   @override
   String get method;
   @override
-  dynamic get params;
+  T get params;
   @override
   @JsonKey(ignore: true)
-  _$$_WCRequestCopyWith<_$_WCRequest> get copyWith =>
+  _$$_WCRequestCopyWith<T, _$_WCRequest<T>> get copyWith =>
       throw _privateConstructorUsedError;
 }
