@@ -4,15 +4,15 @@ import 'model/namespace.dart';
 import 'model/session.dart';
 
 abstract class ISessionStore {
-  FutureOr<List<Session>> getListOfSessionsWithoutMetadata();
+  FutureOr<List<Session>> listSessions();
 
   FutureOr<bool> isSessionValid(String topic);
 
-  FutureOr<Session> getSessionWithoutMetadataByTopic(String topic);
+  FutureOr<Session> getSessionByTopic(String topic);
 
-  FutureOr<List<String>> getAllSessionTopicsByPairingTopic(String pairingTopic);
+  FutureOr<List<String>> listSessionTopicsByPairingTopic(String pairingTopic);
 
-  FutureOr<Session> insertSession(
+  FutureOr<void> insertSession(
     String pairingTopic,
     int requestId,
     Session session,

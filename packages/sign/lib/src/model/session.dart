@@ -15,6 +15,8 @@ part 'session.g.dart';
 
 @freezed
 class Session with _$Session implements Sequence {
+  const Session._();
+
   const factory Session({
     @TopicConverter() required String topic,
     @ExpiryConverter() required Duration expiry,

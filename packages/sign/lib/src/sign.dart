@@ -272,7 +272,7 @@ class SignClient implements ISign {
         '${SignErrorMessages.NO_SEQUENCE_FOR_TOPIC_MESSAGE}$topic',
       );
     }
-    final session = await sessionStore.getSessionWithoutMetadataByTopic(topic);
+    final session = await sessionStore.getSessionByTopic(topic);
     if (!session.isSelfController) {
       throw UnauthorizedPeerError(
         SignErrorMessages.UNAUTHORIZED_UPDATE_MESSAGE,
@@ -309,7 +309,7 @@ class SignClient implements ISign {
         '${SignErrorMessages.NO_SEQUENCE_FOR_TOPIC_MESSAGE}$topic',
       );
     }
-    final session = await sessionStore.getSessionWithoutMetadataByTopic(topic);
+    final session = await sessionStore.getSessionByTopic(topic);
     if (!session.isSelfController) {
       throw UnauthorizedPeerError(
         SignErrorMessages.UNAUTHORIZED_UPDATE_MESSAGE,
@@ -348,7 +348,7 @@ class SignClient implements ISign {
         '${SignErrorMessages.NO_SEQUENCE_FOR_TOPIC_MESSAGE}$topic',
       );
     }
-    final session = await sessionStore.getSessionWithoutMetadataByTopic(topic);
+    final session = await sessionStore.getSessionByTopic(topic);
     if (!session.isSelfController) {
       throw UnauthorizedPeerError(
         SignErrorMessages.UNAUTHORIZED_UPDATE_MESSAGE,
@@ -465,7 +465,7 @@ class SignClient implements ISign {
 
   @override
   FutureOr<List<Session>> getListOfSettledSessions() async {
-    final list = await sessionStore.getListOfSessionsWithoutMetadata();
+    final list = await sessionStore.listSessions();
     return list
         .where((e) => e.isAcknowledged && e.expiry > currentAtDuration)
         .map((e) async {

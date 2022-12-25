@@ -276,7 +276,7 @@ class __$$_SessionCopyWithImpl<$Res>
 
 /// @nodoc
 @JsonSerializable()
-class _$_Session implements _Session {
+class _$_Session extends _Session {
   const _$_Session(
       {@TopicConverter() required this.topic,
       @ExpiryConverter() required this.expiry,
@@ -291,7 +291,8 @@ class _$_Session implements _Session {
       required final Map<String, NamespaceProposal> proposalNamespaces,
       required this.isAcknowledged})
       : _namespaces = namespaces,
-        _proposalNamespaces = proposalNamespaces;
+        _proposalNamespaces = proposalNamespaces,
+        super._();
 
   factory _$_Session.fromJson(Map<String, dynamic> json) =>
       _$$_SessionFromJson(json);
@@ -401,7 +402,7 @@ class _$_Session implements _Session {
   }
 }
 
-abstract class _Session implements Session {
+abstract class _Session extends Session {
   const factory _Session(
       {@TopicConverter() required final String topic,
       @ExpiryConverter() required final Duration expiry,
@@ -415,6 +416,7 @@ abstract class _Session implements Session {
       required final Map<String, NamespaceSession> namespaces,
       required final Map<String, NamespaceProposal> proposalNamespaces,
       required final bool isAcknowledged}) = _$_Session;
+  const _Session._() : super._();
 
   factory _Session.fromJson(Map<String, dynamic> json) = _$_Session.fromJson;
 
