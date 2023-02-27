@@ -1,7 +1,7 @@
 // coverage:ignore-file
 // GENERATED CODE - DO NOT MODIFY BY HAND
 // ignore_for_file: type=lint
-// ignore_for_file: unused_element, deprecated_member_use, deprecated_member_use_from_same_package, use_function_type_syntax_for_parameters, unnecessary_const, avoid_init_to_null, invalid_override_different_default_values_named, prefer_expression_function_bodies, annotate_overrides, invalid_annotation_target
+// ignore_for_file: unused_element, deprecated_member_use, deprecated_member_use_from_same_package, use_function_type_syntax_for_parameters, unnecessary_const, avoid_init_to_null, invalid_override_different_default_values_named, prefer_expression_function_bodies, annotate_overrides, invalid_annotation_target, unnecessary_question_mark
 
 part of 'namespace.dart';
 
@@ -207,6 +207,7 @@ class _$NamespaceProposal implements NamespaceProposal {
   final List<String> _chains;
   @override
   List<String> get chains {
+    if (_chains is EqualUnmodifiableListView) return _chains;
     // ignore: implicit_dynamic_type
     return EqualUnmodifiableListView(_chains);
   }
@@ -214,6 +215,7 @@ class _$NamespaceProposal implements NamespaceProposal {
   final List<String> _methods;
   @override
   List<String> get methods {
+    if (_methods is EqualUnmodifiableListView) return _methods;
     // ignore: implicit_dynamic_type
     return EqualUnmodifiableListView(_methods);
   }
@@ -221,6 +223,7 @@ class _$NamespaceProposal implements NamespaceProposal {
   final List<String> _events;
   @override
   List<String> get events {
+    if (_events is EqualUnmodifiableListView) return _events;
     // ignore: implicit_dynamic_type
     return EqualUnmodifiableListView(_events);
   }
@@ -230,6 +233,7 @@ class _$NamespaceProposal implements NamespaceProposal {
   List<NamespaceProposalExtension>? get extensions {
     final value = _extensions;
     if (value == null) return null;
+    if (_extensions is EqualUnmodifiableListView) return _extensions;
     // ignore: implicit_dynamic_type
     return EqualUnmodifiableListView(value);
   }
@@ -448,6 +452,7 @@ class _$NamespaceSession implements NamespaceSession {
   final List<String> _accounts;
   @override
   List<String> get accounts {
+    if (_accounts is EqualUnmodifiableListView) return _accounts;
     // ignore: implicit_dynamic_type
     return EqualUnmodifiableListView(_accounts);
   }
@@ -455,6 +460,7 @@ class _$NamespaceSession implements NamespaceSession {
   final List<String> _methods;
   @override
   List<String> get methods {
+    if (_methods is EqualUnmodifiableListView) return _methods;
     // ignore: implicit_dynamic_type
     return EqualUnmodifiableListView(_methods);
   }
@@ -462,6 +468,7 @@ class _$NamespaceSession implements NamespaceSession {
   final List<String> _events;
   @override
   List<String> get events {
+    if (_events is EqualUnmodifiableListView) return _events;
     // ignore: implicit_dynamic_type
     return EqualUnmodifiableListView(_events);
   }
@@ -471,6 +478,7 @@ class _$NamespaceSession implements NamespaceSession {
   List<NamespaceProposalExtension>? get extensions {
     final value = _extensions;
     if (value == null) return null;
+    if (_extensions is EqualUnmodifiableListView) return _extensions;
     // ignore: implicit_dynamic_type
     return EqualUnmodifiableListView(value);
   }
@@ -740,6 +748,7 @@ class _$_NamespaceProposalExtension implements _NamespaceProposalExtension {
   final List<String> _chains;
   @override
   List<String> get chains {
+    if (_chains is EqualUnmodifiableListView) return _chains;
     // ignore: implicit_dynamic_type
     return EqualUnmodifiableListView(_chains);
   }
@@ -747,6 +756,7 @@ class _$_NamespaceProposalExtension implements _NamespaceProposalExtension {
   final List<String> _methods;
   @override
   List<String> get methods {
+    if (_methods is EqualUnmodifiableListView) return _methods;
     // ignore: implicit_dynamic_type
     return EqualUnmodifiableListView(_methods);
   }
@@ -754,6 +764,7 @@ class _$_NamespaceProposalExtension implements _NamespaceProposalExtension {
   final List<String> _events;
   @override
   List<String> get events {
+    if (_events is EqualUnmodifiableListView) return _events;
     // ignore: implicit_dynamic_type
     return EqualUnmodifiableListView(_events);
   }
@@ -942,6 +953,7 @@ class _$_NamespaceSessionExtension implements _NamespaceSessionExtension {
   final List<String> _accounts;
   @override
   List<String> get accounts {
+    if (_accounts is EqualUnmodifiableListView) return _accounts;
     // ignore: implicit_dynamic_type
     return EqualUnmodifiableListView(_accounts);
   }
@@ -949,6 +961,7 @@ class _$_NamespaceSessionExtension implements _NamespaceSessionExtension {
   final List<String> _methods;
   @override
   List<String> get methods {
+    if (_methods is EqualUnmodifiableListView) return _methods;
     // ignore: implicit_dynamic_type
     return EqualUnmodifiableListView(_methods);
   }
@@ -956,6 +969,7 @@ class _$_NamespaceSessionExtension implements _NamespaceSessionExtension {
   final List<String> _events;
   @override
   List<String> get events {
+    if (_events is EqualUnmodifiableListView) return _events;
     // ignore: implicit_dynamic_type
     return EqualUnmodifiableListView(_events);
   }

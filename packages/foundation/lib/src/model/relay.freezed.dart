@@ -1,7 +1,7 @@
 // coverage:ignore-file
 // GENERATED CODE - DO NOT MODIFY BY HAND
 // ignore_for_file: type=lint
-// ignore_for_file: unused_element, deprecated_member_use, deprecated_member_use_from_same_package, use_function_type_syntax_for_parameters, unnecessary_const, avoid_init_to_null, invalid_override_different_default_values_named, prefer_expression_function_bodies, annotate_overrides, invalid_annotation_target
+// ignore_for_file: unused_element, deprecated_member_use, deprecated_member_use_from_same_package, use_function_type_syntax_for_parameters, unnecessary_const, avoid_init_to_null, invalid_override_different_default_values_named, prefer_expression_function_bodies, annotate_overrides, invalid_annotation_target, unnecessary_question_mark
 
 part of 'relay.dart';
 
@@ -16,6 +16,8 @@ final _privateConstructorUsedError = UnsupportedError(
 
 /// @nodoc
 mixin _$RelayMessage {
+  @JsonKey(name: 'value')
+  Object get value => throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
     required TResult Function(@JsonKey(name: 'value') String value) text,
@@ -203,6 +205,7 @@ abstract class RelayMessageText implements RelayMessage {
   factory RelayMessageText(@JsonKey(name: 'value') final String value) =
       _$RelayMessageText;
 
+  @override
   @JsonKey(name: 'value')
   String get value;
   @JsonKey(ignore: true)
@@ -251,6 +254,7 @@ class _$RelayMessageBytes implements RelayMessageBytes {
   @override
   @JsonKey(name: 'value')
   List<int> get value {
+    if (_value is EqualUnmodifiableListView) return _value;
     // ignore: implicit_dynamic_type
     return EqualUnmodifiableListView(_value);
   }
@@ -345,6 +349,7 @@ abstract class RelayMessageBytes implements RelayMessage {
   factory RelayMessageBytes(@JsonKey(name: 'value') final List<int> value) =
       _$RelayMessageBytes;
 
+  @override
   @JsonKey(name: 'value')
   List<int> get value;
   @JsonKey(ignore: true)

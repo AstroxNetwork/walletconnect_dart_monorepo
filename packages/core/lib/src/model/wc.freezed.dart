@@ -1,7 +1,7 @@
 // coverage:ignore-file
 // GENERATED CODE - DO NOT MODIFY BY HAND
 // ignore_for_file: type=lint
-// ignore_for_file: unused_element, deprecated_member_use, deprecated_member_use_from_same_package, use_function_type_syntax_for_parameters, unnecessary_const, avoid_init_to_null, invalid_override_different_default_values_named, prefer_expression_function_bodies, annotate_overrides, invalid_annotation_target
+// ignore_for_file: unused_element, deprecated_member_use, deprecated_member_use_from_same_package, use_function_type_syntax_for_parameters, unnecessary_const, avoid_init_to_null, invalid_override_different_default_values_named, prefer_expression_function_bodies, annotate_overrides, invalid_annotation_target, unnecessary_question_mark
 
 part of 'wc.dart';
 
@@ -437,7 +437,7 @@ class _$WCRequestCopyWithImpl<T, $Res, $Val extends WCRequest<T>>
     Object? topic = null,
     Object? id = null,
     Object? method = null,
-    Object? params = null,
+    Object? params = freezed,
   }) {
     return _then(_value.copyWith(
       topic: null == topic
@@ -452,7 +452,7 @@ class _$WCRequestCopyWithImpl<T, $Res, $Val extends WCRequest<T>>
           ? _value.method
           : method // ignore: cast_nullable_to_non_nullable
               as String,
-      params: null == params
+      params: freezed == params
           ? _value.params
           : params // ignore: cast_nullable_to_non_nullable
               as T,
@@ -485,7 +485,7 @@ class __$$_WCRequestCopyWithImpl<T, $Res>
     Object? topic = null,
     Object? id = null,
     Object? method = null,
-    Object? params = null,
+    Object? params = freezed,
   }) {
     return _then(_$_WCRequest<T>(
       topic: null == topic
@@ -500,7 +500,7 @@ class __$$_WCRequestCopyWithImpl<T, $Res>
           ? _value.method
           : method // ignore: cast_nullable_to_non_nullable
               as String,
-      params: null == params
+      params: freezed == params
           ? _value.params
           : params // ignore: cast_nullable_to_non_nullable
               as T,
