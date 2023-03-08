@@ -65,7 +65,8 @@ class HiveMetadataStore extends IMetadataStore {
     if (type != null) {
       return box.delete('${type.name}:$topic');
     }
-    final key = box.keys.firstOrNull((e) => e.toString().split(':').last);
+    final key =
+        box.keys.firstWhereOrNull((e) => e.toString().split(':').last == topic);
     if (key != null) {
       return box.delete(key);
     }

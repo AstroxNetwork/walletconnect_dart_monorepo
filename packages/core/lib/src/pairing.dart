@@ -46,14 +46,14 @@ class PairingClient implements IPairing {
   final Set<String> registeredMethods;
   final AppMetaData appMetaData;
 
-  const PairingClient(
-    this.keyManagement,
-    this.pairingStore,
-    this.metadataStore,
-    this.jsonRpcInteractor,
-    this.registeredMethods,
-    this.appMetaData,
-  );
+  const PairingClient({
+    required this.keyManagement,
+    required this.pairingStore,
+    required this.metadataStore,
+    required this.jsonRpcInteractor,
+    required this.registeredMethods,
+    required this.appMetaData,
+  });
 
   @override
   FutureOr<Pairing> create({Duration? timeout}) async {

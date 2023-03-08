@@ -8,3 +8,4 @@ export 'src/model/sign_params.dart';
 export 'src/model/sign_rpc.dart';
 export 'src/rpc_method.dart';
 export 'src/session_store.dart';
+export 'src/sign.dart';

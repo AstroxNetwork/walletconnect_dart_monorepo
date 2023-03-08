@@ -1,7 +1,8 @@
 import 'dart:async';
 
-import 'package:walletconnect_mono_core/src/errors.dart';
-import 'package:walletconnect_mono_core/src/model/pairing.dart';
+import 'package:walletconnect_mono_foundation/foundation.dart';
+
+import '../core.dart';
 
 abstract class IPairingStore {
   const IPairingStore();
@@ -39,4 +40,70 @@ abstract class IPairingStore {
   FutureOr<void> activate(String topic);
 
   FutureOr<void> clear();
+}
+
+class MemParingStore extends IPairingStore {
+  late final _store = <String, Map>{};
+
+  @override
+  FutureOr<void> add(Pairing pairing) {
+    _store[pairing.topic] = pairing.toJson();
+  }
+
+  @override
+  FutureOr<void> update(Pairing pairing) {
+    return add(pairing);
+  }
+
+  @override
+  FutureOr<void> addOrUpdate(Pairing pairing) {
+    return add(pairing);
+  }
+
+  @override
+  FutureOr<void> delete(String topic) {
+    _store.remove(topic);
+  }
+
+  @override
+  FutureOr<List<Pairing>> all() {
+    return _store.values
+        .map((e) => Pairing.fromJson(e.cast<String, dynamic>()))
+        .toList(growable: false);
+  }
+
+  @override
+  FutureOr<Pairing?> getOrNull(String topic) {
+    final dat = _store[topic];
+    return dat == null ? null : Pairing.fromJson(dat.cast<String, dynamic>());
+  }
+
+  @override
+  FutureOr<bool> has(String topic) {
+    return _store.containsKey(topic);
+  }
+
+  @override
+  FutureOr<void> clear() async {
+    _store.clear();
+  }
+
+  @override
+  FutureOr<List<Pairing>> validList() {
+    return _store.values
+        .where(
+          (e) =>
+              e['isActive'] == true &&
+              const ExpiryConverter().fromJson((e['expiry'] as Map).cast()) <
+                  currentAtDuration,
+        )
+        .map((e) => Pairing.fromJson(e.cast()))
+        .toList(growable: false);
+  }
+
+  @override
+  FutureOr<void> activate(String topic) async {
+    final value = await get(topic);
+    return update(value.copyWith(isActive: true));
+  }
 }

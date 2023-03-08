@@ -8,7 +8,6 @@ import 'package:walletconnect_mono_foundation/foundation.dart';
 import 'package:walletconnect_mono_sign/sign.dart';
 
 part 'session_store.freezed.dart';
-
 part 'session_store.g.dart';
 
 class HiveSessionStore implements ISessionStore {
@@ -34,7 +33,7 @@ class HiveSessionStore implements ISessionStore {
   ) async {
     await box.put(
       requestId.toString().tempNamespacesKey,
-      _SessionForStore.tempNamespaces(
+      SessionForStore.tempNamespaces(
         topic: topic,
         requestId: requestId,
         namespaces: namespaces,
@@ -70,7 +69,7 @@ class HiveSessionStore implements ISessionStore {
   FutureOr<void> extendSession(String topic, Duration expiry) {
     final entry = box.get(topic.sessionKey);
     if (entry != null) {
-      final session = _SessionForStore.fromJson(entry.cast()) as _Session;
+      final session = SessionForStore.fromJson(entry.cast()) as _Session;
       return box.put(topic, session.copyWith(expiry: expiry).toJson());
     }
   }
@@ -109,7 +108,7 @@ class HiveSessionStore implements ISessionStore {
       throw StateError('TempNamespaces not found: $requestId');
     }
     final tempNamespace =
-        _SessionForStore.fromJson(json.cast()) as _TempNamespaces;
+        SessionForStore.fromJson(json.cast()) as _TempNamespaces;
     return tempNamespace.namespaces;
   }
 
@@ -133,7 +132,7 @@ class HiveSessionStore implements ISessionStore {
   ) async {
     await box.put(
       requestId.toString().tempNamespacesKey,
-      _SessionForStore.tempNamespaces(
+      SessionForStore.tempNamespaces(
         topic: topic,
         requestId: requestId,
         isAcknowledged: false,
@@ -168,7 +167,7 @@ class HiveSessionStore implements ISessionStore {
     if (json == null) {
       return false;
     }
-    final session = _SessionForStore.fromJson(json.cast()) as _Session;
+    final session = SessionForStore.fromJson(json.cast()) as _Session;
     if (session.isAcknowledged && session.requestId ~/ 1000 >= timestamp) {
       return true;
     }
@@ -180,67 +179,8 @@ class HiveSessionStore implements ISessionStore {
     final key = requestId.toString().tempNamespacesKey;
     final find = box.get(key);
     if (find != null) {
-      final tn = _SessionForStore.fromJson(find.cast()) as _TempNamespaces;
+      final tn = SessionForStore.fromJson(find.cast()) as _TempNamespaces;
       await box.put(key, tn.copyWith(isAcknowledged: true).toJson());
     }
-  }
-}
-
-@freezed
-class _SessionForStore with _$_SessionForStore {
-  const _SessionForStore._();
-
-  const factory _SessionForStore.session({
-    @TopicConverter() required String topic,
-    @TopicConverter() required String pairingTopic,
-    @ExpiryConverter() required Duration expiry,
-    required String relayProtocol,
-    required int requestId,
-    String? relayData,
-    @Uint8ListToHexConverter() PublicKey? controllerKey,
-    @Uint8ListToHexConverter() required PublicKey selfPublicKey,
-    AppMetaData? selfAppMetaData,
-    @Uint8ListToHexConverter() PublicKey? peerPublicKey,
-    AppMetaData? peerAppMetaData,
-    required Map<String, NamespaceSession> namespaces,
-    required Map<String, NamespaceProposal> proposalNamespaces,
-    @Default(false) bool isAcknowledged,
-  }) = _Session;
-
-  const factory _SessionForStore.tempNamespaces({
-    @TopicConverter() required String topic,
-    required int requestId,
-    @Default(false) bool isAcknowledged,
-    required Map<String, NamespaceSession> namespaces,
-  }) = _TempNamespaces;
-
-  factory _SessionForStore.fromJson(Map<String, dynamic> json) =>
-      _$_SessionForStoreFromJson(json);
-}
-
-extension _KeyExtension on String {
-  String get sessionKey => 'session:$this';
-
-  String get tempNamespacesKey => 'temp-namespaces:$this';
-}
-
-extension _SessionExtension on Session {
-  _SessionForStore toSessionForStore(String pairingTopic, int requestId) {
-    return _SessionForStore.session(
-      topic: topic,
-      pairingTopic: pairingTopic,
-      requestId: requestId,
-      expiry: expiry,
-      relayProtocol: relayProtocol,
-      relayData: relayData,
-      controllerKey: controllerKey,
-      selfPublicKey: selfPublicKey,
-      selfAppMetaData: selfAppMetaData,
-      peerPublicKey: peerPublicKey,
-      peerAppMetaData: peerAppMetaData,
-      namespaces: namespaces,
-      proposalNamespaces: proposalNamespaces,
-      isAcknowledged: isAcknowledged,
-    );
   }
 }

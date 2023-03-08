@@ -87,7 +87,11 @@ class JsonRpcInteractor extends IJsonRpcInteractor {
   late final _subscriptions = <String, String>{};
   late final _bus = EventBus();
 
-  JsonRpcInteractor(this.relay, this.codec, this.jsonRpcRecordStore) {
+  JsonRpcInteractor({
+    required this.relay,
+    required this.codec,
+    required this.jsonRpcRecordStore,
+  }) {
     relay.on((value) {
       value.when(
         data: (data) async {
